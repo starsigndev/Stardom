@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Projects\\Stardom\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\projects\\stardom\\stardomengine\\app\\starapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\app\\starapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\projects\\stardom\\enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\projects\\stardom\\enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\projects\\stardom\\stardomengine\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,24 +26,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EngineTest1.cs",
+              "DocumentMoniker": "C:\\Projects\\Stardom\\EngineTest\\EngineTest1.cs",
+              "RelativeDocumentMoniker": "EngineTest\\EngineTest1.cs",
+              "ToolTip": "C:\\Projects\\Stardom\\EngineTest\\EngineTest1.cs",
+              "RelativeToolTip": "EngineTest\\EngineTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T11:23:22.443Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "StarApp.cs",
+              "DocumentMoniker": "C:\\Projects\\Stardom\\StardomEngine\\App\\StarApp.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\App\\StarApp.cs",
+              "ToolTip": "C:\\Projects\\Stardom\\StardomEngine\\App\\StarApp.cs*",
+              "RelativeToolTip": "StardomEngine\\App\\StarApp.cs*",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAACIAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T11:21:13.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\Stardom\\EngineTest\\Program.cs",
               "RelativeDocumentMoniker": "EngineTest\\Program.cs",
               "ToolTip": "C:\\Projects\\Stardom\\EngineTest\\Program.cs",
               "RelativeToolTip": "EngineTest\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAiwBsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-14T08:49:27.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Projects\\Stardom\\StardomEngine\\Class1.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Class1.cs",
@@ -45,10 +83,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-14T08:48:58.358Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

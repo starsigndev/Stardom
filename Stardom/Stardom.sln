@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StardomEngine", "StardomEngine\StardomEngine.csproj", "{B1507122-759E-4413-99A2-13B4661C3B28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTest", "EngineTest\EngineTest.csproj", "{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B1507122-759E-4413-99A2-13B4661C3B28} = {B1507122-759E-4413-99A2-13B4661C3B28}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
