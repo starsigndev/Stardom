@@ -21,6 +21,8 @@ namespace StardomEngine.Texture
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public int Channels { get; set; }
+
         public Texture2D(string path)
         {
 
@@ -29,8 +31,14 @@ namespace StardomEngine.Texture
 
             Data = LoadPngToByteArray(path);
 
-            GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
-
+            if (Channels == 4)
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, Data);
+            }
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter,(int)TextureMinFilter.Linear);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter,(int)TextureMagFilter.Linear);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
@@ -64,17 +72,37 @@ namespace StardomEngine.Texture
                 throw new ArgumentException("Path cannot be null or empty", nameof(imagePath));
             }
 
-            using (Image<Rgba32> image = Image.Load<Rgba32>(imagePath))
+            using (var image = Image.Load(imagePath))
             {
-                int width = image.Width;
-                int height = image.Height;
-                byte[] byteArray = new byte[width * height * 4]; // 4 bytes per pixel (R, G, B, A)
+                byte[] byteArray;
+                if (image is Image<Rgba32> rgbaImage)
+                {
+                    int width = rgbaImage.Width;
+                    int height = rgbaImage.Height;
+                    byteArray = new byte[width * height * 4]; // 4 bytes per pixel (R, G, B, A)
 
-                image.CopyPixelDataTo(byteArray);
+                    rgbaImage.CopyPixelDataTo(byteArray);
 
-                Width = width;
-                Height = height;
+                    Width = width;
+                    Height = height;
+                    Channels = 4;
+                }
+                else if (image is Image<Rgb24> rgbImage)
+                {
+                    int width = rgbImage.Width;
+                    int height = rgbImage.Height;
+                    byteArray = new byte[width * height * 3]; // 3 bytes per pixel (R, G, B)
 
+                    rgbImage.CopyPixelDataTo(byteArray);
+
+                    Width = width;
+                    Height = height;
+                    Channels = 3;
+                }
+                else
+                {
+                    throw new NotSupportedException("Unsupported image format");
+                }
 
                 return byteArray;
             }

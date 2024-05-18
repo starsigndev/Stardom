@@ -37,6 +37,13 @@ namespace StardomEngine.App
 
         }
 
+
+        protected override void OnLoad()
+        {
+            //base.OnLoad();
+            InitApp();
+        }
+
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             //base.OnUpdatFrame(args);
