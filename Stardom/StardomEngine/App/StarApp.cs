@@ -14,9 +14,31 @@ namespace StardomEngine.App
     public class StarApp : GameWindow
     {
 
+
+        public static int FrameWidth
+        {
+            get
+            {
+                return _Width;
+            }
+        }
+
+        public static int FrameHeight
+        {
+            get
+            {
+                return _Height;
+            }
+        }
+
+        private static int _Width = 0;
+        private static int _Height = 0;
+
         public StarApp(GameWindowSettings settings,NativeWindowSettings native) : base(settings,native)
         {
-            InitApp();
+            // InitApp();
+            _Width = native.ClientSize.X;
+            _Height = native.ClientSize.Y;
         }
 
         public virtual void InitApp()
@@ -31,9 +53,7 @@ namespace StardomEngine.App
         public virtual void RenderApp()
         {
 
-            GL.ClearColor(1, 0, 0, 1);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            SwapBuffers();
+        
 
         }
 
@@ -55,7 +75,12 @@ namespace StardomEngine.App
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             //base.OnRenderFrame(args);
+            GL.ClearColor(1, 0, 0, 1);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             RenderApp();
+        
+            SwapBuffers();
+
         }
 
     }
