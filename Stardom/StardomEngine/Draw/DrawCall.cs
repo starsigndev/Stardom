@@ -1,4 +1,5 @@
 ﻿using OpenTK.Mathematics;
+using StardomEngine.Texture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace StardomEngine.Draw
         public float[] Y { get; set; }
         public float Z { get; set; }
         public Vector4 Color { get; set; }
+
+        public Texture2D Image { get; set; }
 
         public DrawCall()
         {

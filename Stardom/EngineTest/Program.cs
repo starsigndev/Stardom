@@ -10,7 +10,7 @@ namespace EngineTest
 
             GameWindowSettings settings = new GameWindowSettings();
 
-            
+
             settings.UpdateFrequency = 60;
 
             NativeWindowSettings native = new NativeWindowSettings();
@@ -21,6 +21,9 @@ namespace EngineTest
             native.ClientSize = new OpenTK.Mathematics.Vector2i(800, 600);
             native.Profile = OpenTK.Windowing.Common.ContextProfile.Compatability;
             native.Title = "StardomEngine Test 1.";
+            native.Vsync = OpenTK.Windowing.Common.VSyncMode.Off;
+            native.IsEventDriven = false;
+           
 
             var app = new EngineTest1(settings, native);
 

@@ -8,6 +8,7 @@ using StardomEngine.Shader;
 using StardomEngine.Texture;
 using StardomEngine.App;
 using OpenTK.Graphics.OpenGL;
+using StardomEngine.Helper;
 
 namespace StardomEngine.Draw
 {
@@ -59,6 +60,55 @@ namespace StardomEngine.Draw
 
         }
 
+
+        public void DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color)
+        {
+
+            var list = FindList(image);
+
+            DrawCall call = new DrawCall();
+
+            float x0 = - size.X / 2;
+            float y0 = - size.Y / 2;
+            float x1 =  size.X / 2;
+            float y1 = - size.Y / 2;
+            float x2 =  size.X / 2;
+            float y2 =  size.Y / 2;
+            float x3 =  - size.X / 2;
+            float y3 = size.Y / 2;
+
+
+            var v1 = GameMaths.RotateAndScale(new Vector2(x0, y0), rotation, scale);
+
+            call.X[0] = position.X+v1.X;
+            call.Y[0] = position.Y+v1.Y;
+
+            var v2 = GameMaths.RotateAndScale(new Vector2(x1, y1), rotation, scale);
+
+
+            call.X[1] = position.X+v2.X;
+            call.Y[1] = position.Y+v2.Y;
+
+            var v3 = GameMaths.RotateAndScale(new Vector2(x2, y2), rotation, scale);
+
+            call.X[2] = position.X + v3.X;
+            call.Y[2] = position.Y + v3.Y;
+
+            var v4 = GameMaths.RotateAndScale(new Vector2(x3, y3), rotation, scale);
+
+            call.X[3] = position.X + v4.X;
+            call.Y[3] = position.Y + v4.Y;
+
+            call.Z = CurrentZ;
+
+            CurrentZ += 0.01f;
+
+            call.Image = image;
+
+            list.AddCall(call);
+
+        }
+
         public void DrawQuad(Texture2D image,Vector2 position,Vector2 size,Vector4 color)
         {
 
@@ -83,6 +133,8 @@ namespace StardomEngine.Draw
             CurrentZ += 0.01f;
 
             call.Color = color;
+
+            call.Image = image;
 
             list.AddCall(call);
 
@@ -198,6 +250,10 @@ namespace StardomEngine.Draw
                 }
 
 
+                list.Calls[0].Image.Bind(0);
+
+                DrawNormal.SetInt("se_ColorTexture", 0);
+
                 GL.BufferData(BufferTarget.ArrayBuffer, v_data, BufferUsage.DynamicDraw);
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
                 GL.BufferData(BufferTarget.ElementArrayBuffer, i_data, BufferUsage.DynamicDraw);
@@ -221,6 +277,8 @@ namespace StardomEngine.Draw
                 GL.DisableVertexAttribArray(0);
                 GL.DisableVertexAttribArray(1);
                 GL.DisableVertexAttribArray(2);
+
+                list.Calls[0].Image.Release(0);
 
 
 

@@ -31,14 +31,20 @@ namespace StardomEngine.App
             }
         }
 
+        //privates
         private static int _Width = 0;
         private static int _Height = 0;
+
+        private int NextFrame=0;
+        private int FPS = 0;
+        private int Frame = 0;
 
         public StarApp(GameWindowSettings settings,NativeWindowSettings native) : base(settings,native)
         {
             // InitApp();
             _Width = native.ClientSize.X;
             _Height = native.ClientSize.Y;
+            VSync = VSyncMode.Off;
         }
 
         public virtual void InitApp()
@@ -75,6 +81,21 @@ namespace StardomEngine.App
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             //base.OnRenderFrame(args);
+
+
+            int time = Environment.TickCount;
+
+            if (time > NextFrame)
+            {
+                NextFrame = time + 1000;
+                FPS = Frame;
+                Frame = 0;
+
+                Console.WriteLine("Fps:" + FPS);
+            }
+            Frame++;
+
+
             GL.ClearColor(1, 0, 0, 1);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             RenderApp();
