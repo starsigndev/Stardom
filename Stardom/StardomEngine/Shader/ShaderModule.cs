@@ -13,12 +13,35 @@ namespace StardomEngine.Shader
         public int VertexShader { get; set; }
         public int FragShader { get; set; }
 
+        public int Program { get; set; }
+
         public ShaderModule(string vertex_shader,string fragment_shader)
         {
 
             VertexShader = CompileShader(ShaderType.VertexShader,vertex_shader);
             FragShader = CompileShader(ShaderType.FragmentShader, fragment_shader);
 
+            Program = GL.CreateProgram();
+            GL.AttachShader(Program, VertexShader);
+            GL.AttachShader(Program, FragShader);
+
+            GL.LinkProgram(Program);
+
+            int stat = GL.GetProgrami(Program, ProgramProperty.LinkStatus);
+
+            if (stat == 0)
+            {
+
+                string status = "";
+
+                GL.GetProgramInfoLog(Program, out status);
+
+                Console.WriteLine("Program Link Faliure.\n" + status);
+
+            }
+
+            GL.DeleteShader(VertexShader);
+            GL.DeleteShader(FragShader);
 
         }
 
@@ -40,6 +63,10 @@ namespace StardomEngine.Shader
                 GL.GetShaderInfoLog(shader, out info);
 
                 Console.WriteLine("Shader Compile Error\n" + info);
+
+                Environment.Exit(1);
+
+
 
             }
             else

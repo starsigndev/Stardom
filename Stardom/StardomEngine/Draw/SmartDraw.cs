@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using StardomEngine.Shader;
 using StardomEngine.Texture;
 
 namespace StardomEngine.Draw
@@ -12,11 +13,14 @@ namespace StardomEngine.Draw
     {
         public List<DrawList> Lists { get; set; }
         public float CurrentZ = 0.0f;
+        public ShaderModule DrawNormal { get; set; }
 
         public SmartDraw()
         {
 
             Lists = new List<DrawList>();
+
+           // DrawNormal = new ShaderModule("")
 
         }
         public void Begin()
