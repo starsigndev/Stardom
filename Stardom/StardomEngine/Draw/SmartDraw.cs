@@ -101,7 +101,7 @@ namespace StardomEngine.Draw
 
             call.Z = CurrentZ;
 
-            CurrentZ += 0.01f;
+            CurrentZ += 0.001f;
 
             call.Image = image;
 
@@ -130,7 +130,7 @@ namespace StardomEngine.Draw
 
             call.Z = CurrentZ;
 
-            CurrentZ += 0.01f;
+            CurrentZ += 0.001f;
 
             call.Color = color;
 
@@ -149,7 +149,7 @@ namespace StardomEngine.Draw
             //int b = 0;
             var se_Projection = Matrix4.CreateOrthographicOffCenter(0, w, h, 0, -1.0f, 1.0f);
 
-            DrawNormal.Bind();
+           // DrawNormal.Bind();
 
             DrawNormal.SetMat("se_Projection",se_Projection);
 

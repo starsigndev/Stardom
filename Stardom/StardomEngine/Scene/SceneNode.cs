@@ -47,6 +47,12 @@ namespace StardomEngine.Scene
 
         public virtual void Init() { }
         public virtual void Update() { }
+
+        public virtual void Move(Vector2 delta)
+        {
+
+        }
+
         public virtual void Render(SceneCam camera,SmartDraw draw)
         {
 

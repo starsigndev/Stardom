@@ -8,6 +8,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
+using StardomEngine.Input;
 
 namespace StardomEngine.App
 {
@@ -45,6 +46,7 @@ namespace StardomEngine.App
             _Width = native.ClientSize.X;
             _Height = native.ClientSize.Y;
             VSync = VSyncMode.Off;
+            GameInput.InitInput();
         }
 
         public virtual void InitApp()
@@ -74,6 +76,20 @@ namespace StardomEngine.App
         {
             //base.OnUpdatFrame(args);
             //
+            var state = MouseState;
+
+            GameInput.MouseDelta = new Vector2(state.X, state.Y) - GameInput.MousePosition;
+            GameInput.MousePosition = new Vector2(state.X, state.Y);
+            GameInput.MouseButton[0] = state.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Left);
+            GameInput.MouseButton[1] = state.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Right);
+            GameInput.MouseButton[2] = state.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Middle);
+            GameInput.MouseWheel = state.ScrollDelta.Y;
+
+            if (GameInput.MouseWheel != 0)
+            {
+            //    Console.WriteLine("MD:" + GameInput.MouseWheel);
+            }
+
             UpdateApp();
 
         }

@@ -47,13 +47,32 @@ namespace StardomEngine.Scene.Nodes
             rp.Y = (ih / 2.0f) - rp.Y;
 
 
-           draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X,rp.Y),Size, rot,1.0f, new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+           draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X,rp.Y),Size, rot,scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
 
 
             RenderSubNodes(camera, draw);   
         }
 
+        public SceneSprite CloneSprite()
+        {
 
+            SceneSprite clone = new SceneSprite();
+            clone.Image = Image;
+            clone.Normals = Normals;
+            clone.Size = Size;
+            clone.Position = Position;
+
+            foreach (var sub in SubNodes)
+            {
+                if (sub is SceneSprite) {
+                    var sub_spr = sub as SceneSprite;
+                    clone.AddNode(sub_spr.CloneSprite());
+                }
+            }
+
+            return clone;
+
+        }
 
     }
 }
