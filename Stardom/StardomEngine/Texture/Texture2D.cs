@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
@@ -17,12 +19,47 @@ namespace StardomEngine.Texture
 
         public int Handle { get; set; }
         public byte[] Data { get; set; }
+        public float[] DataFloat { get; set; }
 
         public int Width { get; set; }
         public int Height { get; set; }
 
         public int Channels { get; set; }
 
+        public Texture2D(int width,int height,int channels)
+        {
+
+            Handle = GL.CreateTexture(TextureTarget.Texture2d);
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+
+            // Data = LoadPngToByteArray(path);
+            Width = width;
+            Height = height;
+            Channels = channels;
+
+            //Data = new byte[Width * Height * Channels];
+            DataFloat = new float[Width * Height * Channels];
+
+            if (Channels == 4)
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba32f, Width, Height, 0, PixelFormat.Rgba, PixelType.Float, DataFloat);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb32f, Width, Height, 0, PixelFormat.Rgb, PixelType.Float,DataFloat);
+            }
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+
+            //GL.GenerateMipmap(TextureTarget.Texture2d);
+
+            GL.BindTexture(TextureTarget.Texture2d, 0);
+
+
+
+        }
         public Texture2D(string path)
         {
 
@@ -51,6 +88,82 @@ namespace StardomEngine.Texture
 
         }
 
+
+        public void SetPixelFloat(int x,int y,Vector4 color)
+        {
+
+            switch (Channels)
+            {
+                case 3:
+                    {
+                        int loc = (y * Width * 3) + x * 3;
+                        DataFloat[loc++] = color.X;
+                        DataFloat[loc++] = color.Y;
+                        DataFloat[loc] = color.Z;
+                    }
+                    break;
+                case 4:
+                    {
+                        int loc = (y * Width * 4) + x * 4;
+                     //   int loc = (y * Width * 3) + x * 3;
+                        Data[loc++] = (byte)(color.X * 255.0f);
+                        Data[loc++] = (byte)(color.Y * 255.0f);
+                        Data[loc++] = (byte)(color.Z * 255.0f);
+                        Data[loc] = (byte)(color.W * 255.0f);
+                    }
+                    break;
+            }
+
+        }
+
+        public Vector4 GetPixel(int x,int y)
+        {
+            if(x<0 || y<0 || x>=Width || y >= Height)
+            {
+                return new Vector4(0, 0, 0, 0);
+            }
+
+            switch (Channels)
+            {
+                case 3:
+                    {
+                        int loc = (y * Width * 3) + x * 3;
+                        float r, g, b;
+                        r = ((float)Data[loc++]) / 255.0f;
+                        g = ((float)Data[loc++]) / 255.0f;
+                        b = ((float)Data[loc++]) / 255.0f;
+                        return new Vector4(r, g, b, 1.0f);
+                    }
+                    break;
+                case 4:
+                    {
+                        int loc = (y * Width * 4) + x * 4;
+                        float r, g, b,a;
+                        r = ((float)Data[loc++]) / 255.0f;
+                        g = ((float)Data[loc++]) / 255.0f;
+                        b = ((float)Data[loc++]) / 255.0f;
+                        a = ((float)Data[loc++]) / 255.0f;
+                        return new Vector4(r, g, b, a);
+                    }
+                    break;
+            }
+
+            return new Vector4(0, 0, 0, 0);
+        }
+
+        public void Upload()
+        {
+
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+
+            if (Channels == 3)
+            {
+                GL.TexSubImage2D(TextureTarget.Texture2d, 0, 0, 0, Width, Height, PixelFormat.Rgb, PixelType.Float, DataFloat);
+            }
+
+            GL.BindTexture(TextureTarget.Texture2d, 0);
+
+        }
         public void Bind(int unit)
         {
 

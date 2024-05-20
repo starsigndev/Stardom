@@ -10,6 +10,7 @@ namespace StardomEngine.Helper
     public class GameMaths
     {
 
+
         public static Vector2 RotateAndScale(Vector2 vector, float rotate, float scale)
         {
             // Convert the rotation angle from degrees to radians

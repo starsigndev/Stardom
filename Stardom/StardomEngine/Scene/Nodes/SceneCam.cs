@@ -39,6 +39,22 @@ namespace StardomEngine.Scene.Nodes
 
         }
 
+        public void Rotate(float value)
+        {
+
+            Rotation += value;
+            if (Rotation > 360.0f)
+            {
+                Rotation = Rotation - 360.0f;
+            }
+            if(Rotation < 0)
+            {
+
+                Rotation = 360 + Rotation;
+
+            }
+
+        }
         public void SmartZoom(float zoom,Vector2 os)
         {
             AddZoom(zoom);

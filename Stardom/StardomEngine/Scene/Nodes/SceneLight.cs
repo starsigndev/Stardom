@@ -1,4 +1,5 @@
 ﻿using OpenTK.Mathematics;
+using StardomEngine.Texture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,20 @@ namespace StardomEngine.Scene.Nodes
             set;
         }
 
+
+        public Texture2D ShadowMap
+        {
+            get;
+            set;
+        }
+
         public SceneLight()
         {
 
             Diffuse = new Vector3(1, 1, 1);
-            Range = 512;
+            Range = 2048;
+            ShadowMap = new Texture2D(360, 1,3);
+
 
 
         }

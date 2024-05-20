@@ -24,6 +24,19 @@ namespace StardomEngine.Scene.Nodes
             get; set;
         }
 
+        public bool CastShadows
+        {
+            get;
+            set;
+        }
+
+        public SceneSprite()
+        {
+
+            CastShadows = false;
+
+        }
+
         public override void Render(SceneCam camera,SmartDraw draw)
         {
             //base.Render();

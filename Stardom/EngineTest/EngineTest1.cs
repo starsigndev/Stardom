@@ -38,18 +38,24 @@ namespace EngineTest
             s1 = new SceneSprite();
             s2 = new SceneSprite();
             s1.Image = Tex1;
-            s2.Image = Tex1;
-
+            s2.Image = new Texture2D("Data/sprite1.png");
+            var s3 = new SceneSprite();
+            s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
             Scene1.Fill(s1, 16, 16);
-            //Scene1.AddNode(s2);
-
+            Scene1.AddNode(s2);
+            Scene1.AddNode(s3);
+            s3.CastShadows = true;
+            s2.Position = new Vector3(250, 120, 1);
+            s3.Position = new Vector3(500, 400, 1);
             
 
             s1.Position = new Vector3(StarApp.FrameWidth/2,StarApp.FrameHeight/2, 1.0f);
-            s2.Position = new Vector3(100, 100, 1.0f);
+           // s2.Position = new Vector3(100, 100, 1.0f);
             Light1 = new SceneLight();
+            Light1.Position = new Vector3(350.0f, 350.0f,1.0f);
             Scene1.AddLight(Light1);
+            s2.CastShadows = true;
 
 
         }
@@ -70,7 +76,9 @@ namespace EngineTest
 
             if (GameInput.MouseButton[2])
             {
-                Scene1.Camera.Rotation += GameInput.MouseDelta.X;
+                Scene1.Camera.Rotate(GameInput.MouseDelta.X);
+
+                //Scene1.Camera.Rotation += GameInput.MouseDelta.X;
             }
 
             //Scene1.Camera.AddZoom(GameInput.MouseWheel * 0.1f);

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Graphics.OpenGL;
 
 namespace StardomEngine.Scene
 {
@@ -67,6 +68,139 @@ namespace StardomEngine.Scene
 
         }
 
+        public List<SceneSprite> GetShadowCasters()
+        {
+
+            List<SceneSprite> list = new List<SceneSprite>();
+
+            AddCasters(list, RootNode);
+
+            return list;
+
+        }
+
+        public void AddCasters(List<SceneSprite> list,SceneNode spr)
+        {
+
+
+            if (spr is SceneSprite)
+            {
+                var sprn = spr as SceneSprite;
+                if (sprn.CastShadows)
+                {
+                    list.Add(sprn);
+                }
+            }
+
+            foreach(var sub in spr.SubNodes)
+            {
+
+                AddCasters(list, sub);
+
+            }
+
+        }
+
+        public void RenderShadows(SceneLight light)
+        {
+
+            var casters = GetShadowCasters();
+
+            for(int i = 0; i < 360; i++)
+            {
+
+
+                //Vector4 col = new Vector4(0.5f, 0.5f, 0.5f,0.0f);
+
+                float close = 1.0f;
+
+                float sx, sy;
+
+                sx = light.Position.X;
+                sy = light.Position.Y;
+
+                float dx, dy;
+
+                float xi = (float)Math.Cos(MathHelper.DegreesToRadians(i+180));
+                float yi = (float)Math.Sin(MathHelper.DegreesToRadians(i+180));
+
+                dx = sx + xi * light.Range;
+                dy = sy + yi * light.Range;
+
+                float lxd = dx - sx;
+                float lyd = dy - sy;
+
+                float steps = 0.0f;
+
+                if (MathHelper.Abs(lxd) > MathHelper.Abs(lyd))
+                {
+                    steps = MathHelper.Abs(lxd);
+                }
+                else
+                {
+                    steps = MathHelper.Abs(lyd);
+                }
+
+                float mxi = lxd / steps;
+                float myi = lyd / steps;
+
+                float cx, cy;
+
+                cx = sx;
+                cy = sy;
+
+                for(int li = 0; li < steps; li++)
+                {
+
+                    foreach(var sc in casters)
+                    {
+                        if ((cx >= sc.Position.X - sc.Size.X / 2) && (cx<=sc.Position.X+sc.Size.X/2))
+                        {
+                            if((cy>=sc.Position.Y-sc.Size.Y/2) && (cy<=sc.Position.Y+sc.Size.Y/2))
+                            {
+
+                                var rx = cx - (sc.Position.X - sc.Size.X/2.0f);
+                                var ry = cy - (sc.Position.Y - sc.Size.Y/2.0f);
+
+                                float lx = rx / sc.Size.X;
+                                float ly = ry / sc.Size.Y;
+
+                                rx = sc.Image.Width * lx;
+                                ry = sc.Image.Height * ly;
+
+                                var pix = sc.Image.GetPixel((int)rx, (int)ry);
+
+                                if (pix.W > 0.1)
+                                {
+                                    float cdx = cx - sx;
+                                    float cdy = cy - sy;
+                                    float ad = MathF.Sqrt(cdx * cdx + cdy * cdy);
+                                    ad = ad / light.Range;
+                                    if (ad < close)
+                                    {
+                                        close = ad;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    cx += mxi;
+                    cy += myi;
+                }
+
+
+                light.ShadowMap.SetPixelFloat(i, 0,new Vector4(close,close,close,1.0f));
+
+
+            }
+
+            light.ShadowMap.Upload();
+
+
+
+        }
+
         public virtual void Render()
         {
 
@@ -79,6 +213,9 @@ namespace StardomEngine.Scene
 
             foreach (var light in Lights)
             {
+
+
+                RenderShadows(light);
 
                 float lx = light.Position.X - Camera.Position.X;
                 float ly = light.Position.Y - Camera.Position.Y;
@@ -94,14 +231,21 @@ namespace StardomEngine.Scene
                 float lr = light.Range * Camera.Zoom;
 
 
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactor.SrcAlpha,BlendingFactor.OneMinusSrcAlpha);
+
                 Draw.DrawNormal.Bind();
+                light.ShadowMap.Bind(1);
+                Draw.DrawNormal.SetInt("se_ShadowMap", 1);
                 Draw.DrawNormal.SetVec3("se_LightDiffuse", light.Diffuse);
                 Draw.DrawNormal.SetVec2("se_LightPosition", new OpenTK.Mathematics.Vector2(fx,fy));
                 Draw.DrawNormal.SetVec2("se_RenderOffset", new OpenTK.Mathematics.Vector2(0, 0));
                 Draw.DrawNormal.SetVec2("se_RenderSize", new OpenTK.Mathematics.Vector2(StardomEngine.App.StarApp.FrameWidth, StardomEngine.App.StarApp.FrameHeight));
                 Draw.DrawNormal.SetFloat("se_LightRange",lr);
+                Draw.DrawNormal.SetFloat("se_Rotate", -Camera.Rotation);
                 Draw.End();
                 Draw.DrawNormal.Release();
+                light.ShadowMap.Release(1);
 
             }
 
