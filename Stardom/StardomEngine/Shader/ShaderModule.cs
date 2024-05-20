@@ -88,7 +88,7 @@ namespace StardomEngine.Shader
 
             if (loc == -1)
             {
-                Console.WriteLine("Could not find shader uniform " + name);
+                //Console.WriteLine("Could not find shader uniform " + name);
                // Environment.Exit(0);
             }
 

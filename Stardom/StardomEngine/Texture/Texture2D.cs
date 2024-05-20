@@ -120,7 +120,7 @@ namespace StardomEngine.Texture
         {
             if(x<0 || y<0 || x>=Width || y >= Height)
             {
-                return new Vector4(0, 0, 0, 0);
+                return new Vector4(0,0,0,0);
             }
 
             switch (Channels)
@@ -164,6 +164,59 @@ namespace StardomEngine.Texture
             GL.BindTexture(TextureTarget.Texture2d, 0);
 
         }
+
+        public void Resize(int new_w,int new_h)
+        {
+            if (new_w == Width && new_h == Height) return; 
+
+            float sx = (float)Width / (float)new_w;
+            float sy = (float)Height / (float)new_h;
+
+            byte[] ndat = new byte[new_w * new_h * Channels];
+
+            for(int y = 0; y < new_h; y++)
+            {
+                for(int x = 0; x < new_w; x++)
+                {
+
+                    float gx = x * sx;
+                    float gy = y * sy;
+
+                    int loc1 = (y * new_w * Channels) + (x * Channels);
+                    int loc2 = ((int)gy * Width * Channels) + ((int)gx * Channels);
+
+                    ndat[loc1++] = Data[loc2++];
+                    ndat[loc1++] = Data[loc2++];
+                    ndat[loc1++] = Data[loc2++];
+                    if(Channels>3)
+                    {
+                        ndat[loc1++] = Data[loc2++];
+                    }
+
+
+                }
+            }
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+
+            Data = ndat;
+            Width = new_w;
+            Height = new_h;
+
+            if (Channels == 4)
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
+                
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, Data);
+            }
+            GL.GenerateMipmap(TextureTarget.Texture2d);
+            //Bind();
+            GL.BindTexture(TextureTarget.Texture2d, 0);
+
+        }
+
         public void Bind(int unit)
         {
 

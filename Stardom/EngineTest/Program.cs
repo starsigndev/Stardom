@@ -11,7 +11,7 @@ namespace EngineTest
             GameWindowSettings settings = new GameWindowSettings();
 
 
-            settings.UpdateFrequency = 60;
+            settings.UpdateFrequency = 0;
 
             NativeWindowSettings native = new NativeWindowSettings();
 

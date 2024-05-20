@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cloo.clSharp" Version="1.0.1" />
     <PackageReference Include="OpenTK" Version="5.0.0-pre.10" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
   </ItemGroup>

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Mathematics;
 using OpenTK.Graphics.OpenGL;
+using System.Runtime.Serialization;
 
 namespace StardomEngine.Scene.Nodes
 {
@@ -17,9 +18,18 @@ namespace StardomEngine.Scene.Nodes
 
         public Texture2D Image
         {
-            get;
-            set;
+            get
+            {
+                return _Img;
+            }
+            set
+            {
+
+                _Img = value;
+                _Img.Resize((int)Size.X,(int)Size.Y);
+            }
         }
+        Texture2D _Img;
 
         public Texture2D Normals
         {
@@ -78,7 +88,7 @@ namespace StardomEngine.Scene.Nodes
             float my = Image.Height / 2;
 
             float nx = x - mx;
-            float ny = y - mx;
+            float ny = y - my;
 
 
             var rp = GameMaths.RotateAndScale(new Vector2(nx, ny), -Rotation, 1.0f);

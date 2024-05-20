@@ -11,6 +11,7 @@ using OpenTK.Mathematics;
 using StardomEngine.Scene;
 using StardomEngine.Scene.Nodes;
 using StardomEngine.Input;
+using System.Security.Cryptography;
 
 namespace EngineTest
 {
@@ -63,6 +64,7 @@ namespace EngineTest
             s3.RecvShadows = false;
             s4.RecvShadows = false;
             s2.RecvShadows = false;
+            s1.RecvShadows = true;
 
             s1.Position = new Vector3(StarApp.FrameWidth/2,StarApp.FrameHeight/2, 1.0f);
            // s2.Position = new Vector3(100, 100, 1.0f);
@@ -70,6 +72,11 @@ namespace EngineTest
             Light1.Position = new Vector3(350.0f, 350.0f,1.0f);
             Scene1.AddLight(Light1);
             s2.CastShadows = true;
+            s1.RecvShadows = true;
+            s3.CastShadows = true;
+            s4.CastShadows = true;
+            //s2.RecvShadows = true;
+
 
 
         }

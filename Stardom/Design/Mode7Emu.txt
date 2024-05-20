@@ -1,0 +1,1 @@
+snes style mode 7 camera mode.

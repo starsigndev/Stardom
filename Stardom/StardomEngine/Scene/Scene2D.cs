@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
+using StardomEngine.Scene.Jobs;
 
 namespace StardomEngine.Scene
 {
@@ -39,6 +40,12 @@ namespace StardomEngine.Scene
             set;
         }
 
+        private JobGenerateShadowMap GenerateShadows
+        {
+            get;
+            set;
+        }
+
         public Scene2D()
         {
 
@@ -46,7 +53,8 @@ namespace StardomEngine.Scene
             Camera = new SceneCam();
             Draw = new SmartDraw();
             Lights = new List<SceneLight>();
-
+           GenerateShadows = new JobGenerateShadowMap();
+            GenerateShadows.Scene = this;
         }
 
         public void AddNode(SceneNode node)
@@ -104,9 +112,20 @@ namespace StardomEngine.Scene
         public void RenderShadows(SceneLight light)
         {
 
+            
+            GenerateShadows.Bind();
+            GenerateShadows.Execute();
+            GenerateShadows.Release();
+
+
+        }
+
+        public void RenderShadows2(SceneLight light)
+        {
+
             var casters = GetShadowCasters();
 
-            for(int i = 0; i < 360; i++)
+            for (int i = 0; i < 360; i++)
             {
 
 
