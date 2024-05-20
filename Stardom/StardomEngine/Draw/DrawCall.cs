@@ -16,6 +16,8 @@ namespace StardomEngine.Draw
         public float Z { get; set; }
         public Vector4 Color { get; set; }
 
+        public Vector4 Ext { get; set; }
+
         public Texture2D Image { get; set; }
 
         public DrawCall()

@@ -29,6 +29,7 @@ namespace EngineTest
         float rotation = 0;
         float scale = 0.1f;
         SceneSprite s1, s2;
+        SceneSprite s4;
         public override void InitApp()
         {
             //base.InitApp();
@@ -42,13 +43,26 @@ namespace EngineTest
             var s3 = new SceneSprite();
             s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
-            Scene1.Fill(s1, 16, 16);
-            Scene1.AddNode(s2);
+            //  Scene1.Fill(s1, 16, 16);
+            s1.Size = new Vector2(1024, 1024);
+
+            s4 = new SceneSprite();
+            s4.Image = new Texture2D("Data/sprite2.png");
+            s4.CastShadows = true;
+            s4.Position = new Vector3(200, 250, 1.0f);
+           
+
+            Scene1.AddNode(s1);
             Scene1.AddNode(s3);
+            Scene1.AddNode(s2);
+            Scene1.AddNode(s4);
             s3.CastShadows = true;
             s2.Position = new Vector3(250, 120, 1);
             s3.Position = new Vector3(500, 400, 1);
-            
+
+            s3.RecvShadows = false;
+            s4.RecvShadows = false;
+            s2.RecvShadows = false;
 
             s1.Position = new Vector3(StarApp.FrameWidth/2,StarApp.FrameHeight/2, 1.0f);
            // s2.Position = new Vector3(100, 100, 1.0f);
@@ -65,7 +79,7 @@ namespace EngineTest
         public override void UpdateApp()
         {
             //base.UpdateApp();
-
+            s4.Rotation = s4.Rotation + 1f;
             if (GameInput.MouseButton[1])
             {
                 //Environment.Exit(0);

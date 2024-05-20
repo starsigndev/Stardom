@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Mathematics;
+using OpenTK.Graphics.OpenGL;
 
 namespace StardomEngine.Scene.Nodes
 {
@@ -24,7 +26,19 @@ namespace StardomEngine.Scene.Nodes
             get; set;
         }
 
+        public float Rotation
+        {
+            get;
+            set;
+        }
+
         public bool CastShadows
+        {
+            get;
+            set;
+        }
+
+        public bool RecvShadows
         {
             get;
             set;
@@ -34,6 +48,47 @@ namespace StardomEngine.Scene.Nodes
         {
 
             CastShadows = false;
+            RecvShadows = true;
+
+        }
+
+        public bool InBounds(int x,int y)
+        {
+            if(x>Position.X-Size.X/2)
+            {
+                if(x<Position.X+Size.X/2)
+                {
+                    if (y > Position.Y - Size.Y / 2)
+                    {
+                        if(y<Position.Y+Size.Y/2)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+
+        }
+
+        public Vector4 GetPixel(int x,int y)
+        {
+
+            float mx = Image.Width / 2;
+            float my = Image.Height / 2;
+
+            float nx = x - mx;
+            float ny = y - mx;
+
+
+            var rp = GameMaths.RotateAndScale(new Vector2(nx, ny), -Rotation, 1.0f);
+
+            nx = mx + rp.X;
+            ny = my + rp.Y;
+
+            return Image.GetPixel((int)nx, (int)ny);
+
+            return new Vector4(1, 1, 1, 1);
 
         }
 
@@ -59,8 +114,18 @@ namespace StardomEngine.Scene.Nodes
             rp.X = (iw / 2.0f) - rp.X;
             rp.Y = (ih / 2.0f) - rp.Y;
 
+            var ext = new Vector4();
 
-           draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X,rp.Y),Size, rot,scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+            if (RecvShadows)
+            {
+                ext.X = 1.0f;
+            }
+            else
+            {
+                ext.X = 0.0f;
+            }
+
+            draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext);
 
 
             RenderSubNodes(camera, draw);   

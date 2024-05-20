@@ -61,7 +61,7 @@ namespace StardomEngine.Draw
         }
 
 
-        public void DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color)
+        public void DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color,Vector4 ext)
         {
 
             var list = FindList(image);
@@ -104,6 +104,8 @@ namespace StardomEngine.Draw
             CurrentZ += 0.001f;
 
             call.Image = image;
+
+            call.Ext = ext;
 
             list.AddCall(call);
 
@@ -168,7 +170,7 @@ namespace StardomEngine.Draw
                 GL.BindVertexArray(VertexArray);
                 GL.BindBuffer(BufferTarget.ArrayBuffer,Buffer);
 
-                float[] v_data = new float[list.Calls.Count * 3 * 4 * 2*4];
+                float[] v_data = new float[list.Calls.Count * 3 * 4 * 2*4*4];
 
                 int ix = 0;
 
@@ -188,6 +190,11 @@ namespace StardomEngine.Draw
                     v_data[ix++] = 0;
                     v_data[ix++] = 0;
 
+                    v_data[ix++] = call.Ext.X;
+                    v_data[ix++] = call.Ext.Y;
+                    v_data[ix++] = call.Ext.Z;
+                    v_data[ix++] = call.Ext.W;
+
                     //v1
                     v_data[ix++] = call.X[1];
                     v_data[ix++] = call.Y[1];
@@ -200,6 +207,12 @@ namespace StardomEngine.Draw
 
                     v_data[ix++] = 1;
                     v_data[ix++] = 0;
+
+
+                    v_data[ix++] = call.Ext.X;
+                    v_data[ix++] = call.Ext.Y;
+                    v_data[ix++] = call.Ext.Z;
+                    v_data[ix++] = call.Ext.W;
 
                     //v2
                     v_data[ix++] = call.X[2];
@@ -214,6 +227,12 @@ namespace StardomEngine.Draw
                     v_data[ix++] = 1;
                     v_data[ix++] = 1;
 
+
+                    v_data[ix++] = call.Ext.X;
+                    v_data[ix++] = call.Ext.Y;
+                    v_data[ix++] = call.Ext.Z;
+                    v_data[ix++] = call.Ext.W;
+
                     //v3 
                     v_data[ix++] = call.X[3];
                     v_data[ix++] = call.Y[3];
@@ -226,6 +245,13 @@ namespace StardomEngine.Draw
 
                     v_data[ix++] = 0;
                     v_data[ix++] = 1;
+
+
+                    v_data[ix++] = call.Ext.X;
+                    v_data[ix++] = call.Ext.Y;
+                    v_data[ix++] = call.Ext.Z;
+                    v_data[ix++] = call.Ext.W;
+
 
                 }
 
@@ -259,13 +285,16 @@ namespace StardomEngine.Draw
                 GL.BufferData(BufferTarget.ElementArrayBuffer, i_data, BufferUsage.DynamicDraw);
 
                 GL.EnableVertexAttribArray(0);
-                GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 9 * 4, 0);
+                GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 13 * 4, 0);
 
                 GL.EnableVertexAttribArray(1);
-                GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 9 * 4, 3 * 4);
+                GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 13 * 4, 3 * 4);
 
                 GL.EnableVertexAttribArray(2);
-                GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 9 * 4, 7 * 4);
+                GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 13 * 4, 7 * 4);
+
+                GL.EnableVertexAttribArray(3);
+                GL.VertexAttribPointer(3, 4, VertexAttribPointerType.Float, false, 13 * 4, 9 * 4);
 
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
 

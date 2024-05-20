@@ -149,9 +149,11 @@ namespace StardomEngine.Scene
                 cx = sx;
                 cy = sy;
 
+
+                bool ls = false;
                 for(int li = 0; li < steps; li++)
                 {
-
+                    
                     foreach(var sc in casters)
                     {
                         if ((cx >= sc.Position.X - sc.Size.X / 2) && (cx<=sc.Position.X+sc.Size.X/2))
@@ -168,10 +170,12 @@ namespace StardomEngine.Scene
                                 rx = sc.Image.Width * lx;
                                 ry = sc.Image.Height * ly;
 
-                                var pix = sc.Image.GetPixel((int)rx, (int)ry);
+                                //   var pix = sc.Image.GetPixel((int)rx, (int)ry);
+                                var pix = sc.GetPixel((int)rx, (int)ry);
 
                                 if (pix.W > 0.1)
                                 {
+                                    //       ls = true;
                                     float cdx = cx - sx;
                                     float cdy = cy - sy;
                                     float ad = MathF.Sqrt(cdx * cdx + cdy * cdy);
@@ -181,6 +185,7 @@ namespace StardomEngine.Scene
                                         close = ad;
                                     }
                                 }
+                           
                             }
                         }
                     }
