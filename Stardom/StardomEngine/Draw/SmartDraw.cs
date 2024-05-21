@@ -61,7 +61,7 @@ namespace StardomEngine.Draw
         }
 
 
-        public void DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color,Vector4 ext)
+        public DrawCall DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color,Vector4 ext)
         {
 
             var list = FindList(image);
@@ -108,6 +108,8 @@ namespace StardomEngine.Draw
             call.Ext = ext;
 
             list.AddCall(call);
+
+            return call;
 
         }
 
@@ -277,8 +279,10 @@ namespace StardomEngine.Draw
 
 
                 list.Calls[0].Image.Bind(0);
+                list.Calls[0].Normals.Bind(1);
 
                 DrawNormal.SetInt("se_ColorTexture", 0);
+                DrawNormal.SetInt("se_NormalMap", 1);
 
                 GL.BufferData(BufferTarget.ArrayBuffer, v_data, BufferUsage.DynamicDraw);
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
@@ -308,6 +312,7 @@ namespace StardomEngine.Draw
                 GL.DisableVertexAttribArray(2);
 
                 list.Calls[0].Image.Release(0);
+                list.Calls[0].Normals.Release(1);
 
 
 

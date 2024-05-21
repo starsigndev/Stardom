@@ -158,7 +158,7 @@ namespace StardomEngine.Texture
 
             if (Channels == 3)
             {
-                GL.TexSubImage2D(TextureTarget.Texture2d, 0, 0, 0, Width, Height, PixelFormat.Rgb, PixelType.Float, DataFloat);
+                GL.TexSubImage2D(TextureTarget.Texture2d, 0, 0, 0, Width, Height, PixelFormat.Red, PixelType.Float, DataFloat);
             }
 
             GL.BindTexture(TextureTarget.Texture2d, 0);

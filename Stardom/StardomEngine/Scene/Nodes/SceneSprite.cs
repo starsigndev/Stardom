@@ -54,6 +54,8 @@ namespace StardomEngine.Scene.Nodes
             set;
         }
 
+     
+
         public SceneSprite()
         {
 
@@ -135,8 +137,11 @@ namespace StardomEngine.Scene.Nodes
                 ext.X = 0.0f;
             }
 
-            draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext);
-
+            var call = draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext);
+            if (Normals != null)
+            {
+                call.Normals = Normals;
+            }
 
             RenderSubNodes(camera, draw);   
         }

@@ -31,6 +31,8 @@ namespace EngineTest
         float scale = 0.1f;
         SceneSprite s1, s2;
         SceneSprite s4;
+        SceneParticleSystem PS1;
+        SceneParticle p1, p2;
         public override void InitApp()
         {
             //base.InitApp();
@@ -44,8 +46,11 @@ namespace EngineTest
             var s3 = new SceneSprite();
             s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
-            //  Scene1.Fill(s1, 16, 16);
-            s1.Size = new Vector2(1024, 1024);
+
+            s1.Normals = new Texture2D("Data/normal2.jpg");
+
+            Scene1.Fill(s1, 16, 16);
+            //s1.Size = new Vector2(1024, 1024);
 
             s4 = new SceneSprite();
             s4.Image = new Texture2D("Data/sprite2.png");
@@ -53,10 +58,11 @@ namespace EngineTest
             s4.Position = new Vector3(200, 250, 1.0f);
            
 
-            Scene1.AddNode(s1);
+
+            //Scene1.AddNode(s1);
             Scene1.AddNode(s3);
-            Scene1.AddNode(s2);
-            Scene1.AddNode(s4);
+        //    Scene1.AddNode(s2);
+       //     Scene1.AddNode(s4);
             s3.CastShadows = true;
             s2.Position = new Vector3(250, 120, 1);
             s3.Position = new Vector3(500, 400, 1);
@@ -77,6 +83,13 @@ namespace EngineTest
             s4.CastShadows = true;
             //s2.RecvShadows = true;
 
+            PS1 = new SceneParticleSystem();
+
+            Scene1.AddNode(PS1);
+            p1 = new SceneParticle();
+            p1.Image = new Texture2D("data/fire1.png");
+            PS1.AddBaseParticle(p1);
+            PS1.Spawn(30);
 
 
         }
@@ -116,22 +129,22 @@ namespace EngineTest
          //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
             Scene1.Render();
 
-      //      Draw.Begin();
+            //      Draw.Begin();
 
-           // for (int i = 0; i < 1; i++)
-           // {
+            // for (int i = 0; i < 1; i++)
+            // {
 
 
 
             //    Draw.DrawQuad(Tex1, new Vector2(20,20),new Vector2(256, 256), new Vector4(1, 1, 1, 1));
-    //        Draw.DrawSprite(Tex1, new Vector2(500, 400), new Vector2(256, 256), rotation, scale, new Vector4(1, 1, 1, 1));
+            //        Draw.DrawSprite(Tex1, new Vector2(500, 400), new Vector2(256, 256), rotation, scale, new Vector4(1, 1, 1, 1));
             // }
-  //          rotation += 0.3f;
-//            scale += 0.01f;
+            //          rotation += 0.3f;
+            //            scale += 0.01f;
 
             //Draw.End();
 
-
+       //     GC.Collect();
 
         }
 

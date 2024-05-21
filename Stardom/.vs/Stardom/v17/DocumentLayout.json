@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Dev\\games\\Stardom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\dev\\games\\stardom\\enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\scene2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\scene2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\dev\\games\\stardom\\enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\jobs\\jobgenerateshadowmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\jobs\\jobgenerateshadowmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\nodes\\sceneparticle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\nodes\\sceneparticle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\nodes\\sceneparticlesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\nodes\\sceneparticlesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\nodes\\scenesprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,20 +31,28 @@
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\texture\\texture2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\jobs\\cljob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\jobs\\cljob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\scene2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\scene2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\dev\\games\\stardom\\enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\nodes\\scenecam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\nodes\\scenecam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\draw\\smartdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\draw\\smartdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\draw\\drawcall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\draw\\drawcall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\dev\\games\\stardom\\enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\jobs\\cljob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\jobs\\cljob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\helper\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\helper\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\scenenode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,14 +75,6 @@
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\jobs\\gametimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\draw\\drawcall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\draw\\drawcall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\nodes\\scenecam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\scene\\nodes\\scenecam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\app\\starapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\app\\starapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -81,64 +93,142 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SceneParticle.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneParticle.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneParticle.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneParticle.cs",
+              "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneParticle.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T10:50:07.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JobGenerateShadowMap.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
+              "RelativeToolTip": "StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAwwHkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T11:03:14.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Texture2D.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Texture\\Texture2D.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Texture\\Texture2D.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Texture\\Texture2D.cs",
+              "RelativeToolTip": "StardomEngine\\Texture\\Texture2D.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T15:27:09.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SceneParticleSystem.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneParticleSystem.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneParticleSystem.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneParticleSystem.cs",
+              "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneParticleSystem.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAwDUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T10:49:45.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EngineTest1.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
+              "RelativeDocumentMoniker": "EngineTest\\EngineTest1.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
+              "RelativeToolTip": "EngineTest\\EngineTest1.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAArwD4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T09:17:38.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scene2D.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Scene2D.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Scene2D.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Scene2D.cs*",
+              "RelativeToolTip": "StardomEngine\\Scene\\Scene2D.cs*",
+              "ViewState": "AQIAAOIAAAAAAAAAAADwv+8AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T12:13:33.85Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Scene2D.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Scene2D.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Scene2D.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Scene2D.cs",
-              "RelativeToolTip": "StardomEngine\\Scene\\Scene2D.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAewG8AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T12:13:33.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SmartDraw.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\SmartDraw.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Draw\\SmartDraw.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\SmartDraw.cs",
-              "RelativeToolTip": "StardomEngine\\Draw\\SmartDraw.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAAAAJEAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T07:54:43.711Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "SceneSprite.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneSprite.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneSprite.cs",
               "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneSprite.cs",
               "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneSprite.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAAAGcAAAAAAAAA",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAAADgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T12:13:49.784Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CLJob.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Jobs\\CLJob.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Jobs\\CLJob.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Jobs\\CLJob.cs",
-              "RelativeToolTip": "StardomEngine\\Jobs\\CLJob.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAAAFMAAAAMAAAA",
+              "DocumentIndex": 9,
+              "Title": "DrawCall.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\DrawCall.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Draw\\DrawCall.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\DrawCall.cs",
+              "RelativeToolTip": "StardomEngine\\Draw\\DrawCall.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAwCAAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T10:59:01.909Z",
+              "WhenOpened": "2024-05-19T11:30:58.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
+              "Title": "SmartDraw.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\SmartDraw.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Draw\\SmartDraw.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\SmartDraw.cs",
+              "RelativeToolTip": "StardomEngine\\Draw\\SmartDraw.cs",
+              "ViewState": "AQIAADgBAAAAAAAAAAAUwEEBAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T07:54:43.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SceneCam.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneCam.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneCam.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneCam.cs",
+              "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneCam.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:35:10.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\EngineTest\\Program.cs",
               "RelativeDocumentMoniker": "EngineTest\\Program.cs",
@@ -146,38 +236,35 @@
               "RelativeToolTip": "EngineTest\\Program.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T11:34:40.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T11:34:40.206Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Texture2D.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Texture\\Texture2D.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Texture\\Texture2D.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Texture\\Texture2D.cs",
-              "RelativeToolTip": "StardomEngine\\Texture\\Texture2D.cs",
-              "ViewState": "AQIAAMQAAAAAAAAAAAAuwNUAAAA3AAAA",
+              "DocumentIndex": 11,
+              "Title": "CLJob.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Jobs\\CLJob.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Jobs\\CLJob.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Jobs\\CLJob.cs",
+              "RelativeToolTip": "StardomEngine\\Jobs\\CLJob.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAUwHoAAABiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T15:27:09.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T10:59:01.909Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "JobGenerateShadowMap.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
-              "RelativeToolTip": "StardomEngine\\Scene\\Jobs\\JobGenerateShadowMap.cs",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAAAK0AAAA5AAAA",
+              "DocumentIndex": 12,
+              "Title": "Helpers.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Helper\\Helpers.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Helper\\Helpers.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Helper\\Helpers.cs",
+              "RelativeToolTip": "StardomEngine\\Helper\\Helpers.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAkwBUAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T11:03:14.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T06:15:23.831Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "SceneNode.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\SceneNode.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Scene\\SceneNode.cs",
@@ -185,25 +272,11 @@
               "RelativeToolTip": "StardomEngine\\Scene\\SceneNode.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAowDcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T12:13:43.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T12:13:43.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EngineTest1.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
-              "RelativeDocumentMoniker": "EngineTest\\EngineTest1.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
-              "RelativeToolTip": "EngineTest\\EngineTest1.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAuwE0AAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T09:17:38.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "ShaderModule.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Shader\\ShaderModule.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Shader\\ShaderModule.cs",
@@ -211,12 +284,11 @@
               "RelativeToolTip": "StardomEngine\\Shader\\ShaderModule.cs",
               "ViewState": "AQIAAFQAAAAAAAAAAAD4v1oAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T07:50:43.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T07:50:43.803Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "SceneLight.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneLight.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneLight.cs",
@@ -224,12 +296,11 @@
               "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneLight.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAQwCUAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T15:28:22.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T15:28:22.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "GameMaths.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Helper\\GameMaths.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Helper\\GameMaths.cs",
@@ -237,12 +308,11 @@
               "RelativeToolTip": "StardomEngine\\Helper\\GameMaths.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAqwCAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T11:45:25.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T11:45:25.112Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "GameTimer.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Jobs\\GameTimer.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Jobs\\GameTimer.cs",
@@ -250,38 +320,11 @@
               "RelativeToolTip": "StardomEngine\\Jobs\\GameTimer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T10:18:04.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T10:18:04.844Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DrawCall.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\DrawCall.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Draw\\DrawCall.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\DrawCall.cs",
-              "RelativeToolTip": "StardomEngine\\Draw\\DrawCall.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAABIAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T11:30:58.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "SceneCam.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneCam.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Scene\\Nodes\\SceneCam.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Scene\\Nodes\\SceneCam.cs",
-              "RelativeToolTip": "StardomEngine\\Scene\\Nodes\\SceneCam.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADQAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T13:35:10.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "StarApp.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\App\\StarApp.cs",
               "RelativeDocumentMoniker": "StardomEngine\\App\\StarApp.cs",
@@ -289,12 +332,11 @@
               "RelativeToolTip": "StardomEngine\\App\\StarApp.cs",
               "ViewState": "AQIAAEkAAAAAAAAAAAAYwFkAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T09:26:02.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T09:26:02.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "GameInput.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Input\\GameInput.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Input\\GameInput.cs",
@@ -302,8 +344,7 @@
               "RelativeToolTip": "StardomEngine\\Input\\GameInput.cs",
               "ViewState": "AQIAACIAAAAAAAAAAIBQwDEAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T13:58:12.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T13:58:12.59Z"
             }
           ]
         }

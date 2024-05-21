@@ -233,18 +233,37 @@ namespace StardomEngine.Scene
             //foreach(var light in Lights) { 
 
 
-            RootNode.Render(Camera,Draw);
+            RootNode.Render(Camera, Draw);
 
+            foreach (var light in Lights)
+            {
+                RenderShadows(light);
+            }
+
+            FinalDraw();
+
+            Draw.Begin();
+
+            RenderParticleSystems(Camera, Draw);
+
+            FinalDraw();
+
+//            Draw.End();
+
+        }
+
+        private void FinalDraw()
+        {
             foreach (var light in Lights)
             {
 
 
-                RenderShadows(light);
+             
 
                 float lx = light.Position.X - Camera.Position.X;
                 float ly = light.Position.Y - Camera.Position.Y;
-                
-                float px = (StarApp.FrameWidth/2.0f)-lx;
+
+                float px = (StarApp.FrameWidth / 2.0f) - lx;
                 float py = (StarApp.FrameHeight / 2.0f) - ly;
 
                 Vector2 lp = GameMaths.RotateAndScale(new Vector2(px, py), Camera.Rotation, Camera.Zoom);
@@ -256,21 +275,45 @@ namespace StardomEngine.Scene
 
 
                 GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactor.SrcAlpha,BlendingFactor.OneMinusSrcAlpha);
+                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
                 Draw.DrawNormal.Bind();
-                light.ShadowMap.Bind(1);
-                Draw.DrawNormal.SetInt("se_ShadowMap", 1);
+                light.ShadowMap.Bind(2);
+                Draw.DrawNormal.SetInt("se_ShadowMap", 2);
                 Draw.DrawNormal.SetVec3("se_LightDiffuse", light.Diffuse);
-                Draw.DrawNormal.SetVec2("se_LightPosition", new OpenTK.Mathematics.Vector2(fx,fy));
+                Draw.DrawNormal.SetVec2("se_LightPosition", new OpenTK.Mathematics.Vector2(fx, fy));
                 Draw.DrawNormal.SetVec2("se_RenderOffset", new OpenTK.Mathematics.Vector2(0, 0));
                 Draw.DrawNormal.SetVec2("se_RenderSize", new OpenTK.Mathematics.Vector2(StardomEngine.App.StarApp.FrameWidth, StardomEngine.App.StarApp.FrameHeight));
-                Draw.DrawNormal.SetFloat("se_LightRange",lr);
+                Draw.DrawNormal.SetFloat("se_LightRange", lr);
                 Draw.DrawNormal.SetFloat("se_Rotate", -Camera.Rotation);
+                Draw.DrawNormal.SetFloat("se_Zoom", Camera.Zoom);
                 Draw.End();
                 Draw.DrawNormal.Release();
-                light.ShadowMap.Release(1);
+                light.ShadowMap.Release(2);
 
+            }
+        }
+
+        public void RenderParticleSystems(SceneCam camera,SmartDraw draw)
+        {
+
+
+            RenderParticleSystemNode(RootNode,camera,draw);
+
+        }
+
+        public void RenderParticleSystemNode(SceneNode node,SceneCam camera,SmartDraw draw)
+        {
+
+            if(node is SceneParticleSystem)
+            {
+                var ps = (SceneParticleSystem)node;
+                ps.RenderSystem(camera,draw);
+            }
+
+            foreach(var sub in node.SubNodes)
+            {
+                RenderParticleSystemNode(sub,camera,draw);
             }
 
         }
