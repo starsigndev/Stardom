@@ -39,6 +39,12 @@ namespace StardomEngine.Scene.Nodes
             set;
         }
 
+        public Vector3 Drag
+        {
+            get;
+            set;
+        }
+
         public Texture2D Image
         {
             get;
@@ -74,6 +80,7 @@ namespace StardomEngine.Scene.Nodes
 
             CastShadows = false;
             RecvShadows = false;
+            Drag = new Vector3(0.95f, 0.95f, 0.95f);
 
         }
 
@@ -89,8 +96,18 @@ namespace StardomEngine.Scene.Nodes
             p.Type = Type;
             p.RecvShadows = RecvShadows;
             p.CastShadows = CastShadows;
+            p.Drag = Drag;
 
             return p;
+
+        }
+
+        public void Update()
+        {
+
+            Position += Inertia;
+            Inertia += Gravity;
+
 
         }
 

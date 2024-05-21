@@ -46,11 +46,11 @@ namespace EngineTest
             var s3 = new SceneSprite();
             s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
-
+             
             s1.Normals = new Texture2D("Data/normal2.jpg");
-
+            s1.RecvShadows = false;
             Scene1.Fill(s1, 16, 16);
-            //s1.Size = new Vector2(1024, 1024);
+            s1.Size = new Vector2(1024, 1024);
 
             s4 = new SceneSprite();
             s4.Image = new Texture2D("Data/sprite2.png");
@@ -59,7 +59,7 @@ namespace EngineTest
            
 
 
-            //Scene1.AddNode(s1);
+         //   Scene1.AddNode(s1);
             Scene1.AddNode(s3);
         //    Scene1.AddNode(s2);
        //     Scene1.AddNode(s4);
@@ -70,7 +70,7 @@ namespace EngineTest
             s3.RecvShadows = false;
             s4.RecvShadows = false;
             s2.RecvShadows = false;
-            s1.RecvShadows = true;
+          //  s1.RecvShadows = true;
 
             s1.Position = new Vector3(StarApp.FrameWidth/2,StarApp.FrameHeight/2, 1.0f);
            // s2.Position = new Vector3(100, 100, 1.0f);
@@ -78,7 +78,7 @@ namespace EngineTest
             Light1.Position = new Vector3(350.0f, 350.0f,1.0f);
             Scene1.AddLight(Light1);
             s2.CastShadows = true;
-            s1.RecvShadows = true;
+            s1.RecvShadows = false;
             s3.CastShadows = true;
             s4.CastShadows = true;
             //s2.RecvShadows = true;
@@ -89,8 +89,7 @@ namespace EngineTest
             p1 = new SceneParticle();
             p1.Image = new Texture2D("data/fire1.png");
             PS1.AddBaseParticle(p1);
-            PS1.Spawn(30);
-
+            PS1.Spawn(3000);
 
         }
         Random rnd = new Random();
@@ -98,7 +97,10 @@ namespace EngineTest
 
         public override void UpdateApp()
         {
+           
+
             //base.UpdateApp();
+            Scene1.Update();
             s4.Rotation = s4.Rotation + 1f;
             if (GameInput.MouseButton[1])
             {
@@ -124,9 +126,11 @@ namespace EngineTest
         }
         public override void RenderApp()
         {
-            //base.RenderApp();
+            //base.RenderApp(); PS1.Spawn(30);
+  
 
-         //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
+
+            //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
             Scene1.Render();
 
             //      Draw.Begin();
@@ -144,7 +148,7 @@ namespace EngineTest
 
             //Draw.End();
 
-       //     GC.Collect();
+         //   GC.Collect();
 
         }
 

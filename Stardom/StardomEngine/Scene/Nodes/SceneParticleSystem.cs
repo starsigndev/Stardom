@@ -20,7 +20,31 @@ namespace StardomEngine.Scene.Nodes
             set;
         }
 
-        public List<SceneParticle> ActiveParticles
+       // public List<SceneParticle> ActiveParticles
+        //{
+        //    get;
+         //   set;
+       // }
+
+        public LinkedList<SceneParticle> ActiveParticles
+        {
+            get;
+            set;
+        }
+
+        public Vector3 VelocityMin
+        {
+            get;
+            set;
+        }
+
+        public Vector3 VelocityMax
+        {
+            get;
+            set;
+        }
+
+        public int MaxParticles
         {
             get;
             set;
@@ -28,11 +52,28 @@ namespace StardomEngine.Scene.Nodes
 
         private Random Rnd = new Random(Environment.TickCount);
 
+       
+
         public SceneParticleSystem()
         {
 
+            MaxParticles = 25000;
             BaseParticles = new List<SceneParticle>();
-            ActiveParticles = new List<SceneParticle>();
+            ActiveParticles = new LinkedList<SceneParticle>();
+            VelocityMin = new Vector3(-1, -1, 0);
+            VelocityMax = new Vector3(1, 1, 0);
+
+        }
+
+        public override void Update()
+        {
+
+            foreach(var particle in ActiveParticles)
+            {
+
+                particle.Update();
+
+            }
 
         }
 
@@ -45,14 +86,31 @@ namespace StardomEngine.Scene.Nodes
 
         public void Spawn(int count)
         {
+            if(ActiveParticles.Count >= MaxParticles)
+            {
+                return;
+            }
 
+
+            LinkedListNode<SceneParticle> pn = null;
             for (int i = 0; i < count; i++)
             {
                 int idx = Rnd.Next(0, BaseParticles.Count);
                 var spawn = BaseParticles[idx].Clone();
                 spawn.Owner = this;
                 spawn.Position = Position;
-                ActiveParticles.Add(spawn);
+                spawn.Inertia = GameMaths.RandomVec3(VelocityMin, VelocityMax);
+                if (pn == null)
+                {
+                    pn = ActiveParticles.AddLast(spawn);
+                }
+                else
+                {
+                    ActiveParticles.AddAfter(pn, spawn);
+                }
+                // ActiveParticles.AddLast(spawn);
+
+
 
             }
 
@@ -77,6 +135,8 @@ namespace StardomEngine.Scene.Nodes
 
         public void RenderSystem(SceneCam cam, SmartDraw draw)
         {
+           // return;
+
             var sprites = GetSprites();
 
             foreach (var sprite in sprites)

@@ -10,6 +10,17 @@ namespace StardomEngine.Helper
     public class GameMaths
     {
 
+        private static readonly Random random = new Random();
+
+
+        public static Vector3 RandomVec3(Vector3 min,Vector3 max)
+        {
+            float x = (float)(random.NextDouble() * (max.X - min.X) + min.X);
+            float y = (float)(random.NextDouble() * (max.Y - min.Y) + min.Y);
+            float z = (float)(random.NextDouble() * (max.Z - min.Z) + min.Z);
+
+            return new Vector3(x, y, z);
+        }
 
         public static Vector2 RotateAndScale(Vector2 vector, float rotate, float scale)
         {

@@ -98,13 +98,13 @@ void main(){
     vec2 shadow_uv = vec2(kd/360.f,0);
 
 
-    float ux = shadow_uv.x-0.01;
+    float ux = shadow_uv.x-0.001;
 
  
 
     float samples=0;
 
-    for(float vx=ux;vx<shadow_uv.x+0.01;vx=vx+0.002){
+    for(float vx=ux;vx<shadow_uv.x+0.01;vx=vx+0.004){
 
         float close_depth = texture(se_ShadowMap,vec2(vx,0)).r;
         

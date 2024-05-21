@@ -109,6 +109,7 @@ namespace StardomEngine.Scene.Nodes
             //base.Render();
 
 
+
             float rot = camera.Rotation;
             float scale = camera.Zoom;
 
@@ -154,6 +155,7 @@ namespace StardomEngine.Scene.Nodes
             clone.Normals = Normals;
             clone.Size = Size;
             clone.Position = Position;
+            clone.RecvShadows = RecvShadows;
 
             foreach (var sub in SubNodes)
             {

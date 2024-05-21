@@ -34,7 +34,7 @@ namespace StardomEngine.Scene.Nodes
         {
 
             Diffuse = new Vector3(1, 1, 1);
-            Range = 2048;
+            Range = 512;
             ShadowMap = new Texture2D(360, 1,3);
 
 

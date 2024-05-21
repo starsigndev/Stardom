@@ -73,8 +73,10 @@ namespace StardomEngine.Scene
 
         public virtual void Update()
         {
-
+            UpdateParticleSystems();
         }
+
+        
 
         public List<SceneSprite> GetShadowCasters()
         {
@@ -237,14 +239,22 @@ namespace StardomEngine.Scene
 
             foreach (var light in Lights)
             {
-                RenderShadows(light);
+            //    RenderShadows(light);
             }
+
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             FinalDraw();
 
             Draw.Begin();
 
             RenderParticleSystems(Camera, Draw);
+
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.One);
 
             FinalDraw();
 
@@ -274,8 +284,6 @@ namespace StardomEngine.Scene
                 float lr = light.Range * Camera.Zoom;
 
 
-                GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
                 Draw.DrawNormal.Bind();
                 light.ShadowMap.Bind(2);
@@ -292,6 +300,30 @@ namespace StardomEngine.Scene
                 light.ShadowMap.Release(2);
 
             }
+        }
+
+        public void UpdateParticleSystems()
+        {
+
+            UpdateParticleSystemNode(RootNode);
+
+        }
+
+        void UpdateParticleSystemNode(SceneNode node)
+        {
+
+            if(node is SceneParticleSystem)
+            {
+
+                node.Update();
+
+            }
+
+            foreach(var sub in node.SubNodes)
+            {
+                UpdateParticleSystemNode(sub);
+            }
+
         }
 
         public void RenderParticleSystems(SceneCam camera,SmartDraw draw)
