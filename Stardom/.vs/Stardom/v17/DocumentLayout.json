@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\controls\\ipanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\resonance\\controls\\iimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\controls\\iimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|c:\\dev\\games\\stardom\\enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C345DAFE-ABE6-4750-B272-D3ECC7D70FF2}|EngineTest\\EngineTest.csproj|solutionrelative:enginetest\\enginetest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\resonance\\gameui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\gameui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\resonance\\icontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\icontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\font\\kfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,16 +49,8 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\resonance\\controls\\iimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\controls\\iimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\texture\\texture2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\texture\\texture2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\resonance\\icontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|solutionrelative:stardomengine\\resonance\\icontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1507122-759E-4413-99A2-13B4661C3B28}|StardomEngine\\StardomEngine.csproj|c:\\dev\\games\\stardom\\stardomengine\\scene\\scene2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -146,11 +146,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "SmartDraw.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Draw\\SmartDraw.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Draw\\SmartDraw.cs",
@@ -164,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IButton.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IButton.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Resonance\\Controls\\IButton.cs",
@@ -178,33 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GameUI.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\GameUI.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\GameUI.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\GameUI.cs",
-              "RelativeToolTip": "StardomEngine\\Resonance\\GameUI.cs",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAUwIIAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:11:18.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Dictionary.cs",
-              "DocumentMoniker": "C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs",
-              "ToolTip": "C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs [Read Only]",
-              "ViewState": "AQIAAE4EAAAAAAAAAAAcwFgEAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:29:37.764Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "UITheme.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\UITheme.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Resonance\\UITheme.cs",
@@ -217,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ILabel.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\ILabel.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Resonance\\Controls\\ILabel.cs",
@@ -236,22 +210,48 @@
               "RelativeDocumentMoniker": "StardomEngine\\Resonance\\Controls\\IPanel.cs",
               "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IPanel.cs*",
               "RelativeToolTip": "StardomEngine\\Resonance\\Controls\\IPanel.cs*",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAvwBcAAABoAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAACJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-22T10:07:59.788Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "IControl.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\IControl.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\IControl.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\IControl.cs",
+              "RelativeToolTip": "StardomEngine\\Resonance\\IControl.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAAEoAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:11:56.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EngineTest1.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
               "RelativeDocumentMoniker": "EngineTest\\EngineTest1.cs",
               "ToolTip": "C:\\Dev\\games\\Stardom\\EngineTest\\EngineTest1.cs",
               "RelativeToolTip": "EngineTest\\EngineTest1.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAuwHIAAAAzAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAgwGMAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T09:17:38.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IImage.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IImage.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\Controls\\IImage.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IImage.cs",
+              "RelativeToolTip": "StardomEngine\\Resonance\\Controls\\IImage.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAswBoAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T09:25:57.354Z",
               "EditorCaption": ""
             },
             {
@@ -261,6 +261,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "GameUI.cs",
+              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\GameUI.cs",
+              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\GameUI.cs",
+              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\GameUI.cs",
+              "RelativeToolTip": "StardomEngine\\Resonance\\GameUI.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAewE8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:11:18.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Dictionary.cs",
+              "DocumentMoniker": "C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs",
+              "ToolTip": "C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\72905e1dbdcf49c87ed4241fa7f49cf917df9ea2dd2776340af6b7cfb0fae700\\Dictionary.cs [Read Only]",
+              "ViewState": "AQIAAE4EAAAAAAAAAAAcwFgEAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T09:29:37.764Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "kFont.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Font\\kFont.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Font\\kFont.cs",
@@ -273,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Vector4.cs",
               "DocumentMoniker": "C:\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\db5cb8232486a8c6c042001a5aa1ee46532c38a29ed47d11ee464e6ca8d5cdbb\\Vector4.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\AntWells\\AppData\\Local\\Temp\\.vsdbgsrc\\db5cb8232486a8c6c042001a5aa1ee46532c38a29ed47d11ee464e6ca8d5cdbb\\Vector4.cs",
@@ -286,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Texture2D.cs",
               "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Texture\\Texture2D.cs",
               "RelativeDocumentMoniker": "StardomEngine\\Texture\\Texture2D.cs",
@@ -309,32 +335,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-22T07:04:33.71Z",
               "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IImage.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IImage.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\Controls\\IImage.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\Controls\\IImage.cs",
-              "RelativeToolTip": "StardomEngine\\Resonance\\Controls\\IImage.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAABsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:25:57.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IControl.cs",
-              "DocumentMoniker": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\IControl.cs",
-              "RelativeDocumentMoniker": "StardomEngine\\Resonance\\IControl.cs",
-              "ToolTip": "C:\\Dev\\games\\Stardom\\StardomEngine\\Resonance\\IControl.cs",
-              "RelativeToolTip": "StardomEngine\\Resonance\\IControl.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAgwE0AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:11:56.198Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",

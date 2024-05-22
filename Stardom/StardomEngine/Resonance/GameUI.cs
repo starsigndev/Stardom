@@ -77,7 +77,7 @@ namespace StardomEngine.Resonance
             ActiveControl = null;
         }
 
-        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f,bool flip=false,Texture2D mask=null)
+        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f,bool flip=false,Texture2D mask=null,float refract=0.0f,Texture2D refracter=null)
         {
             Vector4 ext = new Vector4(0,0,0,0);
 
@@ -89,11 +89,11 @@ namespace StardomEngine.Resonance
                 call.Normals = mask;
                 if (mask != null)
                 {
-                    call.Ext = new Vector4(blur, 1.0f, 0, 0);
+                    call.Ext = new Vector4(blur, 1.0f, refract, 0);
                 }
                 else
                 {
-                    call.Ext = new Vector4(blur, 0, 0, 0);
+                    call.Ext = new Vector4(blur, 0, refract, 0);
                 }
             }
             else
@@ -102,11 +102,11 @@ namespace StardomEngine.Resonance
                 call.Normals = mask;
                 if (mask != null)
                 {
-                    call.Ext = new Vector4(blur, 1.0f, 0, 0);
+                    call.Ext = new Vector4(blur, 1.0f, refract, 0);
                 }
                 else
                 {
-                    call.Ext = new Vector4(blur, 0, 0, 0);
+                    call.Ext = new Vector4(blur, 0, refract, 0);
                 }
             }
             Draw.DrawNormal.Bind();
@@ -114,6 +114,11 @@ namespace StardomEngine.Resonance
             {
                 mask.Bind(1);
                 Draw.DrawNormal.SetInt("se_MaskTexture", 1);
+            }
+            if (refracter!=null)
+            {
+                refracter.Bind(2);
+                Draw.DrawNormal.SetInt("se_RefractTexture", 2);
             }
             Draw.End();
             Draw.DrawNormal.Release();

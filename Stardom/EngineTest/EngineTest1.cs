@@ -96,8 +96,14 @@ namespace EngineTest
             PS1.Spawn(3000);
 
             UI = new GameUI();
+
+            var img = new IImage(new Texture2D("data/bg1.png")).Set(new Vector2(0, 0), new Vector2(StarApp.FrameWidth, StarApp.FrameHeight), "") as IImage;
+
+            UI.RootControl.AddControl(img);
+
             b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
 
+      
             UI.RootControl.AddControl(b1);
             b1.OnClick = (but, mbut) =>
             {
@@ -113,13 +119,15 @@ namespace EngineTest
             var b2 = new IButton().Set(new Vector2(30, 20), new Vector2(180, 30), "Load Game") as IButton;
             image1.AddControl(b2);
             image1.Color = new Vector4(1, 1, 1, 0.4f);
-
+            image1.Refracter = new Texture2D("data/refract1.jpg");
+            pp1 = image1;
 
 
 
 
         }
         IButton b1;
+        IPanel pp1;
 
         Random rnd = new Random();
 
@@ -136,7 +144,9 @@ namespace EngineTest
             {
                 //Environment.Exit(0);
                 //    Scene1.Camera.Position -= new Vector3(GameInput.MouseDelta.X, GameInput.MouseDelta.Y, 0.0f);
-                Scene1.Camera.Move(-GameInput.MouseDelta);
+                //  Scene1.Camera.Move(-GameInput.MouseDelta);
+
+                pp1.Position += GameInput.MouseDelta;
 
             }
 

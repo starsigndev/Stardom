@@ -69,6 +69,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public Texture2D Refracter
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
 

@@ -8,6 +8,7 @@ out vec4 out_color;
 
 uniform sampler2D se_ColorTexture;
 uniform sampler2D se_MaskTexture;
+uniform sampler2D se_RefractTexture;
 uniform float se_BlurFactor;
 
 
@@ -44,6 +45,21 @@ void main(){
     }
 
     vec4 fcol;
+
+    if(ext.z>0)
+    {
+        //vec2 ruv = UV;
+
+        vec2 ruv = texture(se_RefractTexture,UV).rg;
+        ruv = -1.0 + ruv*2.0;
+        ruv.x = UV.x + ruv.x*ext.z;
+        ruv.y = UV.y + ruv.y*ext.z;
+
+  //      ruv.x += texture(se_RefractTexture,UV).r*ext.z;
+//        ruv.y += texture(se_RefractTexture,UV).g*ext.z;
+        color = texture(se_ColorTexture,ruv).rgb*2.0;
+       
+    }
 
     fcol.rgb = color * col.rgb;
 
