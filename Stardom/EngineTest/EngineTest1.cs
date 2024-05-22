@@ -12,6 +12,9 @@ using StardomEngine.Scene;
 using StardomEngine.Scene.Nodes;
 using StardomEngine.Input;
 using System.Security.Cryptography;
+using StardomEngine.Resonance;
+using StardomEngine.Resonance.Controls;
+using OpenTK.Mathematics;
 
 namespace EngineTest
 {
@@ -33,6 +36,7 @@ namespace EngineTest
         SceneSprite s4;
         SceneParticleSystem PS1;
         SceneParticle p1, p2;
+        GameUI UI;
         public override void InitApp()
         {
             //base.InitApp();
@@ -91,7 +95,18 @@ namespace EngineTest
             PS1.AddBaseParticle(p1);
             PS1.Spawn(3000);
 
+            UI = new GameUI();
+            b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
+
+            UI.RootControl.AddControl(b1);
+            b1.OnClick = (but, mbut) =>
+            {
+                Console.WriteLine("Clicked!");
+            };
+
         }
+        IButton b1;
+
         Random rnd = new Random();
 
 
@@ -101,6 +116,7 @@ namespace EngineTest
 
             //base.UpdateApp();
             Scene1.Update();
+            UI.Update();
             s4.Rotation = s4.Rotation + 1f;
             if (GameInput.MouseButton[1])
             {
@@ -127,11 +143,11 @@ namespace EngineTest
         public override void RenderApp()
         {
             //base.RenderApp(); PS1.Spawn(30);
-  
 
+            UI.Render();
 
             //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
-            Scene1.Render();
+         //   Scene1.Render();
 
             //      Draw.Begin();
 

@@ -119,7 +119,7 @@ namespace StardomEngine.Draw
 
             call.Z = CurrentZ;
 
-            CurrentZ += 0.001f;
+            CurrentZ += 0.0001f;
 
             call.Image = image;
 

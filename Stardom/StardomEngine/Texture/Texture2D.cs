@@ -12,6 +12,7 @@ using OpenTK.Graphics.OpenGL;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System.Threading.Channels;
 namespace StardomEngine.Texture
 {
     public class Texture2D
@@ -26,6 +27,39 @@ namespace StardomEngine.Texture
 
         public int Channels { get; set; }
 
+        public Texture2D(byte[] data,int w,int h)
+        {
+
+            Handle = GL.CreateTexture(TextureTarget.Texture2d);
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+
+            // Data = LoadPngToByteArray(path);
+            Width = w;
+            Height = h;
+            Channels = 4;
+
+            //Data = new byte[Width * Height * Channels];
+            //DataFloat = new float[Width * Height * Channels];
+            Data = data;
+
+            if (Channels == 4)
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb32f, Width, Height, 0, PixelFormat.Rgb, PixelType.Float, DataFloat);
+            }
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+
+            //GL.GenerateMipmap(TextureTarget.Texture2d);
+
+            GL.BindTexture(TextureTarget.Texture2d, 0);
+
+        }
         public Texture2D(int width,int height,int channels)
         {
 

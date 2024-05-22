@@ -112,7 +112,7 @@ namespace StardomEngine.App
             Frame++;
 
 
-            GL.ClearColor(1, 0, 0, 1);
+            GL.ClearColor(0.1f, 0.1f, 0.1f, 1);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             RenderApp();
         

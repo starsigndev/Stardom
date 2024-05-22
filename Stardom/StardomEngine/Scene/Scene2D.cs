@@ -239,7 +239,7 @@ namespace StardomEngine.Scene
 
             foreach (var light in Lights)
             {
-            //    RenderShadows(light);
+                RenderShadows(light);
             }
 
 
