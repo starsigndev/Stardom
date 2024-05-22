@@ -77,30 +77,38 @@ namespace StardomEngine.Resonance
             ActiveControl = null;
         }
 
-        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color)
+        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f)
         {
+            Vector4 ext = new Vector4(0,0,0,0);
 
-            Draw.DrawQuad(image, position, size, color);
+            var call = Draw.DrawQuad(image, position, size, color);
+
+            call.Ext = new Vector4(blur, 0, 0, 0);
+
+
+
           // Draw.DrawSprite(image, position, size,0.0f,1.0f, color,new Vector4(0,0,0,0));
         }
         
-        public void DrawText(string text,Vector2 position,Vector4 color)
+        public void DrawText(string text,Vector2 position,Vector4 color,float scale =1.0f)
         {
 
+            SystemFont.Scale = scale;
             SystemFont.DrawString(text,(int)position.X, (int)position.Y, color.X, color.Y, color.Z, color.W, Draw);
 
         }
 
-        public float TextWidth(string text)
+        public float TextWidth(string text,float scale=1.0f)
         {
-
+            SystemFont.Scale = scale;
             return SystemFont.StringWidth(text);
 
         }
 
-        public float TextHeight(string text)
+        public float TextHeight(string text, float scale =1.0f)
         {
 
+            SystemFont.Scale = scale;
             return SystemFont.StringHeight();
 
         }

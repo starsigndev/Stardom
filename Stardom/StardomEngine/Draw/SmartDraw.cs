@@ -132,7 +132,7 @@ namespace StardomEngine.Draw
 
         }
 
-        public void DrawQuad(Texture2D image,Vector2 position,Vector2 size,Vector4 color)
+        public DrawCall DrawQuad(Texture2D image,Vector2 position,Vector2 size,Vector4 color)
         {
 
             var list = FindList(image);
@@ -161,7 +161,7 @@ namespace StardomEngine.Draw
 
             list.AddCall(call);
 
-
+            return call;
         }
 
         float[] v_data = null;

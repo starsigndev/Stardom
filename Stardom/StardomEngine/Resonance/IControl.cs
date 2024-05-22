@@ -4,6 +4,7 @@ using System.Linq;
 using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
+using StardomEngine.Texture;
 
 namespace StardomEngine.Resonance
 {
@@ -62,13 +63,20 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public Texture2D Image
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
 
             Color = new Vector4(1, 1, 1, 1);
             Controls = new List<IControl>();
             Root = null;
-        
+            Image = null;
+
         }
 
 

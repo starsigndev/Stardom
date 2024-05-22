@@ -103,6 +103,15 @@ namespace EngineTest
             {
                 Console.WriteLine("Clicked!");
             };
+            var l1 = new ILabel("This is a test label.").Set(new Vector2(20, 20), Vector2.Zero, "This is a test label.") as ILabel;
+            UI.RootControl.AddControl(l1);
+            l1.Scale = 3.0f;
+
+            var image1 = new IImage(new Texture2D("data/test1.png")).Set(new Vector2(50, 300), new Vector2(400, 280), "") as IImage;
+            UI.RootControl.AddControl(image1);
+
+
+
 
         }
         IButton b1;
