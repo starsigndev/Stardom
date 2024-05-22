@@ -107,8 +107,13 @@ namespace EngineTest
             UI.RootControl.AddControl(l1);
             l1.Scale = 3.0f;
 
-            var image1 = new IImage(new Texture2D("data/test1.png")).Set(new Vector2(50, 300), new Vector2(400, 280), "") as IImage;
+            var image1 = new IPanel().Set(new Vector2(50, 30), new Vector2(400, 280), "") as IPanel;
             UI.RootControl.AddControl(image1);
+
+            var b2 = new IButton().Set(new Vector2(30, 20), new Vector2(180, 30), "Load Game") as IButton;
+            image1.AddControl(b2);
+            image1.Color = new Vector4(1, 1, 1, 0.4f);
+
 
 
 

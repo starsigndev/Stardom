@@ -12,7 +12,7 @@ namespace StardomEngine.Resonance
         public UITheme(string path)
         {
             path = "data/ui/themes/" + path;
-            //Frame = new Texture2D(path + "\\frame.png");
+            Frame = new Texture2D(path + "\\frame.png");
             Button = new Texture2D(path + "\\button.png");
         }
 

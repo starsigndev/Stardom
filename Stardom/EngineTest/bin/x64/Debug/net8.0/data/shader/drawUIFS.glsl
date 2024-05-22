@@ -7,6 +7,7 @@ in vec4 ext;
 out vec4 out_color;
 
 uniform sampler2D se_ColorTexture;
+uniform sampler2D se_MaskTexture;
 uniform float se_BlurFactor;
 
 
@@ -46,7 +47,33 @@ void main(){
 
     fcol.rgb = color * col.rgb;
 
-    fcol.a = texture(se_ColorTexture,UV).a;
+    fcol.a = texture(se_ColorTexture,UV).a* col.a;
+
+    if(ext.y>0)
+    {
+
+        fcol.a = texture(se_MaskTexture,UV).a;
+
+        if(fcol.a<=0){
+
+            discard;
+
+        }
+
+
+    }else{
+
+    
+
+    if(fcol.a<=0.1)
+    {
+        discard;
+        }
+    }
+
+    fcol = fcol*col;
+
+
 
     out_color = fcol;
 

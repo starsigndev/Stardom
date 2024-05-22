@@ -351,8 +351,8 @@ namespace StardomEngine.Draw
 
             DrawNormal.SetMat("se_Projection",se_Projection);
 
-            GL.Enable(EnableCap.DepthTest);
-            GL.DepthFunc(DepthFunction.Lequal);
+          //  GL.Enable(EnableCap.DepthTest);
+         //   GL.DepthFunc(DepthFunction.Lequal);
 
             GL.Viewport(0, 0, w, h);
 
@@ -399,7 +399,7 @@ namespace StardomEngine.Draw
                     v_data[ix++] = call.Color.X;
                     v_data[ix++] = call.Color.Y;
                     v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.Z;
+                    v_data[ix++] = call.Color.W;
 
                     v_data[ix++] = 0;
                     v_data[ix++] = 0;
@@ -417,7 +417,7 @@ namespace StardomEngine.Draw
                     v_data[ix++] = call.Color.X;
                     v_data[ix++] = call.Color.Y;
                     v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.Z;
+                    v_data[ix++] = call.Color.W;
 
                     v_data[ix++] = 1;
                     v_data[ix++] = 0;
@@ -436,7 +436,7 @@ namespace StardomEngine.Draw
                     v_data[ix++] = call.Color.X;
                     v_data[ix++] = call.Color.Y;
                     v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.Z;
+                    v_data[ix++] = call.Color.W;
 
                     v_data[ix++] = 1;
                     v_data[ix++] = 1;
@@ -455,7 +455,7 @@ namespace StardomEngine.Draw
                     v_data[ix++] = call.Color.X;
                     v_data[ix++] = call.Color.Y;
                     v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.Z;
+                    v_data[ix++] = call.Color.W;
 
                     v_data[ix++] = 0;
                     v_data[ix++] = 1;
@@ -500,7 +500,10 @@ namespace StardomEngine.Draw
 
 
                 list.Calls[0].Image.Bind(0);
-                list.Calls[0].Normals.Bind(1);
+                if (list.Calls[0].Normals != null)
+                {
+                    list.Calls[0].Normals.Bind(1);
+                }
 
                 DrawNormal.SetInt("se_ColorTexture", 0);
                 DrawNormal.SetInt("se_NormalMap", 1);

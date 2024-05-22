@@ -77,24 +77,62 @@ namespace StardomEngine.Resonance
             ActiveControl = null;
         }
 
-        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f)
+        public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f,bool flip=false,Texture2D mask=null)
         {
             Vector4 ext = new Vector4(0,0,0,0);
 
-            var call = Draw.DrawQuad(image, position, size, color);
+            Draw.Begin();
 
-            call.Ext = new Vector4(blur, 0, 0, 0);
+            if (flip)
+            {
+                var call = Draw.DrawQuad(image, position + new Vector2(0, size.Y), new Vector2(size.X, -size.Y), color);
+                call.Normals = mask;
+                if (mask != null)
+                {
+                    call.Ext = new Vector4(blur, 1.0f, 0, 0);
+                }
+                else
+                {
+                    call.Ext = new Vector4(blur, 0, 0, 0);
+                }
+            }
+            else
+            {
+                var call = Draw.DrawQuad(image, position, size, color);
+                call.Normals = mask;
+                if (mask != null)
+                {
+                    call.Ext = new Vector4(blur, 1.0f, 0, 0);
+                }
+                else
+                {
+                    call.Ext = new Vector4(blur, 0, 0, 0);
+                }
+            }
+            Draw.DrawNormal.Bind();
+            if (mask != null)
+            {
+                mask.Bind(1);
+                Draw.DrawNormal.SetInt("se_MaskTexture", 1);
+            }
+            Draw.End();
+            Draw.DrawNormal.Release();
 
 
-
-          // Draw.DrawSprite(image, position, size,0.0f,1.0f, color,new Vector4(0,0,0,0));
+            // Draw.DrawSprite(image, position, size,0.0f,1.0f, color,new Vector4(0,0,0,0));
         }
         
         public void DrawText(string text,Vector2 position,Vector4 color,float scale =1.0f)
         {
 
+            Draw.Begin();
+
             SystemFont.Scale = scale;
             SystemFont.DrawString(text,(int)position.X, (int)position.Y, color.X, color.Y, color.Z, color.W, Draw);
+
+            Draw.DrawNormal.Bind();
+            Draw.End();
+            Draw.DrawNormal.Release();
 
         }
 
@@ -219,16 +257,28 @@ namespace StardomEngine.Resonance
         public void Render()
         {
 
-            Draw.Begin();
-
-            RootControl.Render();
+//            Draw.Begin();
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.Disable(EnableCap.DepthTest);
 
-            Draw.DrawNormal.Bind();
-            Draw.End();
-            Draw.DrawNormal.Release();
+            RootControl.Render();
+
+          
+
+          
+
+        }
+
+        public Texture2D GrabBG(Vector2 position,Vector2 size)
+        {
+
+            var tex = new Texture2D((int)size.X, (int)size.Y, 3,false);
+
+            tex.Grab(new Vector2(position.X, position.Y));
+
+            return tex;
 
         }
 

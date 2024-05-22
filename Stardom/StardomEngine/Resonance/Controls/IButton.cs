@@ -62,8 +62,9 @@ namespace StardomEngine.Resonance.Controls
             tx = tx - GameUI.This.TextWidth(Text) / 2;
             ty = ty - GameUI.This.TextHeight(Text) / 2;
 
-            GameUI.This.DrawText(Text, new Vector2(tx + 2, ty + 2), Vector4.Zero);
+            GameUI.This.DrawText(Text, new Vector2(tx + 2, ty + 2),new Vector4(0,0,0,1));
             GameUI.This.DrawText(Text, new Vector2(tx,ty), Vector4.One);
+
 
             RenderChildren();
         }

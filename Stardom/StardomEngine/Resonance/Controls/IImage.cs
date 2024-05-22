@@ -22,7 +22,9 @@ namespace StardomEngine.Resonance.Controls
         {
             //base.Render();
 
-            GameUI.This.DrawRect(Image, RenderPosition, Size, Color);
+            Image = GameUI.This.GrabBG(RenderPosition, Size);
+
+            GameUI.This.DrawRect(Image, RenderPosition, Size, Color,0,true);
 
         }
 

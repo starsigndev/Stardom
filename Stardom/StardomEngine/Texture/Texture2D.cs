@@ -13,6 +13,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using System.Threading.Channels;
+using StardomEngine.App;
 namespace StardomEngine.Texture
 {
     public class Texture2D
@@ -60,7 +61,7 @@ namespace StardomEngine.Texture
             GL.BindTexture(TextureTarget.Texture2d, 0);
 
         }
-        public Texture2D(int width,int height,int channels)
+        public Texture2D(int width,int height,int channels,bool fp = true)
         {
 
             Handle = GL.CreateTexture(TextureTarget.Texture2d);
@@ -73,14 +74,30 @@ namespace StardomEngine.Texture
 
             //Data = new byte[Width * Height * Channels];
             DataFloat = new float[Width * Height * Channels];
+            Data = new byte[Width * Height * Channels];
 
-            if (Channels == 4)
+
+            if (fp)
             {
-                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba32f, Width, Height, 0, PixelFormat.Rgba, PixelType.Float, DataFloat);
+                if (Channels == 4)
+                {
+                    GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba32f, Width, Height, 0, PixelFormat.Rgba, PixelType.Float, DataFloat);
+                }
+                else
+                {
+                    GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb32f, Width, Height, 0, PixelFormat.Rgb, PixelType.Float, DataFloat);
+                }
             }
             else
             {
-                GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb32f, Width, Height, 0, PixelFormat.Rgb, PixelType.Float,DataFloat);
+                if (Channels == 4)
+                {
+                    GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
+                }
+                else
+                {
+                    GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, Data);
+                }
             }
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
@@ -310,7 +327,13 @@ namespace StardomEngine.Texture
             }
         }
 
+        public void Grab(Vector2 position)
+        {
+            int adjustedY = StarApp.FrameHeight - (int)position.Y - Height;
 
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+            GL.CopyTexImage2D(TextureTarget.Texture2d, 0,InternalFormat.Rgb, (int)position.X, adjustedY, Width, Height, 0);
+        }
 
     }
 }
