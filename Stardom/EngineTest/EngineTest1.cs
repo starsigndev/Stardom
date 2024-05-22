@@ -114,16 +114,21 @@ namespace EngineTest
             l1.Scale = 3.0f;
 
             var image1 = new IPanel().Set(new Vector2(50, 30), new Vector2(400, 280), "") as IPanel;
-            UI.RootControl.AddControl(image1);
+            //UI.RootControl.AddControl(image1);
 
-            var b2 = new IButton().Set(new Vector2(30, 20), new Vector2(180, 30), "Load Game") as IButton;
-            image1.AddControl(b2);
+
+          //  var b2 = new IButton().Set(new Vector2(30, 20), new Vector2(180, 30), "Load Game") as IButton;
+           // image1.AddControl(b2);
             image1.Color = new Vector4(1, 1, 1, 0.4f);
-            image1.Refracter = new Texture2D("data/refract1.jpg");
+            image1.Refracter = new Texture2D("data/refract2.jpg");
             pp1 = image1;
 
-
-
+            var win1 = new IWindow().Set(new Vector2(100, 100), new Vector2(300, 400), "Test Window") as IWindow;
+            var b2 = new IButton().Set(new Vector2(10, 35), new Vector2(180, 30), "Load Game") as IButton;
+            win1.Contents.AddControl(b2);
+            UI.RootControl.AddControl(win1);
+            win1.Contents.Color = new Vector4(1, 1, 1, 0.7f);
+            win1.Contents.Refracter = new Texture2D("data/refract2.jpg");
 
         }
         IButton b1;

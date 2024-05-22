@@ -8,6 +8,7 @@ using StardomEngine.Texture;
 
 namespace StardomEngine.Resonance
 {
+    public delegate void Dragged(int x, int y);
     public class IControl
     {
 
@@ -41,6 +42,11 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public Dragged OnDragged
+        {
+            get;
+            set;
+        }
         public Vector2 RenderPosition
         {
             get
@@ -107,7 +113,19 @@ namespace StardomEngine.Resonance
             Position = position;
             Size = size;
             Text = text;
+            AfterSet();
+            foreach(var control in Controls)
+            {
+                control.Set(control.Position, control.Size, control.Text);
+            }
             return this;
+        }
+
+        public virtual void AfterSet()
+        {
+
+
+
         }
 
         public bool InBounds(Vector2 position)
@@ -123,6 +141,10 @@ namespace StardomEngine.Resonance
             return false;
         }
 
+        public virtual void OnMoved(Vector2 moved)
+        {
+
+        }
         public virtual void OnEnter()
         {
 

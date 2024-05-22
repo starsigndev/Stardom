@@ -219,6 +219,12 @@ namespace StardomEngine.Resonance
                 }
             }
 
+            if (PressedControl != null)
+            {
+                PressedControl.OnMoved(GameInput.MouseDelta);
+                PressedControl.OnDragged?.Invoke((int)GameInput.MouseDelta.X, (int)GameInput.MouseDelta.Y);
+            }
+
         }
 
         public IControl GetOver(Vector2 pos)
