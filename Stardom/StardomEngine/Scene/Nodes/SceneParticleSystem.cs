@@ -106,6 +106,7 @@ namespace StardomEngine.Scene.Nodes
                 spawn.Owner = this;
                 spawn.Position = Position;
                 spawn.Inertia = GameMaths.RandomVec3(VelocityMin, VelocityMax);
+                spawn.RecvShadows = true;
                 if (pn == null)
                 {
                     pn = ActiveParticles.AddLast(spawn);

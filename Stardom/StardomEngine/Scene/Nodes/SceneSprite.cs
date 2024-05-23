@@ -63,7 +63,7 @@ namespace StardomEngine.Scene.Nodes
                 NormalsBlank = new Texture2D("data/blanknormals.png");
             }
             CastShadows = false;
-            RecvShadows = true;
+            RecvShadows = false;
             Normals = NormalsBlank;
 
         }
@@ -139,7 +139,7 @@ namespace StardomEngine.Scene.Nodes
             }
             else
             {
-                ext.X = 0.0f;
+                 ext.X = 0.0f;
             }
 
             var call = draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext, Normals);

@@ -48,6 +48,7 @@ namespace EngineTest
             s1.Image = Tex1;
             s2.Image = new Texture2D("Data/sprite1.png");
             var s3 = new SceneSprite();
+            s3.RecvShadows = false;
             s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
              
@@ -102,7 +103,7 @@ namespace EngineTest
            // UI.RootControl.AddControl(img);
 
             b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
-
+           
       
             UI.RootControl.AddControl(b1);
             b1.OnClick = (but, mbut) =>

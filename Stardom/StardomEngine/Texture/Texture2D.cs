@@ -24,6 +24,7 @@ namespace StardomEngine.Texture
         public byte[] Data { get; set; }
         public float[] DataFloat { get; set; }
 
+        public string Path { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -124,7 +125,7 @@ namespace StardomEngine.Texture
         }
         public Texture2D(string path)
         {
-
+            Path = path;
             if (Cache.ContainsKey(path))
             {
 

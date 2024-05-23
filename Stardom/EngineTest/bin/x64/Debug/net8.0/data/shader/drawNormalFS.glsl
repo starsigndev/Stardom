@@ -89,9 +89,7 @@ void main(){
         kd = 360 + kd;
     }
 
-   float sv =1.0f;
-
-    sv=1.0;
+   float sv =0.0f;
 
     if(ext.x>0){
 
@@ -127,6 +125,8 @@ void main(){
   sv = sv / samples;
 
     
+    }else{
+        sv=1.0;
     }
 
 //    sv =1.0;
