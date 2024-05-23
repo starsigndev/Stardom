@@ -230,6 +230,8 @@ namespace StardomEngine.Scene
         public virtual void Render()
         {
 
+            GL.Disable(EnableCap.ScissorTest);
+
             Draw.Begin();
 
             //foreach(var light in Lights) { 
@@ -245,6 +247,8 @@ namespace StardomEngine.Scene
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
+            GL.Disable(EnableCap.DepthTest);
 
             FinalDraw();
 

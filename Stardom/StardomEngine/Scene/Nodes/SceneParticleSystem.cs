@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Mathematics;
 using System.Buffers;
+using StardomEngine.Texture;
 
 namespace StardomEngine.Scene.Nodes
 {
@@ -52,11 +53,16 @@ namespace StardomEngine.Scene.Nodes
 
         private Random Rnd = new Random(Environment.TickCount);
 
+        public static Texture2D BlankNormals = null;
        
 
         public SceneParticleSystem()
         {
 
+            if (BlankNormals == null)
+            {
+                BlankNormals = new Texture2D("data/blanknormals.png");
+            }
             MaxParticles = 25000;
             BaseParticles = new List<SceneParticle>();
             ActiveParticles = new LinkedList<SceneParticle>();
@@ -180,7 +186,7 @@ namespace StardomEngine.Scene.Nodes
                 ext.X = 0.0f;
             }
 
-            var call = draw.DrawSprite(sprite.Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + sprite.Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext);
+            var call = draw.DrawSprite(sprite.Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + sprite.Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext,BlankNormals);
             //if (Normals != null)
             {
                 //  call.Normals = Normals;

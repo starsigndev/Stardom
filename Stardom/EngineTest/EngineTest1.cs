@@ -52,7 +52,7 @@ namespace EngineTest
             //   Scene1.AddNode(s1);
              
             s1.Normals = new Texture2D("Data/normal2.jpg");
-            s1.RecvShadows = false;
+            s1.RecvShadows = true;
             Scene1.Fill(s1, 16, 16);
             s1.Size = new Vector2(1024, 1024);
 
@@ -93,13 +93,13 @@ namespace EngineTest
             p1 = new SceneParticle();
             p1.Image = new Texture2D("data/fire1.png");
             PS1.AddBaseParticle(p1);
-            PS1.Spawn(3000);
+            PS1.Spawn(5000);
 
             UI = new GameUI();
 
             var img = new IImage(new Texture2D("data/bg1.png")).Set(new Vector2(0, 0), new Vector2(StarApp.FrameWidth, StarApp.FrameHeight), "") as IImage;
 
-            UI.RootControl.AddControl(img);
+           // UI.RootControl.AddControl(img);
 
             b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
 
@@ -144,6 +144,7 @@ namespace EngineTest
 
             //base.UpdateApp();
             Scene1.Update();
+            
             UI.Update();
             s4.Rotation = s4.Rotation + 1f;
             if (GameInput.MouseButton[1])
@@ -174,11 +175,12 @@ namespace EngineTest
         {
             //base.RenderApp(); PS1.Spawn(30);
 
-            UI.Render();
+            //UI.Render();
+
 
             //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
-         //   Scene1.Render();
-
+            Scene1.Render();
+          //  UI.Render();
             //      Draw.Begin();
 
             // for (int i = 0; i < 1; i++)

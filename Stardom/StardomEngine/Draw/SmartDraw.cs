@@ -10,6 +10,7 @@ using StardomEngine.App;
 using OpenTK.Graphics.OpenGL;
 using StardomEngine.Helper;
 using System.Runtime.InteropServices;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace StardomEngine.Draw
 {
@@ -43,8 +44,8 @@ namespace StardomEngine.Draw
         {
 
             if (PreLists == null) {
-                PreLists = new List<DrawList>(1024);
-                for (int i = 0; i < 1024; i++)
+                PreLists = new List<DrawList>(100);
+                for (int i = 0; i < 100; i++)
                 {
                     PreLists.Add(new DrawList());
                 }
@@ -114,13 +115,15 @@ namespace StardomEngine.Draw
         }
 
         
-        public DrawCall DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color,Vector4 ext)
+        public DrawCall DrawSprite(Texture2D image,Vector2 position,Vector2 size,float rotation,float scale,Vector4 color,Vector4 ext,Texture2D normals=null)
         {
 
             var list = FindList(image);
             
 
             DrawCall call = new DrawCall();
+
+            call.Color = color;
 
             float x0 = - size.X / 2;
             float y0 = - size.Y / 2;
@@ -161,8 +164,101 @@ namespace StardomEngine.Draw
 
             call.Ext = ext;
 
-            
-            list.AddCall(call);
+
+            int ix = list.dataIndex;
+
+            list.v_data[ix++] = call.X[0];
+            list.v_data[ix++] = call.Y[0];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 0;
+            list.v_data[ix++] = 0;
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v1
+            list.v_data[ix++] = call.X[1];
+            list.v_data[ix++] = call.Y[1];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 1;
+            list.v_data[ix++] = 0;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v2
+            list.v_data[ix++] = call.X[2];
+            list.v_data[ix++] = call.Y[2];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 1;
+            list.v_data[ix++] = 1;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v3 
+            list.v_data[ix++] = call.X[3];
+            list.v_data[ix++] = call.Y[3];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 0;
+            list.v_data[ix++] = 1;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+            list.Image = image;
+            list.Normals = normals;
+
+            list.dataIndex = ix;
+
+            uint vi = list.indexIndex;
+
+            list.i_data[vi] = vi;
+            list.i_data[vi + 1] = vi + 1;
+            list.i_data[vi + 2] = vi + 2;
+            list.i_data[vi + 3] = vi + 3;
+
+            list.indexIndex = vi + 4;
+
+            list.CallsNum = list.CallsNum + 1;
+
+
+            //list.AddCall(call);
+
 
             return call;
 
@@ -476,11 +572,11 @@ namespace StardomEngine.Draw
                 VertexArray = GL.GenVertexArray();
                 Buffer = GL.GenBuffer();
                 GL.BindBuffer(BufferTarget.ArrayBuffer, Buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, 1024 * 5000, IntPtr.Zero, BufferUsage.StaticDraw);
+                GL.BufferData(BufferTarget.ArrayBuffer, 1024 * 5000, IntPtr.Zero, BufferUsage.DynamicDraw);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
                 IndexBuffer = GL.GenBuffer();
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
-                GL.BufferData(BufferTarget.ElementArrayBuffer, 1024 * 5000, IntPtr.Zero, BufferUsage.StaticDraw);
+                GL.BufferData(BufferTarget.ElementArrayBuffer, 1024 * 5000, IntPtr.Zero, BufferUsage.DynamicDraw);
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
             }
 
@@ -495,6 +591,10 @@ namespace StardomEngine.Draw
                 {
                     list.Normals.Bind(1);
                 }
+              
+              
+              
+              
 
                 DrawNormal.SetInt("se_ColorTexture", 0);
                 DrawNormal.SetInt("se_NormalMap", 1);
@@ -502,6 +602,7 @@ namespace StardomEngine.Draw
 
                 GCHandle handle = GCHandle.Alloc(list.v_data, GCHandleType.Pinned);
                 IntPtr pointer = handle.AddrOfPinnedObject();
+
 
                 GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, list.dataIndex* sizeof(float),pointer);
                 handle.Free();
@@ -536,18 +637,22 @@ namespace StardomEngine.Draw
                 GL.DrawElements(PrimitiveType.Quads, list.CallsNum*4, DrawElementsType.UnsignedInt, 0);
                 //GL.DrawElementsInstanced(PrimitiveType.Triangles, list.Calls.Count * 6, DrawElementsType.UnsignedInt,0,1);
 
-
-               //GL.BindBuffer(BufferTarget.ElementArrayBuffer,0);
-               // GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-              //  GL.BindVertexArray(0);
-              //  GL.DisableVertexAttribArray(0);
-              //  GL.DisableVertexAttribArray(1);
-              //  GL.DisableVertexAttribArray(2);
+                list.Image.Release(0);
+                if (list.Normals != null)
+                {
+                    list.Normals.Release(1);
+                }
+                //GL.BindBuffer(BufferTarget.ElementArrayBuffer,0);
+                // GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+                //  GL.BindVertexArray(0);
+                //  GL.DisableVertexAttribArray(0);
+                //  GL.DisableVertexAttribArray(1);
+                //  GL.DisableVertexAttribArray(2);
 
 
 
                 //list.Calls[0].Image.Release(0);
-               // list.Calls[0].Normals.Release(1);
+                // list.Calls[0].Normals.Release(1);
 
             }
 

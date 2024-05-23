@@ -54,13 +54,17 @@ namespace StardomEngine.Scene.Nodes
             set;
         }
 
-     
+        public static Texture2D NormalsBlank = null;
 
         public SceneSprite()
         {
-
+            if (NormalsBlank == null)
+            {
+                NormalsBlank = new Texture2D("data/blanknormals.png");
+            }
             CastShadows = false;
             RecvShadows = true;
+            Normals = NormalsBlank;
 
         }
 
@@ -138,10 +142,10 @@ namespace StardomEngine.Scene.Nodes
                 ext.X = 0.0f;
             }
 
-            var call = draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext);
+            var call = draw.DrawSprite(Image, new OpenTK.Mathematics.Vector2(rp.X, rp.Y), Size, rot + Rotation, scale, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), ext, Normals);
             if (Normals != null)
             {
-                call.Normals = Normals;
+               // call.Normals = Normals;
             }
 
             RenderSubNodes(camera, draw);   
