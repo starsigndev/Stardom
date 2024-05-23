@@ -5,10 +5,13 @@ using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
 using StardomEngine.Texture;
+using OpenTK.Graphics.OpenGL;
+using OpenTK.Mathematics;
 
 namespace StardomEngine.Resonance
 {
     public delegate void Dragged(int x, int y);
+    public delegate void ControlAdded(IControl root, IControl added);
     public class IControl
     {
 
@@ -24,6 +27,11 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public ControlAdded OnControlAdded
+        {
+            get;
+            set;
+        }
         public string Text
         {
             get;
@@ -47,6 +55,13 @@ namespace StardomEngine.Resonance
             get;
             set;
         }
+
+        public Vector2 RenderOffset
+        {
+            get;
+            set;
+        }
+
         public Vector2 RenderPosition
         {
             get
@@ -54,11 +69,10 @@ namespace StardomEngine.Resonance
                 Vector2 position = Vector2.Zero;
                 if (Root != null)
                 {
-                    position = Root.RenderPosition;
+                    position = Root.RenderPosition+Root.RenderOffset;
                 }
 
                 return position + Position;
-
             }
 
         }
@@ -81,6 +95,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public Vector2 ContentSize
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
 
@@ -88,6 +108,7 @@ namespace StardomEngine.Resonance
             Controls = new List<IControl>();
             Root = null;
             Image = null;
+            RenderOffset = new Vector2(0, 0);
 
         }
 
@@ -97,6 +118,27 @@ namespace StardomEngine.Resonance
 
             control.Root = this;
             Controls.Add(control);
+            UpdatedContent();
+            UpdateContentSize();
+            OnControlAdded?.Invoke(this, control);
+
+        }
+
+
+        public void UpdatedContent()
+        {
+            int by = 0;
+            foreach (var control in Controls)
+            {
+                if (control.RenderPosition.Y-control.Size.Y > by)
+                {
+                    by = (int)control.Position.Y - (int)control.Size.Y;
+                }
+            }
+            ContentSize = new Vector2(0, by);
+        }
+        public virtual void UpdateContentSize()
+        {
 
         }
 
@@ -118,6 +160,8 @@ namespace StardomEngine.Resonance
             {
                 control.Set(control.Position, control.Size, control.Text);
             }
+            UpdatedContent();
+            UpdateContentSize();
             return this;
         }
 
@@ -169,6 +213,39 @@ namespace StardomEngine.Resonance
         {
 
         }
+
+        public void SetStencil(Texture2D stencil)
+        {
+
+            GL.Enable(EnableCap.StencilTest);
+            GL.Clear(ClearBufferMask.StencilBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.ClearStencil(0); // Reset stencil buffer to 0
+            GL.StencilMask(0xFF);
+
+            GL.StencilFunc(StencilFunction.Always, 1, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace);
+
+
+            //GL.StencilFunc(StencilFunction.Always, 1, 0xFF);
+            //GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace);
+
+            //GL.StencilMask(0xFF);
+
+
+           // GL.ClearStencil(0);
+            GL.ColorMask(false, false, false, false);
+
+            GameUI.This.DrawRect(stencil, RenderPosition, Size, Color, 0, false);
+
+            GL.ColorMask(true, true, true, true);
+
+            GL.StencilFunc(StencilFunction.Equal, 1, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Keep); // Keep stencil values
+            GL.StencilMask(0x00); // Disable writing to the stencil buffer
+
+        }
+
         public virtual void Render()
         {
 

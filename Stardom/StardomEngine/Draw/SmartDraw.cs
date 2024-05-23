@@ -164,8 +164,8 @@ namespace StardomEngine.Draw
             return call;
         }
 
-        float[] v_data = null;
-        uint[] i_data = null;
+        static float[] v_data = null;
+        static uint[] i_data = null;
         int v_len = 0;
         int i_len = 0;
         public void End2()
@@ -354,7 +354,7 @@ namespace StardomEngine.Draw
           //  GL.Enable(EnableCap.DepthTest);
          //   GL.DepthFunc(DepthFunction.Lequal);
 
-            GL.Viewport(0, 0, w, h);
+            //GL.Viewport(0, 0, w, h);
 
             if (VertexArray == 0)
             {
@@ -387,7 +387,7 @@ namespace StardomEngine.Draw
                 }
                 int ix = 0;
                 //v_data = new float[nlen];
-
+               // Span<float> v_data = stackalloc float[nlen];
                 foreach (var call in list.Calls)
                 {
 
@@ -475,10 +475,11 @@ namespace StardomEngine.Draw
                 if (nilen > i_len)
                 {
 
-                     i_data = new uint[list.Calls.Count * 6];
+                    // i_data = new uint[list.Calls.Count * 6];
                     i_len = nilen;
                 }
 
+                Span<uint> i_data = stackalloc uint[nilen];
                 ix = 0;
 
                 uint vi = 0;
@@ -513,22 +514,24 @@ namespace StardomEngine.Draw
                 //GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, nlen, v_data);
                 GCHandle handle = GCHandle.Alloc(v_data, GCHandleType.Pinned);
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, nlen* sizeof(float), pointer);
+
+                GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, nlen* sizeof(float),pointer);
+                handle.Free();
 
                 //ReadOnlySpan<float> floats = new ReadOnlySpan<float>(v_data, 0, nlen);
                 //GL.BindBuffer(BufferTarget.ArrayBuffer, Buffer);
                 //    GL.BufferSubData(BufferTarget.ArrayBuffer,(IntPtr)0,v_data);
 
 
-                GCHandle handle1 = GCHandle.Alloc(i_data, GCHandleType.Pinned);
-                IntPtr pointer1 = handle1.AddrOfPinnedObject();
+               // GCHandle handle1 = GCHandle.Alloc(i_data, GCHandleType.Pinned);
+               // IntPtr pointer1 = handle1.AddrOfPinnedObject();
 
 
 
                 //   GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
-                GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, (int)vi * sizeof(uint), pointer1);
+                GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, (int)vi * sizeof(uint), ref MemoryMarshal.GetReference(i_data));
                 //GL.BufferData(BufferTarget.ElementArrayBuffer, i_data, BufferUsage.DynamicDraw);
-
+           //     handle1.Free();
 
 
 

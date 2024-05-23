@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.HashFunction.MurmurHash;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,17 @@ namespace StardomEngine.Helper
 {
     public class Helpers
     {
+        public static IMurmurHash3 murmurHash3 = MurmurHash3Factory.Instance.Create();
+
+        public static int GenerateHash(string name)
+        {
+
+            byte[] hashBytes = murmurHash3.ComputeHash(Encoding.UTF8.GetBytes(name)).Hash;
+            // Take the first 4 bytes of the hash to create an int value
+            int hash = BitConverter.ToInt32(hashBytes, 0);
+            return hash;
+
+        }
 
         public static bool ListSame<T>(List<T> a,List<T> b) where T : class
         {

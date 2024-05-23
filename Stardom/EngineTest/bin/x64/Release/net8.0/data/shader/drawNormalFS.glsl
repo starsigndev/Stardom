@@ -51,11 +51,9 @@ void main(){
     float lxd = se_LightPosition.x-pp.x;
     float lyd = se_LightPosition.y-pp.y;
 
-    vec3 lightDir = vec3(lxd,lyd,128.0);
+    vec3 lightDir = vec3(lxd,lyd,128.0*se_Zoom);
 
     float fdif = max(dot(t_Norm,normalize(lightDir)),0.0);
-
-    //fdif = 1.0;
 
 
 

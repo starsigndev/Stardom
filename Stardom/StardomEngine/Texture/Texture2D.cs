@@ -14,6 +14,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using System.Threading.Channels;
 using StardomEngine.App;
+using System.Data;
 namespace StardomEngine.Texture
 {
     public class Texture2D
@@ -28,6 +29,16 @@ namespace StardomEngine.Texture
 
         public int Channels { get; set; }
 
+        public static Dictionary<string, Texture2D> Cache = new Dictionary<string, Texture2D>();
+
+        public void Delete()
+        {
+
+            Data = null;
+            DataFloat = null;
+            GL.DeleteTexture(Handle);
+
+        }
         public Texture2D(byte[] data,int w,int h)
         {
 
@@ -114,11 +125,90 @@ namespace StardomEngine.Texture
         public Texture2D(string path)
         {
 
+            if (Cache.ContainsKey(path))
+            {
+
+                var cache = Cache[path];
+
+                Data = cache.Data;
+                DataFloat = cache.DataFloat;
+                Width = cache.Width;
+                Height = cache.Height;
+                Channels = cache.Channels;
+                Handle = cache.Handle;
+                //  Console.WriteLine("Cached!!!");
+                return;
+
+            }
+            Cache.Add(path, this);
+            //Console.WriteLine("ADDED!");
+
+
+
             Handle = GL.CreateTexture(TextureTarget.Texture2d);
             GL.BindTexture(TextureTarget.Texture2d, Handle);
 
+            if (File.Exists(path + ".cache"))
+            {
+
+                FileInfo fil2 = new FileInfo(path);
+                var time2 = fil2.LastWriteTime;
+
+                FileStream ctime = new FileStream(path + ".time", FileMode.Open, FileAccess.Read);
+                BinaryReader r1 = new BinaryReader(ctime);
+                long ticks = r1.ReadInt64();
+                ctime.Close();
+
+                if (ticks != time2.Ticks)
+                {
+
+                }
+                else
+                {
+                    FileStream fs = new FileStream(path + ".cache", FileMode.Open, FileAccess.Read);
+                    BinaryReader r2 = new BinaryReader(fs);
+
+                    Width = r2.ReadInt32();
+                    Height = r2.ReadInt32();
+                    Channels = r2.ReadInt32();
+                    Data = r2.ReadBytes(Width * Height * Channels);
+
+
+                    fs.Close();
+                    MakeTexture();
+                    return;
+                }
+
+            }
+
             Data = LoadPngToByteArray(path);
 
+            FileInfo fil = new FileInfo(path);
+            var time = fil.LastWriteTime;
+
+            FileStream tfile = new FileStream(path + ".time", FileMode.Create, FileAccess.Write);
+            BinaryWriter w = new BinaryWriter(tfile);
+            w.Write(time.Ticks);
+            w.Flush();
+            tfile.Close();
+
+
+            FileStream file = new FileStream(path + ".cache", FileMode.Create, FileAccess.Write);
+            BinaryWriter w1 = new BinaryWriter(file);
+            w1.Write(Width);
+            w1.Write(Height);
+            w1.Write(Channels);
+            w1.Write(Data);
+            w1.Flush();
+            file.Flush();
+            file.Close();
+
+            MakeTexture();
+
+        }
+
+        private void MakeTexture()
+        {
             if (Channels == 4)
             {
                 GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Data);
@@ -127,18 +217,15 @@ namespace StardomEngine.Texture
             {
                 GL.TexImage2D(TextureTarget.Texture2d, 0, InternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, Data);
             }
-            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter,(int)TextureMinFilter.LinearMipmapLinear);
-            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter,(int)TextureMagFilter.Linear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
 
             GL.GenerateMipmap(TextureTarget.Texture2d);
 
             GL.BindTexture(TextureTarget.Texture2d, 0);
-
-
         }
-
 
         public void SetPixelFloat(int x,int y,Vector4 color)
         {

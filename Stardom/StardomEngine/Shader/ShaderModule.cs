@@ -16,9 +16,16 @@ namespace StardomEngine.Shader
 
         public int Program { get; set; }
 
+        public Dictionary<string,int> Cache
+        {
+            get;
+            set;
+        }
+
         public ShaderModule(string vertex_shader,string fragment_shader)
         {
 
+            Cache = new Dictionary<string, int>(128);
             VertexShader = CompileShader(ShaderType.VertexShader,vertex_shader);
             FragShader = CompileShader(ShaderType.FragmentShader, fragment_shader);
 
@@ -84,13 +91,16 @@ namespace StardomEngine.Shader
         public int GetLoc(string name)
         {
 
-            int loc = GL.GetUniformLocation(Program, name);
+            //int hash = Helper.Helpers.GenerateHash(name);
 
-            if (loc == -1)
+            if (Cache.ContainsKey(name))
             {
-                //Console.WriteLine("Could not find shader uniform " + name);
-               // Environment.Exit(0);
+                return Cache[name];
             }
+
+            int loc = GL.GetUniformLocation(Program, name);
+            Cache.Add(name, loc);
+           
 
             return loc;
         }

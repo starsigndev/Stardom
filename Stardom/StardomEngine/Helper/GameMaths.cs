@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace StardomEngine.Helper
 
         private static readonly Random random = new Random();
 
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 RandomVec3(Vector3 min,Vector3 max)
         {
             float x = (float)(random.NextDouble() * (max.X - min.X) + min.X);
@@ -22,6 +23,7 @@ namespace StardomEngine.Helper
             return new Vector3(x, y, z);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 RotateAndScale(Vector2 vector, float rotate, float scale)
         {
             // Convert the rotation angle from degrees to radians

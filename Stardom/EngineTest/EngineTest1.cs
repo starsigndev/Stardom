@@ -123,9 +123,10 @@ namespace EngineTest
             image1.Refracter = new Texture2D("data/refract2.jpg");
             pp1 = image1;
 
-            var win1 = new IWindow().Set(new Vector2(100, 100), new Vector2(300, 400), "Test Window") as IWindow;
-            var b2 = new IButton().Set(new Vector2(10, 35), new Vector2(180, 30), "Load Game") as IButton;
+            var win1 = new IWindow().Set(new Vector2(20, 20), new Vector2(400, 300), "Test Window") as IWindow;
+            var b2 = new IButton().Set(new Vector2(-40, 455), new Vector2(180, 30), "Load Game") as IButton;
             win1.Contents.AddControl(b2);
+            //--- STENCIL eden stealing resorces cloaked
             UI.RootControl.AddControl(win1);
             win1.Contents.Color = new Vector4(1, 1, 1, 0.7f);
             win1.Contents.Refracter = new Texture2D("data/refract2.jpg");
