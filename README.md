@@ -1,9 +1,8 @@
-Starmdom is comprised of two seperate projects.
+- Starmdom is comprised of two seperate projects.
 
-- Stardom Engine - This is a 2D(Soon to include 3D elements) engine that will power "Stardom"
+  - Stardom Engine - This is a 2D(Soon to include 3D elements) engine that will power "Stardom"
 
-- Stardom - A planet hopping 2D/3D adventure rpg, as you in search of "Eden" - A mythical super-race that may or may not,
-hold the key to the rest of the universes survival. But probably not in the way you would expect.
+  - Stardom - A planet hopping 2D/3D adventure rpg, as you in search of "Eden" - A mythical super-race that may or may not, hold the key to the rest of the universes survival. But probably not in the way you would expect.
 
 - Engine Features
 
