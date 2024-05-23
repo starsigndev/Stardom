@@ -24,23 +24,57 @@ namespace StardomEngine.Draw
         private int Buffer;
         private int IndexBuffer;
 
+        public static List<DrawList> PreLists = null;
+        public static Matrix4 se_Projection;
+        public static bool ProjectionCreated = false;
+        
+        public static DrawList GetFreeList()
+        {
+            var res = PreLists[0];
+            PreLists.Remove(res);
+            res.Calls.Clear();
+            res.dataIndex = 0;
+            res.CallsNum = 0;
+            res.indexIndex = 0;
+            return res;
+        }
 
         public SmartDraw()
         {
 
+            if (PreLists == null) {
+                PreLists = new List<DrawList>(1024);
+                for (int i = 0; i < 1024; i++)
+                {
+                    PreLists.Add(new DrawList());
+                }
+            }
             Lists = new List<DrawList>();
             ListMap = new Dictionary<Texture2D, DrawList>();
 
             DrawNormal = new ShaderModule("data/shader/drawNormalVS.glsl", "data/shader/drawNormalFS.glsl");
 
+            if (ProjectionCreated==false)
+            {
+                ProjectionCreated = true;
+                int w = StarApp.FrameWidth;
+                int h = StarApp.FrameHeight;
+                //int b = 0;
+                 se_Projection = Matrix4.CreateOrthographicOffCenter(0, w, h, 0, -1.0f, 1.0f);
+            }
 
         }
         public void Begin()
         {
 
             CurrentZ = 0.1f;
+            foreach(var list in Lists)
+            {
+                PreLists.Add(list);
+            }
             Lists.Clear();
             ListMap.Clear();
+
             //plist = null;
 
         }
@@ -61,16 +95,18 @@ namespace StardomEngine.Draw
 
             foreach(var list in Lists)
             {
-                if (list.Calls[0].Image == image)
+                if (list.Image == image)
                 {
                     //plist = list;
                     return list;
                 }
             }
 
-            DrawList new_list = new DrawList();
+            //DrawList new_list = new DrawList();
+            var new_list = GetFreeList();
 
-            ListMap.Add(image, new_list);
+            //  ListMap.Add(image, new_list);
+            new_list.Image = image;
             Lists.Add(new_list);
           //  plist = new_list;
             return new_list;
@@ -132,10 +168,12 @@ namespace StardomEngine.Draw
 
         }
 
-        public DrawCall DrawQuad(Texture2D image,Vector2 position,Vector2 size,Vector4 color)
+        public DrawCall DrawQuad(Texture2D image,Vector2 position,Vector2 size,Vector4 color,Vector4 ext,Texture2D mask=null)
         {
 
             var list = FindList(image);
+            
+            
 
             DrawCall call = new DrawCall();
 
@@ -152,6 +190,7 @@ namespace StardomEngine.Draw
             call.Y[3] = call.Y[2];
 
             call.Z = CurrentZ;
+            call.Ext = ext;
 
             CurrentZ += 0.001f;
 
@@ -159,7 +198,98 @@ namespace StardomEngine.Draw
 
             call.Image = image;
 
-            list.AddCall(call);
+            int ix = list.dataIndex;
+
+            list.v_data[ix++] = call.X[0];
+            list.v_data[ix++] = call.Y[0];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 0;
+            list.v_data[ix++] = 0;
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v1
+            list.v_data[ix++] = call.X[1];
+            list.v_data[ix++] = call.Y[1];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 1;
+            list.v_data[ix++] = 0;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v2
+            list.v_data[ix++] = call.X[2];
+            list.v_data[ix++] = call.Y[2];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 1;
+            list.v_data[ix++] = 1;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+
+            //v3 
+            list.v_data[ix++] = call.X[3];
+            list.v_data[ix++] = call.Y[3];
+            list.v_data[ix++] = call.Z;
+
+            list.v_data[ix++] = call.Color.X;
+            list.v_data[ix++] = call.Color.Y;
+            list.v_data[ix++] = call.Color.Z;
+            list.v_data[ix++] = call.Color.W;
+
+            list.v_data[ix++] = 0;
+            list.v_data[ix++] = 1;
+
+
+            list.v_data[ix++] = call.Ext.X;
+            list.v_data[ix++] = call.Ext.Y;
+            list.v_data[ix++] = call.Ext.Z;
+            list.v_data[ix++] = call.Ext.W;
+            list.Image = image;
+            list.Normals = mask;
+
+            list.dataIndex = ix;
+
+            uint vi = list.indexIndex;
+
+            list.i_data[vi] = vi;
+            list.i_data[vi + 1] = vi + 1;
+            list.i_data[vi + 2] = vi + 2;
+            list.i_data[vi + 3] = vi + 3;
+
+            list.indexIndex = vi + 4;
+
+            list.CallsNum = list.CallsNum + 1;
+
+            //      list.AddCall(call);
 
             return call;
         }
@@ -339,22 +469,7 @@ namespace StardomEngine.Draw
         public void End()
         {
 
-            //End2();
-            //return;
-           
-            int w = StarApp.FrameWidth;
-            int h = StarApp.FrameHeight;
-            //int b = 0;
-            var se_Projection = Matrix4.CreateOrthographicOffCenter(0, w, h, 0, -1.0f, 1.0f);
-
-           // DrawNormal.Bind();
-
             DrawNormal.SetMat("se_Projection",se_Projection);
-
-          //  GL.Enable(EnableCap.DepthTest);
-         //   GL.DepthFunc(DepthFunction.Lequal);
-
-            //GL.Viewport(0, 0, w, h);
 
             if (VertexArray == 0)
             {
@@ -375,165 +490,28 @@ namespace StardomEngine.Draw
                 GL.BindVertexArray(VertexArray);
                 GL.BindBuffer(BufferTarget.ArrayBuffer,Buffer);
 
-
-                int nlen = list.Calls.Count * 3 * 4 * 2 * 4 * 4;
-
-                if (nlen > v_len)
+                list.Image.Bind(0);
+                if (list.Normals != null)
                 {
-                    
-                    v_len = nlen;
-                    v_data = new float[v_len];
-
-                }
-                int ix = 0;
-                //v_data = new float[nlen];
-               // Span<float> v_data = stackalloc float[nlen];
-                foreach (var call in list.Calls)
-                {
-
-                    //v0
-                    v_data[ix++] = call.X[0];
-                    v_data[ix++] = call.Y[0];
-                    v_data[ix++] = call.Z;
-
-                    v_data[ix++] = call.Color.X;
-                    v_data[ix++] = call.Color.Y;
-                    v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.W;
-
-                    v_data[ix++] = 0;
-                    v_data[ix++] = 0;
-
-                    v_data[ix++] = call.Ext.X;
-                    v_data[ix++] = call.Ext.Y;
-                    v_data[ix++] = call.Ext.Z;
-                    v_data[ix++] = call.Ext.W;
-
-                    //v1
-                    v_data[ix++] = call.X[1];
-                    v_data[ix++] = call.Y[1];
-                    v_data[ix++] = call.Z;
-
-                    v_data[ix++] = call.Color.X;
-                    v_data[ix++] = call.Color.Y;
-                    v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.W;
-
-                    v_data[ix++] = 1;
-                    v_data[ix++] = 0;
-
-
-                    v_data[ix++] = call.Ext.X;
-                    v_data[ix++] = call.Ext.Y;
-                    v_data[ix++] = call.Ext.Z;
-                    v_data[ix++] = call.Ext.W;
-
-                    //v2
-                    v_data[ix++] = call.X[2];
-                    v_data[ix++] = call.Y[2];
-                    v_data[ix++] = call.Z;
-
-                    v_data[ix++] = call.Color.X;
-                    v_data[ix++] = call.Color.Y;
-                    v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.W;
-
-                    v_data[ix++] = 1;
-                    v_data[ix++] = 1;
-
-
-                    v_data[ix++] = call.Ext.X;
-                    v_data[ix++] = call.Ext.Y;
-                    v_data[ix++] = call.Ext.Z;
-                    v_data[ix++] = call.Ext.W;
-
-                    //v3 
-                    v_data[ix++] = call.X[3];
-                    v_data[ix++] = call.Y[3];
-                    v_data[ix++] = call.Z;
-
-                    v_data[ix++] = call.Color.X;
-                    v_data[ix++] = call.Color.Y;
-                    v_data[ix++] = call.Color.Z;
-                    v_data[ix++] = call.Color.W;
-
-                    v_data[ix++] = 0;
-                    v_data[ix++] = 1;
-
-
-                    v_data[ix++] = call.Ext.X;
-                    v_data[ix++] = call.Ext.Y;
-                    v_data[ix++] = call.Ext.Z;
-                    v_data[ix++] = call.Ext.W;
-
-
-                }
-
-                int nilen = list.Calls.Count * 6;
-
-
-                if (nilen > i_len)
-                {
-
-                    // i_data = new uint[list.Calls.Count * 6];
-                    i_len = nilen;
-                }
-
-                Span<uint> i_data = stackalloc uint[nilen];
-                ix = 0;
-
-                uint vi = 0;
-
-
-                for(int i = 0; i < list.Calls.Count; i++)
-                {
-
-                    i_data[ix++] = vi;
-                    i_data[ix++] = vi + 1;
-                    i_data[ix++] = vi + 2;
-                    i_data[ix++] = vi + 3;
-
-                    //i_data[ix++] = vi + 3;
-                    //i_data[ix++] = vi;
-                    vi = vi + 4;
-
-                }
-
-
-                list.Calls[0].Image.Bind(0);
-                if (list.Calls[0].Normals != null)
-                {
-                    list.Calls[0].Normals.Bind(1);
+                    list.Normals.Bind(1);
                 }
 
                 DrawNormal.SetInt("se_ColorTexture", 0);
                 DrawNormal.SetInt("se_NormalMap", 1);
 
 
-                //GL.BufferData(BufferTarget.ArrayBuffer,v_data, BufferUsage.DynamicDraw);
-                //GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, nlen, v_data);
-                GCHandle handle = GCHandle.Alloc(v_data, GCHandleType.Pinned);
+                GCHandle handle = GCHandle.Alloc(list.v_data, GCHandleType.Pinned);
                 IntPtr pointer = handle.AddrOfPinnedObject();
 
-                GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, nlen* sizeof(float),pointer);
+                GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, list.dataIndex* sizeof(float),pointer);
                 handle.Free();
 
-                //ReadOnlySpan<float> floats = new ReadOnlySpan<float>(v_data, 0, nlen);
-                //GL.BindBuffer(BufferTarget.ArrayBuffer, Buffer);
-                //    GL.BufferSubData(BufferTarget.ArrayBuffer,(IntPtr)0,v_data);
+                GCHandle handle1 = GCHandle.Alloc(list.i_data, GCHandleType.Pinned);
+                IntPtr pointer1 = handle1.AddrOfPinnedObject();
 
-
-               // GCHandle handle1 = GCHandle.Alloc(i_data, GCHandleType.Pinned);
-               // IntPtr pointer1 = handle1.AddrOfPinnedObject();
-
-
-
-                //   GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
-                GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, (int)vi * sizeof(uint), ref MemoryMarshal.GetReference(i_data));
-                //GL.BufferData(BufferTarget.ElementArrayBuffer, i_data, BufferUsage.DynamicDraw);
-           //     handle1.Free();
-
-
+                GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, (int)list.indexIndex * sizeof(uint),pointer1);
+   
+                handle1.Free();
 
 
                 if (vcc==false)
@@ -555,7 +533,7 @@ namespace StardomEngine.Draw
 
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexBuffer);
 
-                GL.DrawElements(PrimitiveType.Quads, list.Calls.Count * 4, DrawElementsType.UnsignedInt, 0);
+                GL.DrawElements(PrimitiveType.Quads, list.CallsNum*4, DrawElementsType.UnsignedInt, 0);
                 //GL.DrawElementsInstanced(PrimitiveType.Triangles, list.Calls.Count * 6, DrawElementsType.UnsignedInt,0,1);
 
 
@@ -570,11 +548,6 @@ namespace StardomEngine.Draw
 
                 //list.Calls[0].Image.Release(0);
                // list.Calls[0].Normals.Release(1);
-
-
-
-
-
 
             }
 

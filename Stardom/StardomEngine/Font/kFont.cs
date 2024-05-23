@@ -129,7 +129,7 @@ namespace Vivid.Font
 
         //            draw.Begin();
                     //draw.DrawTexture(Chars[cnum], x+sx, y, (int)(Chars[cnum].Width * Scale),(int)(Chars[cnum].Height * Scale), r, g, b, a);
-                    GameUI.Draw.DrawQuad(Chars[cnum], new Vector2(x + sx, y), new Vector2((int)(Chars[cnum].Width * Scale), (int)(Chars[cnum].Height * Scale)), new Vector4(r, g, b, a));
+                    GameUI.Draw.DrawQuad(Chars[cnum], new Vector2(x + sx, y), new Vector2((int)(Chars[cnum].Width * Scale), (int)(Chars[cnum].Height * Scale)), new Vector4(r, g, b, a),new Vector4(0,0,0,0));
                     sx = sx + (int)(Chars[cnum].Width * Scale) + 2;
           //          draw.End();
                 }

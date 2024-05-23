@@ -85,28 +85,31 @@ namespace StardomEngine.Resonance
 
             if (flip)
             {
-                var call = Draw.DrawQuad(image, position + new Vector2(0, size.Y), new Vector2(size.X, -size.Y), color);
-                call.Normals = mask;
+              
                 if (mask != null)
                 {
-                    call.Ext = new Vector4(blur, 1.0f, refract, 0);
+                 
+                    var call = Draw.DrawQuad(image, position + new Vector2(0, size.Y), new Vector2(size.X, -size.Y), color, new Vector4(blur, 1.0f, refract, 0),mask);
                 }
                 else
                 {
-                    call.Ext = new Vector4(blur, 0, refract, 0);
+
+                    var call = Draw.DrawQuad(image, position + new Vector2(0, size.Y), new Vector2(size.X, -size.Y), color, new Vector4(blur, 0, refract, 0), mask); ;
                 }
             }
             else
             {
-                var call = Draw.DrawQuad(image, position, size, color);
-                call.Normals = mask;
+                
+                
                 if (mask != null)
                 {
-                    call.Ext = new Vector4(blur, 1.0f, refract, 0);
+                 
+                    Draw.DrawQuad(image, position, size, color, new Vector4(blur, 1.0f, refract, 0));
                 }
                 else
                 {
-                    call.Ext = new Vector4(blur, 0, refract, 0);
+              
+                    Draw.DrawQuad(image, position, size, color, new Vector4(blur, 0, refract, 0));
                 }
             }
             Draw.DrawNormal.Bind();

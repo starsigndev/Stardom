@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StardomEngine.Texture;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,12 @@ namespace StardomEngine.Draw
     {
 
         public List<DrawCall> Calls { get; set; }
+        public float[] v_data = new float[1024 * 1024];
+        public uint[] i_data = new uint[1024 * 1024];
+        public int dataIndex = 0;
+        public uint indexIndex = 0;
+        public int CallsNum = 0;
+        public Texture2D Image, Normals;
 
         public DrawList()
         {
