@@ -77,9 +77,9 @@ namespace StardomEngine.Resonance.Controls
 
 
             int th = (int)GameUI.This.TextHeight("") / 2;
+            int tw = (int)GameUI.This.TextWidth(Values[CurrentSelection]) / 2;
 
-
-            GameUI.This.DrawText(Values[CurrentSelection], new OpenTK.Mathematics.Vector2(RenderPosition.X + 6, RenderPosition.Y + Size.Y/2-th), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+            GameUI.This.DrawText(Values[CurrentSelection], new OpenTK.Mathematics.Vector2(RenderPosition.X + Size.X/2-tw, RenderPosition.Y + Size.Y/2-th+2), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
 
 
             if (ShowLabel)
@@ -140,9 +140,21 @@ namespace StardomEngine.Resonance.Controls
 
             }
         }
+
+        public override void OnDeactivate()
+        {
+            //base.OnDeactivate();
+            if (Selector != null)
+            {
+                GameUI.This.Overlay.Remove(Selector);
+                Selector = null;
+                Open = false;
+            }
+        }
+
         //public dynamic GetEnum()
-       // {
-           
+        // {
+
         //}
 
         /*

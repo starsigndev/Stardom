@@ -18,7 +18,7 @@ namespace EngineTest
             native.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
             native.APIVersion = new Version(4, 2);
             native.AutoLoadBindings = true;
-            native.ClientSize = new OpenTK.Mathematics.Vector2i(800, 600);
+            native.ClientSize = new OpenTK.Mathematics.Vector2i(1300, 768);
             native.Profile = OpenTK.Windowing.Common.ContextProfile.Compatability;
             native.Title = "StardomEngine Test 1.";
             native.Vsync = OpenTK.Windowing.Common.VSyncMode.Off;

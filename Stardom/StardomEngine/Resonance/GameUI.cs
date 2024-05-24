@@ -12,6 +12,7 @@ using StardomEngine.Input;
 using StardomEngine.Resonance.Controls;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using OpenTK.Windowing.Common;
+using StardomEngine.Resonance.Controls;
 
 namespace StardomEngine.Resonance
 {
@@ -77,6 +78,21 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public IMenu MainMenu
+        {
+            get
+            {
+                return _MenuBar;
+            }
+            set
+            {
+                _MenuBar = value;
+                value.Set(new Vector2(0,0),new Vector2(App.StarApp.FrameWidth,30),"");
+                RootControl.Set(new Vector2(0, 30), new Vector2(0, App.StarApp.FrameHeight - 30));
+            }
+        }
+        private IMenu _MenuBar;
+
         int CurrentKey = -1;
         bool FirstKey = true;
         int NextKey = 0;
@@ -96,6 +112,7 @@ namespace StardomEngine.Resonance
             OverControl = null;
             PressedControl = null;
             ActiveControl = null;
+            MainMenu = new IMenu();
         }
 
         public void AddWindow(IWindow window)
@@ -391,6 +408,23 @@ namespace StardomEngine.Resonance
                 OverControl.OnMouseMove(GameInput.MousePosition-OverControl.RenderPosition, GameInput.MouseDelta);
             }
 
+            if (OverControl == null)
+            {
+                if (PressedControl == null)
+                {
+                    if (ActiveControl != null)
+                    {
+                        if (GameInput.MouseButton[0])
+                        {
+                            ActiveControl.OnDeactivate();
+                            ActiveControl.Active = false;
+                            ActiveControl = null;
+
+                        }
+                    }
+                }
+            }
+
         }
 
         public IControl GetOver(Vector2 pos)
@@ -426,6 +460,10 @@ namespace StardomEngine.Resonance
             {
                 AddControlToList(list, control);
             }
+            if (MainMenu != null)
+            {
+                AddControlToList(list, MainMenu);
+            }
             return list;
 
 
@@ -457,6 +495,10 @@ namespace StardomEngine.Resonance
             foreach(var control in Overlay)
             {
                 control.Render();
+            }
+            if (MainMenu != null)
+            {
+                MainMenu.Render();   
             }
           
 

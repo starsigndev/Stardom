@@ -105,7 +105,7 @@ namespace EngineTest
 
             var img = new IImage(new Texture2D("data/bg1.png")).Set(new Vector2(0, 0), new Vector2(StarApp.FrameWidth, StarApp.FrameHeight), "") as IImage;
 
-           // UI.RootControl.AddControl(img);
+            UI.RootControl.AddControl(img);
 
             b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
            
@@ -154,6 +154,24 @@ namespace EngineTest
                 }
                 Console.WriteLine("Selected:" + name);
             };
+
+
+            var file = UI.MainMenu.AddItem("File");
+            var edit = UI.MainMenu.AddItem("Edit");
+            var options = UI.MainMenu.AddItem("Options");
+
+            var load = file.AddItem("Load Game");
+            file.AddItem("Save Game");
+            file.AddItem("Exit Game");
+
+            edit.AddItem("Cut");
+            edit.AddItem("Copy");
+            edit.AddItem("Paste");
+
+            load.AddItem("New Game");
+            load.AddItem("Old Game");
+            load.AddItem("Exit Game");
+
 
 
 
