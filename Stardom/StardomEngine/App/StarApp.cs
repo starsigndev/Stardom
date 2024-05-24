@@ -9,6 +9,7 @@ using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using StardomEngine.Input;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace StardomEngine.App
 {
@@ -70,6 +71,22 @@ namespace StardomEngine.App
         {
             //base.OnLoad();
             InitApp();
+        }
+
+        protected override void OnKeyDown(KeyboardKeyEventArgs e)
+        {
+            //base.OnKeyDown(e);
+            GameInput.KeyButton[(int)e.Key] = true;
+            if (e.Key == Keys.LeftShift)
+            {
+             //   Environment.Exit(1);
+            }
+        }
+
+        protected override void OnKeyUp(KeyboardKeyEventArgs e)
+        {
+            //base.OnKeyUp(e);
+            GameInput.KeyButton[(int)e.Key] = false;
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)

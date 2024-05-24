@@ -14,6 +14,7 @@ namespace StardomEngine.Resonance
             path = "data/ui/themes/" + path;
             Frame = new Texture2D(path + "\\frame.png");
             Button = new Texture2D(path + "\\button.png");
+            TextBox = new Texture2D(path + "\\textbox.png");
             WindowTitle = new Texture2D(path + "\\windowtitle.png");
         }
 
@@ -21,6 +22,7 @@ namespace StardomEngine.Resonance
         public Texture2D Frame { get; set; }
         public Texture2D Button { get; set; }
 
+        public Texture2D TextBox { get; set; }
         public Texture2D WindowTitle { get; set; }
 
 

@@ -131,8 +131,8 @@ namespace StardomEngine.Texture
 
                 var cache = Cache[path];
 
-                Data = cache.Data;
-                DataFloat = cache.DataFloat;
+               // Data = cache.Data;
+              //  DataFloat = cache.DataFloat;
                 Width = cache.Width;
                 Height = cache.Height;
                 Channels = cache.Channels;
@@ -226,6 +226,9 @@ namespace StardomEngine.Texture
             GL.GenerateMipmap(TextureTarget.Texture2d);
 
             GL.BindTexture(TextureTarget.Texture2d, 0);
+            //Data = null;
+            DataFloat = null;
+
         }
 
         public void SetPixelFloat(int x,int y,Vector4 color)

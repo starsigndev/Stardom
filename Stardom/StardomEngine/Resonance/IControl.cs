@@ -12,6 +12,7 @@ namespace StardomEngine.Resonance
 {
     public delegate void Dragged(int x, int y);
     public delegate void ControlAdded(IControl root, IControl added);
+    public delegate void TextChanged(IControl control, string text);
     public class IControl
     {
 
@@ -34,8 +35,21 @@ namespace StardomEngine.Resonance
         }
         public string Text
         {
-            get;
-            set;
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                _Text = value;
+                TextChanged();
+            }
+        }
+        protected string _Text = "";
+
+        public TextChanged OnTextChanged
+        {
+            get;set;
         }
 
         public IControl Root
@@ -101,6 +115,18 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public bool Active
+        {
+            get;
+            set;
+        }
+
+        public bool ShiftOn
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
 
@@ -124,6 +150,18 @@ namespace StardomEngine.Resonance
 
         }
 
+        public void RemoveControl(IControl control)
+        {
+
+            Controls.Remove(control);
+
+        }
+
+
+        public virtual void TextChanged()
+        {
+
+        }
 
         public void UpdatedContent()
         {
@@ -185,9 +223,30 @@ namespace StardomEngine.Resonance
             return false;
         }
 
+        public virtual void OnKeyPressed(OpenTK.Windowing.GraphicsLibraryFramework.Keys key)
+        {
+
+        }
+
+        public virtual void OnKey(OpenTK.Windowing.GraphicsLibraryFramework.Keys key)
+        {
+
+        }
+
         public virtual void OnMoved(Vector2 moved)
         {
 
+        }
+
+
+        public virtual void OnActivate()
+        {
+            Console.WriteLine("Activated:");
+        }
+
+        public virtual void OnDeactivate()
+        {
+            Console.WriteLine("On deactivate");
         }
         public virtual void OnEnter()
         {

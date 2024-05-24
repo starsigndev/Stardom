@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
 using Vivid.Font;
 using StardomEngine.Input;
+using StardomEngine.Resonance.Controls;
+using OpenTK.Windowing.GraphicsLibraryFramework;
+using OpenTK.Windowing.Common;
 
 namespace StardomEngine.Resonance
 {
@@ -39,6 +42,11 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public List<IWindow> Windows
+        {
+            get;
+            set;
+        }
         public static kFont SystemFont
         {
             get;
@@ -63,18 +71,29 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        int CurrentKey = -1;
+        bool FirstKey = true;
+        int NextKey = 0;
+
+
         public GameUI()
         {
 
             Theme = new UITheme("Arc");
             Draw = new SmartDraw();
             RootControl = new IControl();
+            Windows = new List<IWindow>();
             This = this;
             Draw.DrawNormal = new Shader.ShaderModule("data/shader/drawUIVS.glsl", "data/shader/drawUIFS.glsl");
             SystemFont = new kFont("data/ui/fonts/f1.pf");
             OverControl = null;
             PressedControl = null;
             ActiveControl = null;
+        }
+
+        public void AddWindow(IWindow window)
+        {
+            Windows.Add(window);
         }
 
         public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f,bool flip=false,Texture2D mask=null,float refract=0.0f,Texture2D refracter=null)
@@ -158,9 +177,19 @@ namespace StardomEngine.Resonance
             return SystemFont.StringHeight();
 
         }
+        bool[] used = new bool[512];
 
         public void Update()
         {
+
+
+            var list = GetControlList();
+
+            foreach(var control in list)
+            {
+                control.Update();
+            }
+
 
             Vector2 mouse_pos = GameInput.MousePosition;
 
@@ -198,8 +227,20 @@ namespace StardomEngine.Resonance
 
                     if (GameInput.MouseButton[0])
                     {
+                        
                         PressedControl = OverControl;
                         PressedControl.OnMouseDown(0);
+                        if (OverControl != ActiveControl)
+                        {
+                            if (ActiveControl != null)
+                            {
+                                ActiveControl.OnDeactivate();
+                                ActiveControl.Active = false;
+                            }
+                            PressedControl.OnActivate();
+                            PressedControl.Active = true;
+                            ActiveControl = PressedControl;
+                        }
 
                     }
 
@@ -207,7 +248,7 @@ namespace StardomEngine.Resonance
             }
             else
             {
-                if (GameInput.MouseButton[0]==false)
+                if (GameInput.MouseButton[0] == false)
                 {
                     PressedControl.OnMouseUp(0);
                     if (OverControl != PressedControl)
@@ -220,6 +261,30 @@ namespace StardomEngine.Resonance
                     }
                     PressedControl = null;
                 }
+                else
+                {
+                    if (PressedControl != OverControl)
+                    {
+                        if (ActiveControl != null && ActiveControl!=OverControl)
+                        {
+                            ActiveControl.OnDeactivate();
+                            ActiveControl.Active = false;
+
+                            ActiveControl = null;
+                        }
+                        if (OverControl != null)
+                        {
+                            if (PressedControl != ActiveControl)
+                            {
+                                PressedControl = OverControl;
+                                PressedControl.OnActivate();
+                                PressedControl.OnMouseDown(0);
+                                ActiveControl = PressedControl;
+                                ActiveControl.Active = true;
+                            }
+                        }
+                    }
+                }
             }
 
             if (PressedControl != null)
@@ -228,9 +293,91 @@ namespace StardomEngine.Resonance
                 PressedControl.OnDragged?.Invoke((int)GameInput.MouseDelta.X, (int)GameInput.MouseDelta.Y);
             }
 
+            //kb
+            int pkey = 0;
+            for(int i = 0; i < 512; i++)
+            {
+                if (GameInput.KeyButton[i])
+                {
+                    if (ActiveControl != null)
+                    {
+                        ActiveControl.OnKeyPressed((OpenTK.Windowing.GraphicsLibraryFramework.Keys)i);
+                    }
+                }
+                if (i == (int)Keys.LeftShift)
+                {
+                    continue;
+                }
+                if (i == (int)Keys.RightShift)
+                {
+                    continue;
+                }
+                if (GameInput.KeyButton[i] && used[i]==false)
+                {
+                    if (i != CurrentKey)
+                    {
+                        FirstKey = true;
+                    }
+                    CurrentKey = i;
+                    used[i] = true;
+                }
+                else if (GameInput.KeyButton[i]==false && used[i])
+                {
+                    used[i] = false;
+                }
+
+            }
+
+            if (GameInput.KeyButton[(int)Keys.LeftShift] || GameInput.KeyButton[(int)Keys.RightShift])
+            {
+                if (ActiveControl != null)
+                {
+                    ActiveControl.ShiftOn = true;
+                    Console.WriteLine("Shift!");
+                }
+            }
+            else
+            {
+                if (ActiveControl != null)
+                {
+                    ActiveControl.ShiftOn = false;
+                    //Console.WriteLine("Shift Off");
+
+                }
+            }
+
+            if(CurrentKey!=-1 && GameInput.KeyButton[CurrentKey]==false)
+            {
+                CurrentKey = -1;
+                FirstKey = true;
+            }
+
+            if (ActiveControl != null)
+            {
+                if (CurrentKey != -1)
+                {
+                    if (FirstKey)
+                    {
+                        ActiveControl.OnKey((Keys)CurrentKey);
+                        FirstKey = false;
+                        NextKey = Environment.TickCount + 500;
+                    }
+                    else
+                    {
+                        int time = Environment.TickCount;
+                        if (time > NextKey)
+                        {
+                            ActiveControl.OnKey((Keys)CurrentKey);
+                            NextKey = time + 150;
+                        }
+                    }
+                }
+            }
+
         }
 
         public IControl GetOver(Vector2 pos)
+
         {
 
             var list = GetControlList();
@@ -254,6 +401,10 @@ namespace StardomEngine.Resonance
 
             List<IControl> list = new List<IControl>(512);
             AddControlToList(list,RootControl);
+            foreach(var window in Windows)
+            {
+                AddControlToList(list, window);
+            }
             return list;
 
 
@@ -278,6 +429,10 @@ namespace StardomEngine.Resonance
             GL.Disable(EnableCap.DepthTest);
 
             RootControl.Render();
+            foreach(var window in Windows)
+            {
+                window.Render();
+            }
 
           
 

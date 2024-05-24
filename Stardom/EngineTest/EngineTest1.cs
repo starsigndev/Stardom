@@ -39,6 +39,7 @@ namespace EngineTest
         GameUI UI;
         public override void InitApp()
         {
+       
             //base.InitApp();
             Tex1 = new Texture2D("Data/tile1.png");
             Draw = new SmartDraw();
@@ -128,9 +129,16 @@ namespace EngineTest
             var b2 = new IButton().Set(new Vector2(-40, 455), new Vector2(180, 30), "Load Game") as IButton;
             win1.Contents.AddControl(b2);
             //--- STENCIL eden stealing resorces cloaked
-            UI.RootControl.AddControl(win1);
+            //UI.RootControl.AddControl(win1);
+            UI.AddWindow(win1);
             win1.Contents.Color = new Vector4(1, 1, 1, 0.7f);
             win1.Contents.Refracter = new Texture2D("data/refract2.jpg");
+
+            var tb1 = new ITextBox();
+            UI.RootControl.AddControl(tb1);
+
+            tb1.Set(new Vector2(20, 300), new Vector2(180, 30));
+            //tb1.Text = "This is";
 
         }
         IButton b1;
@@ -141,10 +149,10 @@ namespace EngineTest
 
         public override void UpdateApp()
         {
-           
+            //return;
 
             //base.UpdateApp();
-            Scene1.Update();
+           // Scene1.Update();
             
             UI.Update();
             s4.Rotation = s4.Rotation + 1f;
@@ -175,12 +183,12 @@ namespace EngineTest
         public override void RenderApp()
         {
             //base.RenderApp(); PS1.Spawn(30);
-
-            //UI.Render();
+           // return;
+            UI.Render();
 
 
             //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
-            Scene1.Render();
+            //Scene1.Render();
           //  UI.Render();
             //      Draw.Begin();
 

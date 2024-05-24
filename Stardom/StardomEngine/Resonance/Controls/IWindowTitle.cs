@@ -15,6 +15,16 @@ namespace StardomEngine.Resonance.Controls
             Color = new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 1.0f);
         }
 
+        public override void OnMouseDown(int button)
+        {
+            //base.OnMouseDown(button);
+
+            GameUI.This.Windows.Remove(this.Root as IWindow);
+            GameUI.This.Windows.Add(this.Root as IWindow);
+            //Root.Root.RemoveControl(Root);
+            //Root.Root.AddControl(Root);
+
+        }
         public override void OnEnter()
         {
             //base.OnEnter();

@@ -44,8 +44,8 @@ namespace StardomEngine.Draw
         {
 
             if (PreLists == null) {
-                PreLists = new List<DrawList>(100);
-                for (int i = 0; i < 100; i++)
+                PreLists = new List<DrawList>(64);
+                for (int i = 0; i < 64; i++)
                 {
                     PreLists.Add(new DrawList());
                 }
