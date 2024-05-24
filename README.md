@@ -13,5 +13,11 @@
  
 The project is early in development, commits will be made daily.
 
+  - Screenshots
+
+ 
   ![image](https://github.com/starsigndev/Stardom/assets/129375387/67cc23a9-9b1b-42ea-a343-e6f0119c432e)
 
+![image](https://github.com/starsigndev/Stardom/assets/129375387/99bcd4ba-72fe-48fb-81cf-e376e4f2cf05)
+
+![UITextBox1](https://github.com/starsigndev/Stardom/assets/129375387/26f079ff-4f8c-4e07-9559-3daaad7b0afa)
