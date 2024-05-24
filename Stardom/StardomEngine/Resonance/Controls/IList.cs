@@ -1,4 +1,5 @@
 ﻿using OpenTK.Mathematics;
+using StardomEngine.Resonance.SmartImages;
 using StardomEngine.Texture;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace StardomEngine.Resonance.Controls
         public event ItemAction Action;
 
         public event ItemAction ActionDoubleClick;
+
+       
 
         public string Name
         {
@@ -63,6 +66,9 @@ namespace StardomEngine.Resonance.Controls
     }
     public class IList : IControl
     {
+
+       
+
         private IVerticalScroller VerticalScroller
         {
             get;
@@ -97,6 +103,7 @@ namespace StardomEngine.Resonance.Controls
 
             Items = new List<ListItem>();
             OverItem = null;
+
           //  DrawOutline = true;
          //   ScissorSelf = true;
             VerticalScroller = new IVerticalScroller();
@@ -210,10 +217,12 @@ namespace StardomEngine.Resonance.Controls
         {
             //base.OnRender()
             //;
-           // Draw(UI.Theme.Pure, -1, -1, -1, -1, new Maths.Color(0.5f, 0.5f, 0.5f, 0.95f));
+            // Draw(UI.Theme.Pure, -1, -1, -1, -1, new Maths.Color(0.5f, 0.5f, 0.5f, 0.95f));
             // Draw(UI.Theme.Frame, 10, 10, Size.w - 20, Size.h - 20, new Maths.Color(3, 3, 3, 1));
             GameUI.This.DrawRect(GameUI.Theme.ListBox, RenderPosition, Size, new Vector4(1, 1, 1, 1));
+         
             int ix, iy;
+
 
             ix = (int)RenderPosition.X + 5;
             iy = (int)RenderPosition.Y + 5 - ScrollY;//(int)(VerticalScroller.Value * (float)VerticalScroller.MaxValue);

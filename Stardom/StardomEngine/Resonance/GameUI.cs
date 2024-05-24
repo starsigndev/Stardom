@@ -87,7 +87,7 @@ namespace StardomEngine.Resonance
             set
             {
                 _MenuBar = value;
-                value.Set(new Vector2(0,0),new Vector2(App.StarApp.FrameWidth,30),"");
+                value.Set(new Vector2(2,0),new Vector2(App.StarApp.FrameWidth,30),"");
                 RootControl.Set(new Vector2(0, 30), new Vector2(0, App.StarApp.FrameHeight - 30));
             }
         }

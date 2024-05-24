@@ -4,11 +4,13 @@ using System.Linq;
 using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
+using StardomEngine.Resonance.SmartImages;
 
 namespace StardomEngine.Resonance.Controls
 {
     public class IVerticalMenu : IControl
     {
+        public static SIListBox ListBoxImage;
 
         public MenuItem OverItem
         {
@@ -25,6 +27,10 @@ namespace StardomEngine.Resonance.Controls
         public IVerticalMenu()
         {
             Items = new List<MenuItem>();
+            if (ListBoxImage == null)
+            {
+                ListBoxImage = new SIListBox();
+            }
         }
 
         public MenuItem AddItem(MenuItem item)
@@ -69,6 +75,7 @@ namespace StardomEngine.Resonance.Controls
                 }
                 else
                 {
+                    if (OverItem.Items.Count == 0) return;
                     foreach (var item in Items)
                     {
                         if (item.NextMenu != null)
@@ -91,7 +98,7 @@ namespace StardomEngine.Resonance.Controls
                         OverItem.NextMenu.AddItem(item);
                     }
                     h = h + 10;
-                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX+Size.X,OverItem.DrawY), new Vector2(w, h), "");
+                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX+Size.X+2,OverItem.DrawY), new Vector2(w, h), "");
                     this.AddControl(OverItem.NextMenu);
 
 
@@ -102,7 +109,8 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.ListBox, RenderPosition, Size, Color);
+            //GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
+            ListBoxImage.Draw(RenderPosition, Size, new Vector4(1, 1, 1, 1));
 
             int item_y = 10;
 
@@ -113,7 +121,7 @@ namespace StardomEngine.Resonance.Controls
                 {
                     GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition + new Vector2(0, item_y-5), new Vector2(Size.X, GameUI.This.TextHeight("")+10),Vector4.One);
                 }
-                GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X+15, RenderPosition.Y+item_y), Vector4.One);
+                GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X+15, RenderPosition.Y+item_y+2), Vector4.One);
                 item.DrawX = (int)0;
                 item.DrawY = (int)item_y - 10;
 

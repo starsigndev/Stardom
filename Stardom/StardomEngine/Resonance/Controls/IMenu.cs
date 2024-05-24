@@ -131,6 +131,7 @@ namespace StardomEngine.Resonance.Controls
                 }
                 else
                 {
+                    
                     foreach(var item in Items)
                     {
                         if (item.NextMenu != null)
@@ -139,6 +140,7 @@ namespace StardomEngine.Resonance.Controls
                             item.NextMenu = null;
                         }
                     }
+                    if (OverItem.Items.Count == 0) return;
                     OverItem.NextMenu = new IVerticalMenu();
                     int w = 0;
                     int h = (OverItem.Items.Count) * (int)(10 + GameUI.This.TextHeight(""));
@@ -160,7 +162,17 @@ namespace StardomEngine.Resonance.Controls
                 }
             }
         }
-
+        public override void OnDeactivate()
+        {
+            //base.OnDeactivate();
+            foreach(var item in Items)
+            {
+                if (item.NextMenu!=null)
+                {
+                 //   RemoveControl(item.NextMenu);
+                }
+            }
+        }
         public override void Render()
         {
             //base.Render();
