@@ -18,6 +18,10 @@ using OpenTK.Mathematics;
 
 namespace EngineTest
 {
+    public enum TestEnum
+    {
+        DirectX,OpenGL,Vulkan,DirectX12,Metal,Glide
+    }
     public class EngineTest1 : StarApp
     {
 
@@ -125,7 +129,7 @@ namespace EngineTest
             image1.Refracter = new Texture2D("data/refract2.jpg");
             pp1 = image1;
 
-            var win1 = new IWindow().Set(new Vector2(20, 20), new Vector2(400, 300), "Test Window") as IWindow;
+            var win1 = new IWindow().Set(new Vector2(202, 20), new Vector2(400, 300), "Test Window") as IWindow;
             var b2 = new IButton().Set(new Vector2(-40, 455), new Vector2(180, 30), "Load Game") as IButton;
             win1.Contents.AddControl(b2);
             //--- STENCIL eden stealing resorces cloaked
@@ -139,6 +143,19 @@ namespace EngineTest
 
             tb1.Set(new Vector2(20, 300), new Vector2(180, 30));
             //tb1.Text = "This is";
+
+            var es1 = new IEnumSelector(typeof(TestEnum)).Set(new Vector2(20, 360), new Vector2(130, 30), "") as IEnumSelector;
+            UI.RootControl.AddControl(es1);
+            es1.OnSelected = (name,et) =>
+            {
+                if(et == TestEnum.Glide)
+                {
+                    Environment.Exit(1);
+                }
+                Console.WriteLine("Selected:" + name);
+            };
+
+
 
         }
         IButton b1;

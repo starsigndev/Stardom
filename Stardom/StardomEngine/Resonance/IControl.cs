@@ -223,6 +223,10 @@ namespace StardomEngine.Resonance
             return false;
         }
 
+        public virtual void OnMouseMove(Vector2 position,Vector2 delta)
+        {
+
+        }
         public virtual void OnKeyPressed(OpenTK.Windowing.GraphicsLibraryFramework.Keys key)
         {
 

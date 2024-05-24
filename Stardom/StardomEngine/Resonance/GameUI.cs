@@ -42,6 +42,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public List<IControl> Overlay
+        {
+            get;
+            set;
+        }
+
         public List<IWindow> Windows
         {
             get;
@@ -83,6 +89,7 @@ namespace StardomEngine.Resonance
             Draw = new SmartDraw();
             RootControl = new IControl();
             Windows = new List<IWindow>();
+            Overlay = new List<IControl>();
             This = this;
             Draw.DrawNormal = new Shader.ShaderModule("data/shader/drawUIVS.glsl", "data/shader/drawUIFS.glsl");
             SystemFont = new kFont("data/ui/fonts/f1.pf");
@@ -374,6 +381,16 @@ namespace StardomEngine.Resonance
                 }
             }
 
+            if (PressedControl != null)
+            {
+                PressedControl.OnMouseMove(GameInput.MousePosition - PressedControl.RenderPosition, GameInput.MouseDelta);
+            }else
+            if (OverControl != null)
+            {
+                
+                OverControl.OnMouseMove(GameInput.MousePosition-OverControl.RenderPosition, GameInput.MouseDelta);
+            }
+
         }
 
         public IControl GetOver(Vector2 pos)
@@ -405,6 +422,10 @@ namespace StardomEngine.Resonance
             {
                 AddControlToList(list, window);
             }
+            foreach(var control in Overlay)
+            {
+                AddControlToList(list, control);
+            }
             return list;
 
 
@@ -433,7 +454,10 @@ namespace StardomEngine.Resonance
             {
                 window.Render();
             }
-
+            foreach(var control in Overlay)
+            {
+                control.Render();
+            }
           
 
           

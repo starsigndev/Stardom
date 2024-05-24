@@ -16,6 +16,7 @@ namespace StardomEngine.Resonance
             Button = new Texture2D(path + "\\button.png");
             TextBox = new Texture2D(path + "\\textbox.png");
             WindowTitle = new Texture2D(path + "\\windowtitle.png");
+            ListBox = new Texture2D(path + "\\listbox.png");
         }
 
 
@@ -25,6 +26,7 @@ namespace StardomEngine.Resonance
         public Texture2D TextBox { get; set; }
         public Texture2D WindowTitle { get; set; }
 
+        public Texture2D ListBox { get; set; }
 
 
     }

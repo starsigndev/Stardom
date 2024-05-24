@@ -21,7 +21,7 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
-        public IVerticalSlider VScroller
+        public IVerticalScroller VScroller
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace StardomEngine.Resonance.Controls
 
             Title = new IWindowTitle();
             Contents = new IPanel();
-            VScroller = new IVerticalSlider();
+            VScroller = new IVerticalScroller();
             VScroller.OnValueChange = (val) =>
             {
                 //Console.WriteLine("Value:" + val);
