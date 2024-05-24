@@ -20,3 +20,4 @@ The project is early in development, commits will be made daily.
 
 ![image](https://github.com/starsigndev/Stardom/assets/129375387/99bcd4ba-72fe-48fb-81cf-e376e4f2cf05)
 
+![UITextBox1](https://github.com/starsigndev/Stardom/assets/129375387/26f079ff-4f8c-4e07-9559-3daaad7b0afa)
