@@ -8,9 +8,12 @@ using StardomEngine.Resonance.SmartImages;
 
 namespace StardomEngine.Resonance.Controls
 {
+
     public class IVerticalMenu : IControl
     {
         public static SIListBox ListBoxImage;
+
+     
 
         public MenuItem OverItem
         {
@@ -68,6 +71,32 @@ namespace StardomEngine.Resonance.Controls
             //base.OnMouseDown(button);
             if (OverItem != null)
             {
+                if (OverItem.OnItemSelected != null)
+                {
+                    OverItem.OnItemSelected.Invoke(OverItem);
+                    Root.RemoveControl(this);
+
+                    var pmen = Root as IVerticalMenu;
+                    if (pmen != null)
+                    {
+                        //pmen
+
+                    }
+                    else
+                    {
+                        var mm = Root as IMenu;
+                        foreach(var item in mm.Items)
+                        {
+                            if (item.NextMenu == this) 
+                            {
+                                item.NextMenu = null;
+                            }
+                        }
+                       // var mm = Root as IMenu;
+                    }
+
+                    return;
+                }
                 if (OverItem.NextMenu != null)
                 {
                     this.RemoveControl(OverItem.NextMenu);

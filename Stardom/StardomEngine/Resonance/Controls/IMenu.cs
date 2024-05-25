@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace StardomEngine.Resonance.Controls
 {
+
+    public delegate void ItemSelected(MenuItem item);
+
+
     public class MenuItem
     {
         public IVerticalMenu NextMenu
@@ -50,6 +54,14 @@ namespace StardomEngine.Resonance.Controls
             get;
             set;
         }
+
+        public ItemSelected OnItemSelected
+        {
+            get;
+            set;
+        }
+
+
         public MenuItem(string text)
         {
             Text = text;

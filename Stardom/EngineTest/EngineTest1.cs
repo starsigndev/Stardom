@@ -172,9 +172,20 @@ namespace EngineTest
             var options = UI.MainMenu.AddItem("Options");
 
             var load = file.AddItem("Load Game");
-            file.AddItem("Save Game");
+            var save = file.AddItem("Save Game");
             file.AddSeperator();
-            file.AddItem("Exit Game");
+            var ex = file.AddItem("Exit Game");
+
+            save.OnItemSelected = (item) =>
+            {
+                Console.WriteLine("Loaded!");
+            };
+
+            ex.OnItemSelected = (item) =>
+            {
+                Environment.Exit(1);
+            };
+
             load.Icon = new Texture2D("data/testicon.png");
 
             edit.AddItem("Cut");
