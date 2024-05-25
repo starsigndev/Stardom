@@ -1,0 +1,6 @@
+C:\projects\Starlight3D\Videon\Videon\x64\Debug\Videon.vcxproj.CopyComplete
+C:\Projects\Zen3D\Starlight3D\Videon\Videon\x64\Debug\Videon.vcxproj.CopyComplete
+C:\Infinity\Videon\x64\Debug\Videon.vcxproj.CopyComplete
+C:\VividProjects\Vivid3D\Videon\x64\Debug\Videon.vcxproj.CopyComplete
+V:\VividR\Vivid3D\Videon\x64\Debug\Videon.vcxproj.CopyComplete
+C:\VividR\Vivid3D\Videon\x64\Debug\Videon.vcxproj.CopyComplete

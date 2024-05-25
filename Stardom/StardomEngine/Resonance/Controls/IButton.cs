@@ -4,6 +4,7 @@ using System.Linq;
 using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
+using StardomEngine.Texture;
 
 namespace StardomEngine.Resonance.Controls
 {
@@ -13,6 +14,12 @@ namespace StardomEngine.Resonance.Controls
     {
 
         public Click OnClick
+        {
+            get;
+            set;
+        }
+
+        public Texture2D Icon
         {
             get;
             set;
@@ -62,9 +69,15 @@ namespace StardomEngine.Resonance.Controls
             tx = tx - GameUI.This.TextWidth(Text) / 2;
             ty = ty - GameUI.This.TextHeight(Text) / 2;
 
-            GameUI.This.DrawText(Text, new Vector2(tx + 2, ty + 2),new Vector4(0,0,0,1));
-            GameUI.This.DrawText(Text, new Vector2(tx,ty), Vector4.One);
-
+            if (Icon != null)
+            {
+                GameUI.This.DrawRect(Icon, new Vector2(RenderPosition.X + 3, RenderPosition.Y + 3), new Vector2(Size.X - 6, Size.Y - 6), new Vector4(2,2,2,2));
+            }
+            else
+            {
+                GameUI.This.DrawText(Text, new Vector2(tx + 2, ty + 2), new Vector4(0, 0, 0, 1));
+                GameUI.This.DrawText(Text, new Vector2(tx, ty), Vector4.One);
+            }
 
             RenderChildren();
         }

@@ -30,7 +30,10 @@ namespace StardomEngine.Resonance.Controls
         {
             Increment = 1;
             Up = new IButton();
+            Up.Icon = GameUI.Theme.ArrowUp;
+            
             Down = new IButton();
+            Down.Icon = GameUI.Theme.ArrowDown;
             Number = new ITextBox();
             FloatingPoint = floating_point;
             Number.Numeric = true;
@@ -108,9 +111,9 @@ namespace StardomEngine.Resonance.Controls
 
         public override void AfterSet()
         {
-            Up.Set(new OpenTK.Mathematics.Vector2(0, 0),new OpenTK.Mathematics.Vector2(32,15),"/\\");
-            Down.Set(new OpenTK.Mathematics.Vector2(0, 16), new OpenTK.Mathematics.Vector2(32, 15), "\\/");
-            Number.Set(new OpenTK.Mathematics.Vector2(33,0),new OpenTK.Mathematics.Vector2(80,32),Number.Text);
+            Up.Set(new OpenTK.Mathematics.Vector2(0, 0),new OpenTK.Mathematics.Vector2(15,15),"/\\");
+            Down.Set(new OpenTK.Mathematics.Vector2(0, 15), new OpenTK.Mathematics.Vector2(15, 15), "\\/");
+            Number.Set(new OpenTK.Mathematics.Vector2(15,0),new OpenTK.Mathematics.Vector2(80,31),Number.Text);
             //base.AfterSet();/
 
 

@@ -108,7 +108,7 @@ namespace StardomEngine.Resonance
             Overlay = new List<IControl>();
             This = this;
             Draw.DrawNormal = new Shader.ShaderModule("data/shader/drawUIVS.glsl", "data/shader/drawUIFS.glsl");
-            SystemFont = new kFont("data/ui/fonts/f1.pf");
+            SystemFont = new kFont("data/ui/fonts/orb.pf");
             OverControl = null;
             PressedControl = null;
             ActiveControl = null;

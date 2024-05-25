@@ -138,7 +138,14 @@ namespace EngineTest
             //UI.RootControl.AddControl(win1);
             UI.AddWindow(win1);
             var frt = new IRenderTarget(800, 600);
-            win1.Contents.AddControl(frt);
+            //win1.Contents.AddControl(frt);
+
+            var vid1 = new IVideo();
+            vid1.PlayVideo("data/intronew.mp4");
+            vid1.Set(new Vector2(0, 0), win1.Contents.Size, "");
+
+            win1.Contents.AddControl(vid1);
+
             frt.Set(new Vector2(0,0), new Vector2(win1.Contents.Size.X, win1.Contents.Size.Y));
 
             frt.OnRenderContents = (control) =>

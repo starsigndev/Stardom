@@ -10,6 +10,18 @@ namespace Vivid.Font
         public Texture2D[] Chars = new Texture2D[256];
         public float Scale = 1.0f;
 
+        public float GlobalScale
+        {
+            get
+            {
+                return _GlobalScale;
+            }
+            set
+            {
+                _GlobalScale = value;
+            }
+        }
+        float _GlobalScale = 0.7f;
         public kFont(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -84,7 +96,7 @@ namespace Vivid.Font
                 {
                     if (Chars[cnum] != null)
                     {
-                        x = x + (int)(Chars[cnum].Width * Scale) + 2;
+                        x = x + (int)(Chars[cnum].Width * Scale*GlobalScale) + 2;
                     }
                 }
 
@@ -96,7 +108,7 @@ namespace Vivid.Font
 
         public int StringHeight()
         {
-            return (int)(Chars[33].Height * (Scale));
+            return (int)(Chars[33].Height * (Scale*GlobalScale));
         }
 
         public void DrawSmartString(string text, int x, int y, float r, float g, float b, float a, SmartDraw draw)
@@ -129,8 +141,8 @@ namespace Vivid.Font
 
         //            draw.Begin();
                     //draw.DrawTexture(Chars[cnum], x+sx, y, (int)(Chars[cnum].Width * Scale),(int)(Chars[cnum].Height * Scale), r, g, b, a);
-                    GameUI.Draw.DrawQuad(Chars[cnum], new Vector2(x + sx, y), new Vector2((int)(Chars[cnum].Width * Scale), (int)(Chars[cnum].Height * Scale)), new Vector4(r, g, b, a),new Vector4(0,0,0,0));
-                    sx = sx + (int)(Chars[cnum].Width * Scale) + 2;
+                    GameUI.Draw.DrawQuad(Chars[cnum], new Vector2(x + sx, y), new Vector2((int)(Chars[cnum].Width * GlobalScale*Scale), (int)(Chars[cnum].Height * GlobalScale*Scale)), new Vector4(r, g, b, a),new Vector4(0,0,0,0));
+                    sx = sx + (int)(Chars[cnum].Width * Scale*GlobalScale) + 2;
           //          draw.End();
                 }
 
