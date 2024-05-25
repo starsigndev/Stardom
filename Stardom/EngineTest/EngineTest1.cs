@@ -164,6 +164,9 @@ namespace EngineTest
 
             var load = file.AddItem("Load Game");
             file.AddItem("Save Game");
+            file.AddSeperator();
+
+
             file.AddItem("Exit Game");
             load.Icon = new Texture2D("data/testicon.png");
 

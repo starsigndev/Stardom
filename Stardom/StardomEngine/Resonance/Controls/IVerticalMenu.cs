@@ -117,7 +117,7 @@ namespace StardomEngine.Resonance.Controls
             foreach(var item in Items)
             {
 
-                if (item == OverItem)
+                if (item == OverItem && item.Seperator==false)
                 {
                     GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition + new Vector2(0, item_y-5), new Vector2(Size.X, GameUI.This.TextHeight("")+10),Vector4.One);
                 }
@@ -129,7 +129,18 @@ namespace StardomEngine.Resonance.Controls
                 {
                     GameUI.This.DrawRect(item.Icon, new Vector2(RenderPosition.X + 3, RenderPosition.Y + item_y), new Vector2(16, 16), new Vector4(1, 1, 1, 1));
                 }
-                GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X+30, RenderPosition.Y+item_y+2), Vector4.One);
+
+                if (item.Seperator)
+                {
+
+                    GameUI.This.DrawRect(GameUI.Theme.Frame, new Vector2(RenderPosition.X + 15, RenderPosition.Y + item_y + 8), new Vector2(Size.X - 30, 2), new Vector4(1, 1, 1, 1));
+
+                }
+                else
+                {
+                    GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X + 30, RenderPosition.Y + item_y + 2), Vector4.One);
+                }
+
                 item.DrawX = (int)0;
                 item.DrawY = (int)item_y - 10;
 

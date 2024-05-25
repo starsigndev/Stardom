@@ -45,12 +45,24 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
+        public bool Seperator
+        {
+            get;
+            set;
+        }
         public MenuItem(string text)
         {
             Text = text;
             Items = new List<MenuItem>();
         }
 
+        public void AddSeperator()
+        {
+            var seperator = new MenuItem("");
+            Items.Add(seperator);
+            seperator.Seperator = true;
+            
+        }
         public MenuItem AddItem(MenuItem item)
         {
             Items.Add(item);
