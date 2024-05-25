@@ -146,9 +146,9 @@ namespace StardomEngine.Resonance.Controls
             //base.OnDeactivate();
             if (Selector != null)
             {
-                GameUI.This.Overlay.Remove(Selector);
-                Selector = null;
-                Open = false;
+             //   GameUI.This.Overlay.Remove(Selector);
+              //  Selector = null;
+             //   Open = false;
             }
         }
 

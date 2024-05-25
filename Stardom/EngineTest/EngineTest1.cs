@@ -20,7 +20,7 @@ namespace EngineTest
 {
     public enum TestEnum
     {
-        DirectX,OpenGL,Vulkan,DirectX12,Metal,Glide
+        DirectX,OpenGL,Vulkan,DirectX12,Metal,Glide,Other,Try,No,Why,Way,How
     }
     public class EngineTest1 : StarApp
     {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static OpenTK.Platform.Native.macOS.MacOSCursorComponent;
+using OpenTK.Graphics.OpenGL;
 
 namespace StardomEngine.Resonance.Controls
 {
@@ -108,6 +109,10 @@ namespace StardomEngine.Resonance.Controls
          //   ScissorSelf = true;
             VerticalScroller = new IVerticalScroller();
             AddControl(VerticalScroller);
+            VerticalScroller.OnValueChange = (vec) =>
+            {
+                ScrollY = (int)(vec * (float)VerticalScroller.MaxValue);
+            };
             //VerticalScroller.OnMove += (item, x, y) =>
             {
                 //ScrollValue = new Maths.Position(0, y);
@@ -127,7 +132,7 @@ namespace StardomEngine.Resonance.Controls
 
         public override void AfterSet()
         {
-            VerticalScroller.Set(new Vector2(Size.X - 12, 12), new Vector2(12, Size.Y - 24),"");
+            VerticalScroller.Set(new Vector2(Size.X, 0), new Vector2(12, Size.Y),"");
             //base.AfterSet();
             //ListFrame.Set(new Maths.Position(0, 0), new Maths.Size(Size.w, Size.h), "");
             //  ListContentsFrame.Set(new Maths.Position(10, 10), new Maths.Size(Size.w - 20, Size.h - 20),"");
@@ -138,6 +143,11 @@ namespace StardomEngine.Resonance.Controls
             int mh = 0;
             mh = (Items.Count) * (int)(GameUI.This.TextHeight("") + 8);
             Size =  new OpenTK.Mathematics.Vector2(Size.X, mh);
+            if (Size.Y > 150)
+            {
+                Size = new Vector2(Size.X, 150);
+
+            }
 
         }
         public ListItem AddItem(string name)
@@ -159,7 +169,7 @@ namespace StardomEngine.Resonance.Controls
             int ix, iy;
 
             ix = (int)RenderPosition.X + 5;
-            iy =  ScrollY;
+            iy =  -ScrollY;
             OverItem = null;
             foreach (var item in Items)
             {
@@ -223,10 +233,15 @@ namespace StardomEngine.Resonance.Controls
          
             int ix, iy;
 
+            SetStencil(GameUI.Theme.ListBox);
+
+
+           
 
             ix = (int)RenderPosition.X + 5;
             iy = (int)RenderPosition.Y + 5 - ScrollY;//(int)(VerticalScroller.Value * (float)VerticalScroller.MaxValue);
-                                                //  return;
+                                                     //  return;
+            int ry = 0;
             foreach (var item in Items)
             {
                 if (item == OverItem)
@@ -247,16 +262,29 @@ namespace StardomEngine.Resonance.Controls
 
                     GameUI.This.DrawText(item.Name, new Vector2(ix, iy),item.Color);
                 }
+                ry = ry + (int)GameUI.This.TextHeight("") + 8;
                 iy = iy + (int)GameUI.This.TextHeight("") + 8;
 
             }
 
-            VerticalScroller.MaxValue = (iy + ScrollY) - (int)(Size.Y / 4);
-            if (VerticalScroller.MaxValue < 64)
+            VerticalScroller.MaxValue = ry - (int)Size.Y;
+            if (VerticalScroller.MaxValue < 1)
             {
-                VerticalScroller.MaxValue = 64;
+                VerticalScroller.MaxValue =1;
+
+
             }
 
+            GL.Disable(EnableCap.StencilTest);
+
+
+            GL.StencilMask(0xFF); // Allow writing to the entire stencil buffer
+            GL.StencilFunc(StencilFunction.Always, 0, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Keep);
+
+
+
+            RenderChildren();
 
             // ScrollValue = new Maths.Position(0, (int)cy);
 
