@@ -134,8 +134,9 @@ namespace StardomEngine.Resonance.Controls
                 }
                 else
                 {
-                    //UI.This.Overlay.Forms.Remove(Selector);
-                    //C//hild.Remove(Selector);
+                    GameUI.This.Overlay.Remove(Selector);
+                    Controls.Remove(Selector);
+
                 }
 
             }

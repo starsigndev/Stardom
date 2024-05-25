@@ -147,6 +147,10 @@ namespace StardomEngine.Resonance.Controls
                 _CurrentValue = 0;
             }
 
+            if (_MaxValue < Size.Y)
+            {
+              //  return;
+            }
 
 
             float v = GetValue();

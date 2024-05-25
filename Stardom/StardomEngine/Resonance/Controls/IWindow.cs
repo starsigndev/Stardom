@@ -27,7 +27,7 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
-        public IWindow()
+        public IWindow(bool include_scrollers = false)
         {
 
             Title = new IWindowTitle();
@@ -41,7 +41,10 @@ namespace StardomEngine.Resonance.Controls
 
             AddControl(Contents);
             AddControl(Title);
-            AddControl(VScroller);
+            if (include_scrollers)
+            {
+                AddControl(VScroller);
+            }
 
             Title.OnDragged = (x, y) =>
             {
