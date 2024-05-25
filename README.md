@@ -15,7 +15,8 @@ The project is early in development, commits will be made daily.
 
   - Screenshots
 
- 
+ ![image](https://github.com/starsigndev/Stardom/assets/129375387/2c49c464-4b72-4003-acb2-84332de80067)
+
   ![image](https://github.com/starsigndev/Stardom/assets/129375387/67cc23a9-9b1b-42ea-a343-e6f0119c432e)
 
 ![image](https://github.com/starsigndev/Stardom/assets/129375387/99bcd4ba-72fe-48fb-81cf-e376e4f2cf05)
