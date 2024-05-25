@@ -124,6 +124,9 @@ namespace StardomEngine.Resonance
         {
             Vector4 ext = new Vector4(0,0,0,0);
 
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha,BlendingFactor.OneMinusSrcAlpha);
+
             Draw.Begin();
 
             if (flip)
@@ -487,9 +490,12 @@ namespace StardomEngine.Resonance
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.Disable(EnableCap.DepthTest);
 
+            RootControl.PreRender();
+
             RootControl.Render();
             foreach(var window in Windows)
             {
+                window.PreRender();
                 window.Render();
             }
             foreach(var control in Overlay)
@@ -498,6 +504,7 @@ namespace StardomEngine.Resonance
             }
             if (MainMenu != null)
             {
+
                 MainMenu.Render();   
             }
           

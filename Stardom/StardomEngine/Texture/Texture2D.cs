@@ -131,7 +131,7 @@ namespace StardomEngine.Texture
 
                 var cache = Cache[path];
 
-               // Data = cache.Data;
+                Data = cache.Data;
               //  DataFloat = cache.DataFloat;
                 Width = cache.Width;
                 Height = cache.Height;

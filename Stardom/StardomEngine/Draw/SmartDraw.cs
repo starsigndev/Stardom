@@ -562,9 +562,18 @@ namespace StardomEngine.Draw
             }
 
         }
+        public void EndComplete()
+        {
+            DrawNormal.Bind();
+            End();
+            DrawNormal.Release();
+        }
         public void End()
         {
-
+            int w = StarApp.FrameWidth;
+            int h = StarApp.FrameHeight;
+            //int b = 0;
+            se_Projection = Matrix4.CreateOrthographicOffCenter(0, w, h, 0, -1.0f, 1.0f);
             DrawNormal.SetMat("se_Projection",se_Projection);
 
             if (VertexArray == 0)

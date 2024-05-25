@@ -10,6 +10,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using StardomEngine.Input;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using StardomEngine.RenderTarget;
 
 namespace StardomEngine.App
 {
@@ -21,6 +22,10 @@ namespace StardomEngine.App
         {
             get
             {
+                if (BoundRT2D != null)
+                {
+                    return BoundRT2D.Width;
+                }
                 return _Width;
             }
         }
@@ -29,8 +34,18 @@ namespace StardomEngine.App
         {
             get
             {
+                if (BoundRT2D!=null)
+                {
+                    return BoundRT2D.Height;
+                }
                 return _Height;
             }
+        }
+
+        public static RenderTarget2D BoundRT2D
+        {
+            get;
+            set;
         }
 
         //privates
@@ -48,6 +63,16 @@ namespace StardomEngine.App
             _Height = native.ClientSize.Y;
             VSync = VSyncMode.Off;
             GameInput.InitInput();
+        }
+
+        protected override void OnResize(ResizeEventArgs e)
+        {
+            //base.OnResize(e);
+            _Width = e.Width;
+            _Height = e.Height;
+            GL.Viewport(0, 0, _Width, _Height);
+            InitApp();
+
         }
 
         public virtual void InitApp()

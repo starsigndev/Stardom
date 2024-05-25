@@ -309,12 +309,27 @@ namespace StardomEngine.Resonance
 
         }
 
+        public virtual void PreRender()
+        {
+
+            PreRenderChildren();
+
+        }
+
         public virtual void Render()
         {
 
             RenderChildren();
         }
+        public void PreRenderChildren()
+        {
 
+            foreach(var control in Controls)
+            {
+                control.PreRender();
+            }
+
+        }
         public void RenderChildren()
         {
 

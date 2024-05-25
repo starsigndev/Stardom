@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using StardomEngine.Resonance;
 using StardomEngine.Resonance.Controls;
 using OpenTK.Mathematics;
+using StardomEngine.RenderTarget;
 
 namespace EngineTest
 {
@@ -41,6 +42,7 @@ namespace EngineTest
         SceneParticleSystem PS1;
         SceneParticle p1, p2;
         GameUI UI;
+        RenderTarget2D RT1;
         public override void InitApp()
         {
        
@@ -56,7 +58,7 @@ namespace EngineTest
             s3.RecvShadows = false;
             s3.Image = new Texture2D("Data/sprite1.png");
             //   Scene1.AddNode(s1);
-             
+            RT1 = new RenderTarget2D(StarApp.FrameWidth, StarApp.FrameHeight);
             s1.Normals = new Texture2D("Data/normal2.jpg");
             s1.RecvShadows = true;
             Scene1.Fill(s1, 16, 16);
@@ -131,10 +133,19 @@ namespace EngineTest
 
             var win1 = new IWindow().Set(new Vector2(202, 20), new Vector2(400, 300), "Test Window") as IWindow;
             var b2 = new IButton().Set(new Vector2(-40, 455), new Vector2(180, 30), "Load Game") as IButton;
-            win1.Contents.AddControl(b2);
+            //win1.Contents.AddControl(b2);
             //--- STENCIL eden stealing resorces cloaked
             //UI.RootControl.AddControl(win1);
             UI.AddWindow(win1);
+            var frt = new IRenderTarget(800, 600);
+            win1.Contents.AddControl(frt);
+            frt.Set(new Vector2(0,0), new Vector2(win1.Contents.Size.X, win1.Contents.Size.Y));
+
+            frt.OnRenderContents = (control) =>
+            {
+                Scene1.Render();
+            };
+
             win1.Contents.Color = new Vector4(1, 1, 1, 0.7f);
             win1.Contents.Refracter = new Texture2D("data/refract2.jpg");
 
@@ -157,16 +168,12 @@ namespace EngineTest
 
 
             var file = UI.MainMenu.AddItem("File");
-            //file.Icon = new Texture2D("data/testicon.png");
-
             var edit = UI.MainMenu.AddItem("Edit");
             var options = UI.MainMenu.AddItem("Options");
 
             var load = file.AddItem("Load Game");
             file.AddItem("Save Game");
             file.AddSeperator();
-
-
             file.AddItem("Exit Game");
             load.Icon = new Texture2D("data/testicon.png");
 
@@ -178,8 +185,9 @@ namespace EngineTest
             load.AddItem("Old Game");
             load.AddItem("Exit Game");
 
+            Draw.DrawNormal = new StardomEngine.Shader.ShaderModule("data/shader/drawUIVS.glsl", "data/shader/drawUIFS.glsl");
 
-
+            
 
         }
         IButton b1;
@@ -224,11 +232,17 @@ namespace EngineTest
         public override void RenderApp()
         {
             //base.RenderApp(); PS1.Spawn(30);
-           // return;
+            // return;
+          //  RT1.Bind();
             UI.Render();
-
+         //   RT1.Release();
+         //   Draw.Begin();
+         //   Draw.DrawQuad(RT1.BB, new Vector2(0, StarApp.FrameHeight), new Vector2(StarApp.FrameWidth,-StarApp.FrameHeight), new Vector4(1, 1, 1, 1), new Vector4(0, 1, 0, 0));
+         //   Draw.EndComplete();
 
             //   Scene1.Camera.Rotation = Scene1.Camera.Rotation + 1.0f;
+
+
             //Scene1.Render();
           //  UI.Render();
             //      Draw.Begin();

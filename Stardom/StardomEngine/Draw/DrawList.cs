@@ -11,8 +11,8 @@ namespace StardomEngine.Draw
     {
 
         public List<DrawCall> Calls { get; set; }
-        public float[] v_data = new float[1024 * 128];
-        public uint[] i_data = new uint[1024 * 128];
+        public float[] v_data = new float[1024 * 1008];
+        public uint[] i_data = new uint[1024 * 1008];
         public int dataIndex = 0;
         public uint indexIndex = 0;
         public int CallsNum = 0;
