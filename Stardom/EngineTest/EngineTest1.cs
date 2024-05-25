@@ -198,7 +198,13 @@ namespace EngineTest
 
             Draw.DrawNormal = new StardomEngine.Shader.ShaderModule("data/shader/drawUIVS.glsl", "data/shader/drawUIFS.glsl");
 
-            
+            var num1 = new INumber(true).Set(new Vector2(40, 500), new Vector2(0, 0), "") as INumber;
+            UI.RootControl.AddControl(num1);
+            num1.OnNumberChanged = (con, v) =>
+            {
+                Console.WriteLine("Num:" + v.ToString());
+            };
+         
 
         }
         IButton b1;

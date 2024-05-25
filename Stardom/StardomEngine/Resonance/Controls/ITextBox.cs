@@ -9,15 +9,21 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 namespace StardomEngine.Resonance.Controls
 {
+    public delegate void TextChanged(ITextBox control, string text);
     public class ITextBox : IControl
     {
 
+        public TextChanged OnTextChanged
+        {
+            get;
+            set;
+        }
 
         bool ClaretOn = true;
         int StartX = 0;
         int NextClaret = 0;
         int DisLen = 0;
-        bool Numeric = false;
+        public bool Numeric = false;
         bool Password = false;
         string GuideText = "";
         int ClaretX = 0;
@@ -441,6 +447,18 @@ namespace StardomEngine.Resonance.Controls
             else
             {
                 ks = ks.ToLower();
+            }
+
+            if (Numeric)
+            {
+                if ("0123456789.-".Contains(ks))
+                {
+                    return ks;
+                }
+                else
+                {
+                    return "";
+                }
             }
 
             return ks;
