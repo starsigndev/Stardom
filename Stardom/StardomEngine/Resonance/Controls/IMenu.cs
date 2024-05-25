@@ -155,7 +155,7 @@ namespace StardomEngine.Resonance.Controls
                         OverItem.NextMenu.AddItem(item);
                     }
                     h = h + 10;
-                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX, 30), new Vector2(w, h),"");
+                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX, 30), new Vector2(w+40, h),"");
                     this.AddControl(OverItem.NextMenu);
 
 

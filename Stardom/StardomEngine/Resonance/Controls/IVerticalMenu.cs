@@ -98,7 +98,7 @@ namespace StardomEngine.Resonance.Controls
                         OverItem.NextMenu.AddItem(item);
                     }
                     h = h + 10;
-                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX+Size.X+2,OverItem.DrawY), new Vector2(w, h), "");
+                    OverItem.NextMenu.Set(new Vector2(OverItem.DrawX+Size.X+2,OverItem.DrawY), new Vector2(w+40, h), "");
                     this.AddControl(OverItem.NextMenu);
 
 
@@ -121,7 +121,15 @@ namespace StardomEngine.Resonance.Controls
                 {
                     GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition + new Vector2(0, item_y-5), new Vector2(Size.X, GameUI.This.TextHeight("")+10),Vector4.One);
                 }
-                GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X+15, RenderPosition.Y+item_y+2), Vector4.One);
+                if(item.Items.Count>0)
+                {
+                    GameUI.This.DrawRect(GameUI.Theme.ArrowH, new Vector2(RenderPosition.X + Size.X - 25, RenderPosition.Y + item_y), new Vector2(15, 15), Color);
+                }
+                if (item.Icon != null)
+                {
+                    GameUI.This.DrawRect(item.Icon, new Vector2(RenderPosition.X + 3, RenderPosition.Y + item_y), new Vector2(16, 16), new Vector4(1, 1, 1, 1));
+                }
+                GameUI.This.DrawText(item.Text, new OpenTK.Mathematics.Vector2(RenderPosition.X+30, RenderPosition.Y+item_y+2), Vector4.One);
                 item.DrawX = (int)0;
                 item.DrawY = (int)item_y - 10;
 

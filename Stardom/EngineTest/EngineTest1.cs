@@ -157,12 +157,15 @@ namespace EngineTest
 
 
             var file = UI.MainMenu.AddItem("File");
+            //file.Icon = new Texture2D("data/testicon.png");
+
             var edit = UI.MainMenu.AddItem("Edit");
             var options = UI.MainMenu.AddItem("Options");
 
             var load = file.AddItem("Load Game");
             file.AddItem("Save Game");
             file.AddItem("Exit Game");
+            load.Icon = new Texture2D("data/testicon.png");
 
             edit.AddItem("Cut");
             edit.AddItem("Copy");

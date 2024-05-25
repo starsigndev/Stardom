@@ -24,7 +24,7 @@ namespace StardomEngine.Resonance.SmartImages
             //base.Draw(draw, pos, size, color);
             GameUI.This.DrawRect(White,pos,new Vector2(3,size.Y),new Vector4(0.4f,0.4f,0.4f,1.0f));
             GameUI.This.DrawRect(White, new Vector2(pos.X+size.X - 3, pos.Y), new Vector2(3, size.Y), new Vector4(0.4f, 0.4f, 0.4f, 1.0f));
-            GameUI.This.DrawRect(White, new Vector2(pos.X +3, pos.Y), new Vector2(size.X - 6, size.Y), new Vector4(0.7f, 0.7f, 0.7f, 1.0f));
+            GameUI.This.DrawRect(White, new Vector2(pos.X +3, pos.Y), new Vector2(size.X - 6, size.Y), new Vector4(0.5f, 0.5f, 0.5f, 1.0f));
 
 
         }
