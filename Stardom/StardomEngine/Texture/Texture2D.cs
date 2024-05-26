@@ -208,7 +208,7 @@ namespace StardomEngine.Texture
 
         }
 
-        private void MakeTexture()
+        private void MakeTexture(bool gen_mipmap=true)
         {
             if (Channels == 4)
             {
@@ -223,8 +223,10 @@ namespace StardomEngine.Texture
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
             GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
 
-            GL.GenerateMipmap(TextureTarget.Texture2d);
-
+            if (gen_mipmap)
+            {
+                GL.GenerateMipmap(TextureTarget.Texture2d);
+            }
             GL.BindTexture(TextureTarget.Texture2d, 0);
             //Data = null;
             DataFloat = null;
@@ -257,7 +259,12 @@ namespace StardomEngine.Texture
                 }
             }
 
-            MakeTexture();
+            MakeTexture(false);
+
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+           
 
         }
 

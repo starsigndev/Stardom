@@ -149,7 +149,7 @@ namespace StardomEngine.Resonance.Controls
 
                 if (item == OverItem && item.Seperator==false)
                 {
-                    GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition + new Vector2(0, item_y-5), new Vector2(Size.X, GameUI.This.TextHeight("")+10),Vector4.One);
+                    GameUI.This.DrawRect(GameUI.Theme.TextBoxSlice,10,10, RenderPosition + new Vector2(0, item_y-5), new Vector2(Size.X, GameUI.This.TextHeight("")+10),Vector4.One);
                 }
                 if(item.Items.Count>0)
                 {

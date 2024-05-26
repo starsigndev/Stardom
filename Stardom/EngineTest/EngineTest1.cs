@@ -216,6 +216,16 @@ namespace EngineTest
             UI.RootControl.AddControl(tog1);
             tog1.Text = "Raytracing";
 
+            ITreeView tv1 = new ITreeView();
+            tv1.Set(new Vector2(300, 100), new Vector2(200, 450), "");
+            UI.RootControl.AddControl(tv1);
+            var players = tv1.RootItem.AddItem("Players");
+            players.AddItem("Antony");
+            players.AddItem("John");
+            var test = tv1.RootItem.AddItem("Test Item");
+            test.AddItem("Test 1");
+            test.AddItem("Test 2");
+
         }
         IButton b1;
         IPanel pp1;

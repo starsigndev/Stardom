@@ -28,9 +28,16 @@ namespace StardomEngine.Resonance
             ButtonSlice = new TextureSlice(Button, 128, 128);
             TextBoxSlice = new TextureSlice(TextBox, 128, 128);
             ListBoxSlice = new TextureSlice(ListBox, 128, 128);
+            UIGradient = new Texture2D(path + "\\uigradient.png");
+            White = new Texture2D("data/ui/white.png");
+
         }
 
-
+        public Texture2D White
+        {
+            get;
+            set;
+        }
         public Texture2D Frame { get; set; }
         public Texture2D Button { get; set; }
 
@@ -65,6 +72,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public Texture2D UIGradient
+        {
+            get;
+            set;
+        }
+
         public TextureSlice FrameSlice
         {
             get;
@@ -78,6 +91,12 @@ namespace StardomEngine.Resonance
         }
 
         public TextureSlice TextBoxSlice
+        {
+            get;
+            set;
+        }
+
+        public TextureSlice ShadowSlice
         {
             get;
             set;

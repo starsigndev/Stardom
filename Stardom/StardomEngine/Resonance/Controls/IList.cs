@@ -246,7 +246,7 @@ namespace StardomEngine.Resonance.Controls
             {
                 if (item == OverItem)
                 {
-                    GameUI.This.DrawRect(GameUI.Theme.TextBox,new Vector2(ix-5,iy-5) ,new Vector2(Size.X,GameUI.This.TextHeight("")+7), new Vector4(1, 1, 1, 1));
+                    GameUI.This.DrawRect(GameUI.Theme.TextBoxSlice,8,8,new Vector2(ix-2,iy-5) ,new Vector2(Size.X-6,GameUI.This.TextHeight("")+7), new Vector4(1, 1, 1, 1));
                     //Draw(UI.Theme.Frame, ix - 5, iy - 2, Size.w, UI.SystemFont.StringHeight() + 6, new Maths.Color(1f, 1f, 1f, 0.8f));
                 }
                 if (item.Icon != null)

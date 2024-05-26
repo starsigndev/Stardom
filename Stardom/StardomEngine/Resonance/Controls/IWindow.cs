@@ -12,7 +12,7 @@ namespace StardomEngine.Resonance.Controls
     {
 
 
-        public static Texture2D Shadow
+        public static TextureSlice ShadowSlice
         {
             get;
             set;
@@ -50,9 +50,9 @@ namespace StardomEngine.Resonance.Controls
 
         public IWindow(bool include_scrollers = false)
         {
-            if (Shadow == null)
+            if (ShadowSlice == null)
             {
-                Shadow = new Texture2D("data/ui/shadow.png");
+                ShadowSlice = new TextureSlice(new Texture2D("data/ui/shadow.png"), 32, 32);
             }
             Title = new IWindowTitle();
             Contents = new IWindowContent();
@@ -88,13 +88,13 @@ namespace StardomEngine.Resonance.Controls
             Resizer.OnDragged = (x,y) =>
             {
                 Vector2 new_size = Size + new OpenTK.Mathematics.Vector2(x, y);
-                if(new_size.X<128)
+                if(new_size.X<200)
                 {
-                    new_size.X = 128;
+                    new_size.X = 200;
                 }
-                if (new_size.Y < 128)
+                if (new_size.Y < 200)
                 {
-                    new_size.Y = 128;
+                    new_size.Y = 200;
                 }
                 Set(Position,new_size,Text);
             };
@@ -124,7 +124,7 @@ namespace StardomEngine.Resonance.Controls
             if (CastShadow)
             {
                // GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Title.Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.7f));
-                GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.5f));
+                GameUI.This.DrawRect(ShadowSlice,16,16, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.5f));
             }
             RenderChildren();
 

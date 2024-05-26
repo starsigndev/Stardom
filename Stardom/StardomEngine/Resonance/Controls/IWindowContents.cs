@@ -39,7 +39,10 @@ namespace StardomEngine.Resonance.Controls
             // Set the scissor box
             // GL.Scissor((int)RenderPosition.X, bottomLeftY, (int)Size.X, (int)Size.Y);
 
-            SetStencil(GameUI.Theme.FrameSlice);
+            SetStencil(GameUI.Theme.FrameSlice,8);
+
+            GameUI.This.DrawRect(GameUI.Theme.UIGradient, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 0.6f));
+
 
             RenderChildren();
 

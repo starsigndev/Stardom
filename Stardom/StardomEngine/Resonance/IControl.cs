@@ -303,7 +303,7 @@ namespace StardomEngine.Resonance
 
         }
 
-        public void SetStencil(Texture2D stencil)
+        public void SetStencil(Texture2D stencil,int shrink=4)
         {
 
             GL.Enable(EnableCap.StencilTest);
@@ -325,7 +325,7 @@ namespace StardomEngine.Resonance
            // GL.ClearStencil(0);
             GL.ColorMask(false, false, false, false);
 
-            GameUI.This.DrawRect(stencil, RenderPosition+new Vector2(4,4), Size+new Vector2(-8,-8), Color, 0, false);
+            GameUI.This.DrawRect(stencil, RenderPosition+new Vector2(shrink,shrink), Size+new Vector2(-shrink*2,-shrink*2), Color, 0, false);
 
             GL.ColorMask(true, true, true, true);
 
@@ -335,7 +335,7 @@ namespace StardomEngine.Resonance
 
         }
 
-        public void SetStencil(TextureSlice stencil)
+        public void SetStencil(TextureSlice stencil,int shrink=4)
         {
 
             GL.Enable(EnableCap.StencilTest);
@@ -357,7 +357,7 @@ namespace StardomEngine.Resonance
             // GL.ClearStencil(0);
             GL.ColorMask(false, false, false, false);
 
-            GameUI.This.DrawRect(stencil,64,64, RenderPosition + new Vector2(3, 3), Size + new Vector2(-6, -6), Color, 0, false);
+     GameUI.This.DrawRect(stencil,64,64, RenderPosition+new Vector2(shrink,shrink), Size+new Vector2(-shrink*2,-shrink*2), Color, 0, false);
 
             GL.ColorMask(true, true, true, true);
 
