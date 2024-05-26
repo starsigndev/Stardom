@@ -29,6 +29,12 @@ namespace StardomEngine.Resonance.Controls
         {
             Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
         }
+        public IButton(string text)
+        {
+            Text = text;
+            Size = new Vector2(GameUI.This.TextWidth(text) + 10, 30);
+            Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
+        }
 
 
         public override void OnMouseDown(int button)

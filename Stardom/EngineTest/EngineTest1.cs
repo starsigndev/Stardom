@@ -109,6 +109,9 @@ namespace EngineTest
 
             UI.RootControl.AddControl(img);
 
+
+            /*
+
             b1 = new IButton().Set(new Vector2(140, 140), new Vector2(60, 30), "Test") as IButton;
            
       
@@ -241,6 +244,22 @@ namespace EngineTest
             var ds = new IDateSelector("DOB").Set(new Vector2(50, 250), Vector2.Zero, "");
 
             UI.RootControl.AddControl(ds);
+            */
+
+            var tb = new IToolBar();
+            UI.RootControl.AddControl(tb);
+            tb.AddControl(new IButton("Play"));
+
+            var ls = new IListSelector();
+            ls.Set(new Vector2(0, 0), new Vector2(140, 30));
+            tb.AddControl(ls);
+            ls.List.AddItem("OpenGL");
+            ls.List.AddItem("DirectX");
+            ls.List.AddItem("Metal");
+            ls.OnItemSelected = (item) =>
+            {
+                Console.WriteLine("Item:" + item.Name);
+            };
 
 
         }

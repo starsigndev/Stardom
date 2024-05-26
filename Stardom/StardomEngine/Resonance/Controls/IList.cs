@@ -13,6 +13,7 @@ namespace StardomEngine.Resonance.Controls
 {
 
     public delegate void ItemAction(ListItem item, int index, object data);
+    public delegate void ListItemSelected(ListItem item);
 
     public class ListItem
     {
@@ -69,7 +70,11 @@ namespace StardomEngine.Resonance.Controls
     {
 
        
-
+        public ListItemSelected OnItemSelected
+        {
+            get;
+            set;
+        }
         private IVerticalScroller VerticalScroller
         {
             get;
@@ -210,6 +215,7 @@ namespace StardomEngine.Resonance.Controls
             //base.OnMouseDown(button);
             if (OverItem != null)
             {
+                OnItemSelected?.Invoke(OverItem);       
                 OverItem.InvokeAction(OverItem, 0, OverItem.Data);  //Action?.Invoke(OverItem, 0, OverItem.Data);
             }
         }
