@@ -194,6 +194,18 @@ namespace StardomEngine.Resonance
             }
         }
 
+        public IControl SetPosition(Vector2 position)
+        {
+            Position = position;
+            AfterSet();
+            foreach (var control in Controls)
+            {
+                control.Set(control.Position, control.Size, control.Text);
+            }
+            UpdatedContent();
+            UpdateContentSize();
+            return this;
+        }
         public IControl Set(Vector2 position,Vector2 size,string text="")
         {
             if (size.X < 2)

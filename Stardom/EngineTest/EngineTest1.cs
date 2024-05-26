@@ -211,7 +211,10 @@ namespace EngineTest
             {
                 Console.WriteLine("Num:" + v.ToString());
             };
-         
+
+            IToggle tog1 = new IToggle().Set(new Vector2(30, 600), new Vector2(16, 16), "") as IToggle;
+            UI.RootControl.AddControl(tog1);
+            tog1.Text = "Raytracing";
 
         }
         IButton b1;

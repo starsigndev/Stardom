@@ -113,7 +113,8 @@ namespace StardomEngine.Resonance.Controls
 
             if (CastShadow)
             {
-                GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.6f));
+               // GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Title.Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.7f));
+                GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.5f));
             }
             RenderChildren();
 

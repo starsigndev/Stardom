@@ -53,7 +53,7 @@ namespace StardomEngine.Resonance.Controls
 
             //base.Render();
             GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
-            GameUI.This.DrawText(Text, RenderPosition+new OpenTK.Mathematics.Vector2(Size.X/2-tw,Size.Y/2-th), new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.77f);
+            GameUI.This.DrawText(Text, RenderPosition+new OpenTK.Mathematics.Vector2(Size.X/2-tw,Size.Y/2-th), new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.82f);
         }
 
     }
