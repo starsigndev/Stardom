@@ -519,9 +519,13 @@ namespace StardomEngine.Resonance
         {
             if (PreviousBG != null)
             {
+                //return PreviousBG;
+
                 PreviousBG.Delete();
+                
             }
-            var tex = new Texture2D((int)size.X, (int)size.Y, 3,false);
+           
+            var tex = new Texture2D((int)size.X, (int)size.Y, 4,false);
 
             tex.Grab(new Vector2(position.X, position.Y));
             PreviousBG = tex;

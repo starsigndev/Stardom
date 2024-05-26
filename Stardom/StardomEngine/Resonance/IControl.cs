@@ -70,6 +70,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public bool AnchorToRoot
+        {
+            get;
+            set;
+        }
+
         public Vector2 RenderOffset
         {
             get;

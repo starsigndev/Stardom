@@ -21,6 +21,7 @@ namespace StardomEngine.Resonance
             ArrowH = new Texture2D(path + "\\arrowhorizontal.png");
             ArrowUp = new Texture2D(path + "\\arrowvertical.png");
             ArrowDown = new Texture2D(path+"\\arrowdown.png");
+            WindowContents = new Texture2D(path + "\\windowcontents.png");
         }
 
 
@@ -40,6 +41,11 @@ namespace StardomEngine.Resonance
 
         public Texture2D ArrowDown { get; set; }
 
+        public Texture2D WindowContents
+        {
+            get;
+            set;
+        }
 
     }
 }

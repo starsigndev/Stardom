@@ -18,6 +18,20 @@ namespace StardomEngine.Resonance.Controls
         {
             //Decoder = Vivid.Video.VideoCPP.createDecoder();
             int b = 5;
+            AnchorToRoot = true;
+        }
+
+        public override void AfterSet()
+        {
+            //base.AfterSet()
+            if (AnchorToRoot)
+            {
+                if (Root != null)
+                {
+                    Size = Root.Size;
+                }
+            }
+            int b = 5;
         }
 
         public void PlayVideo(string video)
@@ -31,6 +45,8 @@ namespace StardomEngine.Resonance.Controls
         string vPath = "";
         public override void Update()
         {
+
+           
             if (Vivid.Video.VideoCPP.visDone(Decoder))
             {
 

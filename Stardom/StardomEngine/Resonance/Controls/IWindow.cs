@@ -15,7 +15,13 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
-        public IPanel Contents
+        public IWindowContent Contents
+        {
+            get;
+            set;
+        }
+
+        public IButton Resizer
         {
             get;
             set;
@@ -31,8 +37,10 @@ namespace StardomEngine.Resonance.Controls
         {
 
             Title = new IWindowTitle();
-            Contents = new IPanel();
+            Contents = new IWindowContent();
             VScroller = new IVerticalScroller();
+            Resizer = new IButton();
+            Resizer.Text = "*";
             VScroller.OnValueChange = (val) =>
             {
                 //Console.WriteLine("Value:" + val);
@@ -41,10 +49,12 @@ namespace StardomEngine.Resonance.Controls
 
             AddControl(Contents);
             AddControl(Title);
+            
             if (include_scrollers)
             {
                 AddControl(VScroller);
             }
+            AddControl(Resizer);
 
             Title.OnDragged = (x, y) =>
             {
@@ -56,6 +66,11 @@ namespace StardomEngine.Resonance.Controls
                 VScroller.MaxValue = (int)Contents.ContentSize.Y;
             };
 
+            Resizer.OnDragged = (x,y) =>
+            {
+                Set(Position, new OpenTK.Mathematics.Vector2(Size.X + x, Size.Y + y),Text);
+            };
+
         }
 
         public override void AfterSet()
@@ -63,7 +78,8 @@ namespace StardomEngine.Resonance.Controls
             //base.AfterSet();
             Title.Set(new OpenTK.Mathematics.Vector2(0, 0), new OpenTK.Mathematics.Vector2(Size.X, 20), Text);
             Contents.Set(new OpenTK.Mathematics.Vector2(0, 10),new OpenTK.Mathematics.Vector2(Size.X, Size.Y), "");
-            VScroller.Set(new OpenTK.Mathematics.Vector2(Size.X - 15, 22), new OpenTK.Mathematics.Vector2(13, Size.Y-30), ""); 
+            VScroller.Set(new OpenTK.Mathematics.Vector2(Size.X - 15, 22), new OpenTK.Mathematics.Vector2(13, Size.Y-30), "");
+            Resizer.Set(new OpenTK.Mathematics.Vector2(Size.X - 16, Size.Y-6), new OpenTK.Mathematics.Vector2(16, 16), "*");
         }
 
         public override void UpdateContentSize()
