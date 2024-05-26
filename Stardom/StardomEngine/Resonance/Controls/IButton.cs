@@ -71,7 +71,7 @@ namespace StardomEngine.Resonance.Controls
 
             if (Icon != null)
             {
-                GameUI.This.DrawRect(Icon, new Vector2(RenderPosition.X + 3, RenderPosition.Y + 3), new Vector2(Size.X - 6, Size.Y - 6), new Vector4(2,2,2,2));
+                GameUI.This.DrawRect(Icon, new Vector2(RenderPosition.X + 4, RenderPosition.Y + 4), new Vector2(Size.X - 8, Size.Y - 8), new Vector4(2,2,2,2));
             }
             else
             {

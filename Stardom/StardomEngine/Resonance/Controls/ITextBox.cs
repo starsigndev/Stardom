@@ -125,7 +125,7 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+            GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition+new Vector2(-3,0), Size+new Vector2(6,0), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
 
             string display_str = MaxString(Text);
             DisLen = display_str.Length;
@@ -151,7 +151,7 @@ namespace StardomEngine.Resonance.Controls
                 if (ClaretOn)
                 {
                     cx = GetClaretX();
-                    GameUI.This.DrawRect(GameUI.Theme.Frame, new Vector2(RenderPosition.X + cx, RenderPosition.Y + 2), new Vector2(2, Size.Y - 4), new Vector4(1, 1, 1, 1));
+                    GameUI.This.DrawRect(GameUI.Theme.Frame, new Vector2(RenderPosition.X + cx, RenderPosition.Y + 4), new Vector2(2, Size.Y - 8), new Vector4(1, 1, 1, 1));
                 }
 
             }

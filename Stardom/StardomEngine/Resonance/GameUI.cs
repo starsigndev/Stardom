@@ -395,7 +395,7 @@ namespace StardomEngine.Resonance
                         if (time > NextKey)
                         {
                             ActiveControl.OnKey((Keys)CurrentKey);
-                            NextKey = time + 150;
+                            NextKey = time + 100;
                         }
                     }
                 }

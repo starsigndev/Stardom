@@ -196,6 +196,14 @@ namespace StardomEngine.Resonance
 
         public IControl Set(Vector2 position,Vector2 size,string text="")
         {
+            if (size.X < 2)
+            {
+                size.X = 2;
+            }
+            if (size.Y < 2)
+            {
+                size.Y = 2;
+            }
             Position = position;
             Size = size;
             Text = text;
@@ -305,7 +313,7 @@ namespace StardomEngine.Resonance
            // GL.ClearStencil(0);
             GL.ColorMask(false, false, false, false);
 
-            GameUI.This.DrawRect(stencil, RenderPosition, Size, Color, 0, false);
+            GameUI.This.DrawRect(stencil, RenderPosition+new Vector2(4,4), Size+new Vector2(-8,-8), Color, 0, false);
 
             GL.ColorMask(true, true, true, true);
 

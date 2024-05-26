@@ -154,7 +154,7 @@ namespace EngineTest
             };
 
             win1.Contents.Color = new Vector4(1, 1, 1, 0.7f);
-            win1.Contents.Refracter = new Texture2D("data/refract2.jpg");
+            win1.Contents.Refracter = new Texture2D("data/refract1.png");
 
             var tb1 = new ITextBox();
             UI.RootControl.AddControl(tb1);

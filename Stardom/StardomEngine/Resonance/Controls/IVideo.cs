@@ -45,7 +45,7 @@ namespace StardomEngine.Resonance.Controls
         string vPath = "";
         public override void Update()
         {
-
+            return;
            
             if (Vivid.Video.VideoCPP.visDone(Decoder))
             {
@@ -84,6 +84,8 @@ namespace StardomEngine.Resonance.Controls
             if (tex != null)
             {
                 //Draw(tex);
+                //Color = new OpenTK.Mathematics.Vector4(1, 1, 1, 0.5f);
+
                 GameUI.This.DrawRect(tex, RenderPosition, Size, Color);
             }
         }
