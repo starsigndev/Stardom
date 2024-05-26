@@ -125,7 +125,7 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition+new Vector2(-3,0), Size+new Vector2(6,0), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+            GameUI.This.DrawRect(GameUI.Theme.TextBoxSlice,10,10, RenderPosition+new Vector2(-3,0), Size+new Vector2(6,0), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
 
             string display_str = MaxString(Text);
             DisLen = display_str.Length;

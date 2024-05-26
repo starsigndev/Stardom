@@ -229,7 +229,7 @@ namespace StardomEngine.Resonance.Controls
             //;
             // Draw(UI.Theme.Pure, -1, -1, -1, -1, new Maths.Color(0.5f, 0.5f, 0.5f, 0.95f));
             // Draw(UI.Theme.Frame, 10, 10, Size.w - 20, Size.h - 20, new Maths.Color(3, 3, 3, 1));
-            GameUI.This.DrawRect(GameUI.Theme.ListBox, RenderPosition, Size, new Vector4(1, 1, 1, 1));
+            GameUI.This.DrawRect(GameUI.Theme.ListBoxSlice,10,10, RenderPosition, Size, new Vector4(1, 1, 1, 1));
          
             int ix, iy;
 

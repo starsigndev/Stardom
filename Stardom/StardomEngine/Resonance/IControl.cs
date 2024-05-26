@@ -357,7 +357,7 @@ namespace StardomEngine.Resonance
             // GL.ClearStencil(0);
             GL.ColorMask(false, false, false, false);
 
-            GameUI.This.DrawRect(stencil, RenderPosition + new Vector2(3, 3), Size + new Vector2(-6, -6), Color, 0, false);
+            GameUI.This.DrawRect(stencil,64,64, RenderPosition + new Vector2(3, 3), Size + new Vector2(-6, -6), Color, 0, false);
 
             GL.ColorMask(true, true, true, true);
 

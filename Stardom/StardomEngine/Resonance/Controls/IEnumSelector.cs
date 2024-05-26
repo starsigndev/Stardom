@@ -73,7 +73,7 @@ namespace StardomEngine.Resonance.Controls
             //           base.RenderForm();
             //DrawFrameRounded();
             //Draw(UI.Theme.Pure);
-            GameUI.This.DrawRect(GameUI.Theme.TextBox, RenderPosition, Size, Color);
+            GameUI.This.DrawRect(GameUI.Theme.TextBoxSlice,10,10, RenderPosition, Size, Color);
 
 
             int th = (int)GameUI.This.TextHeight("") / 2;

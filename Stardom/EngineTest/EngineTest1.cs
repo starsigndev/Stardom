@@ -109,7 +109,7 @@ namespace EngineTest
 
             UI.RootControl.AddControl(img);
 
-            b1 = new IButton().Set(new Vector2(140, 140), new Vector2(120, 30), "Test") as IButton;
+            b1 = new IButton().Set(new Vector2(140, 140), new Vector2(60, 30), "Test") as IButton;
            
       
             UI.RootControl.AddControl(b1);
@@ -159,10 +159,10 @@ namespace EngineTest
             var tb1 = new ITextBox();
             UI.RootControl.AddControl(tb1);
 
-            tb1.Set(new Vector2(20, 300), new Vector2(180, 30));
+            tb1.Set(new Vector2(20, 300), new Vector2(480, 30));
             //tb1.Text = "This is";
 
-            var es1 = new IEnumSelector(typeof(TestEnum)).Set(new Vector2(20, 360), new Vector2(130, 30), "") as IEnumSelector;
+            var es1 = new IEnumSelector(typeof(TestEnum)).Set(new Vector2(20, 360), new Vector2(430, 30), "") as IEnumSelector;
             UI.RootControl.AddControl(es1);
             es1.OnSelected = (name,et) =>
             {

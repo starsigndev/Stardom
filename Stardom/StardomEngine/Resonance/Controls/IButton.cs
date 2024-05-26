@@ -61,7 +61,7 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition, Size,Color);
+            GameUI.This.DrawRect(GameUI.Theme.ButtonSlice,8,8, RenderPosition, Size,Color);
 
             float tx = RenderPosition.X + Size.X / 2;
             float ty = RenderPosition.Y + Size.Y / 2;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenTK.Mathematics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -86,7 +87,16 @@ namespace StardomEngine.Resonance.Controls
 
             Resizer.OnDragged = (x,y) =>
             {
-                Set(Position, new OpenTK.Mathematics.Vector2(Size.X + x, Size.Y + y),Text);
+                Vector2 new_size = Size + new OpenTK.Mathematics.Vector2(x, y);
+                if(new_size.X<128)
+                {
+                    new_size.X = 128;
+                }
+                if (new_size.Y < 128)
+                {
+                    new_size.Y = 128;
+                }
+                Set(Position,new_size,Text);
             };
             Resizer.Icon = GameUI.Theme.Resizer;
         }

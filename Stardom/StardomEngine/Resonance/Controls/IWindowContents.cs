@@ -25,7 +25,7 @@ namespace StardomEngine.Resonance.Controls
             // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z, 1.0f);
             GameUI.This.DrawRect(bg, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.003f, true, GameUI.Theme.FrameGuide,0, Refracter);
             // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z,0.2f);
-            GameUI.This.DrawRect(GameUI.Theme.FrameSlice, RenderPosition, Size, Color, 0, false);
+            GameUI.This.DrawRect(GameUI.Theme.FrameSlice,64,64, RenderPosition, Size, Color, 0, false);
 
           
 

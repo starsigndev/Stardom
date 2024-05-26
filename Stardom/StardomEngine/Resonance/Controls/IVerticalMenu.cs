@@ -138,8 +138,9 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            //GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
-            ListBoxImage.Draw(RenderPosition, Size, new Vector4(1, 1, 1, 1));
+            GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
+            //ListBoxImage.Draw(RenderPosition, Size, new Vector4(1, 1, 1, 1));
+
 
             int item_y = 10;
 

@@ -25,6 +25,9 @@ namespace StardomEngine.Resonance
             Resizer = new Texture2D(path + "\\resizer.png");
             FrameGuide = new Texture2D(path + "\\frameguide.png");
             FrameSlice = new TextureSlice(FrameGuide, 256,256);
+            ButtonSlice = new TextureSlice(Button, 128, 128);
+            TextBoxSlice = new TextureSlice(TextBox, 128, 128);
+            ListBoxSlice = new TextureSlice(ListBox, 128, 128);
         }
 
 
@@ -63,6 +66,24 @@ namespace StardomEngine.Resonance
         }
 
         public TextureSlice FrameSlice
+        {
+            get;
+            set;
+        }
+
+        public TextureSlice ButtonSlice
+        {
+            get;
+            set;
+        }
+
+        public TextureSlice TextBoxSlice
+        {
+            get;
+            set;
+        }
+
+        public TextureSlice ListBoxSlice
         {
             get;
             set;

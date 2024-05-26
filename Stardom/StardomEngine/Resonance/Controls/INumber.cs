@@ -111,9 +111,9 @@ namespace StardomEngine.Resonance.Controls
 
         public override void AfterSet()
         {
-            Up.Set(new OpenTK.Mathematics.Vector2(0, 0),new OpenTK.Mathematics.Vector2(15,15),"/\\");
-            Down.Set(new OpenTK.Mathematics.Vector2(0, 15), new OpenTK.Mathematics.Vector2(15, 15), "\\/");
-            Number.Set(new OpenTK.Mathematics.Vector2(15,0),new OpenTK.Mathematics.Vector2(80,31),Number.Text);
+            Up.Set(new OpenTK.Mathematics.Vector2(0, 0),new OpenTK.Mathematics.Vector2(28,28),"/\\");
+            Down.Set(new OpenTK.Mathematics.Vector2(108, 0), new OpenTK.Mathematics.Vector2(28,28), "\\/");
+            Number.Set(new OpenTK.Mathematics.Vector2(28,0),new OpenTK.Mathematics.Vector2(80,28),Number.Text);
             //base.AfterSet();/
 
 

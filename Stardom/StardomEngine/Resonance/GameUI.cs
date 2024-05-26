@@ -119,7 +119,7 @@ namespace StardomEngine.Resonance
         {
             Windows.Add(window);
         }
-        public void DrawRect(TextureSlice image, Vector2 position, Vector2 size, Vector4 color, float blur = 0.0f, bool flip = false, Texture2D mask = null, float refract = 0.0f, Texture2D refracter = null)
+        public void DrawRect(TextureSlice image,int corner_w,int corner_h ,Vector2 position, Vector2 size, Vector4 color, float blur = 0.0f, bool flip = false, Texture2D mask = null, float refract = 0.0f, Texture2D refracter = null)
         {
             Vector4 ext = new Vector4(0, 0, 0, 0);
 
@@ -128,8 +128,8 @@ namespace StardomEngine.Resonance
 
             Draw.Begin();
 
-            int cw = 32;
-            int ch = 32;
+            int cw = corner_w;
+            int ch = corner_h;
 
             Draw.DrawQuad(image.LeftTopCorner, position, new Vector2(cw,ch), color, ext);
             Draw.DrawQuad(image.RightTopCorner, new Vector2(position.X + size.X - cw, position.Y), new Vector2(cw, ch), color, ext);
