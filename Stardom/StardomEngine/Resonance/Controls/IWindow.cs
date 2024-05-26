@@ -48,7 +48,13 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
-        public IWindow(bool include_scrollers = false)
+        public bool RectDesign
+        {
+            get;
+            set;
+        }
+
+        public IWindow(bool include_scrollers = false,bool rect_design=true)
         {
             if (ShadowSlice == null)
             {
@@ -59,6 +65,8 @@ namespace StardomEngine.Resonance.Controls
             VScroller = new IVerticalScroller();
             Resizer = new IButton();
             Resizer.Text = "*";
+            RectDesign = true;
+            Contents.Rect = true;
             CastShadow = true;
             VScroller.OnValueChange = (val) =>
             {
@@ -107,7 +115,7 @@ namespace StardomEngine.Resonance.Controls
             Title.Set(new OpenTK.Mathematics.Vector2(1, 0), new OpenTK.Mathematics.Vector2(Size.X, 20), Text);
             Contents.Set(new OpenTK.Mathematics.Vector2(0, 20),new OpenTK.Mathematics.Vector2(Size.X, Size.Y-20), "");
             VScroller.Set(new OpenTK.Mathematics.Vector2(Size.X - 15, 22), new OpenTK.Mathematics.Vector2(13, Size.Y-30), "");
-            Resizer.Set(new OpenTK.Mathematics.Vector2(Size.X - 16, Size.Y-16), new OpenTK.Mathematics.Vector2(12, 12), "*");
+            Resizer.Set(new OpenTK.Mathematics.Vector2(Size.X - 16, Size.Y-16), new OpenTK.Mathematics.Vector2(16, 16), "*");
         }
 
         public override void UpdateContentSize()
@@ -123,9 +131,14 @@ namespace StardomEngine.Resonance.Controls
 
             if (CastShadow)
             {
-               // GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Title.Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.7f));
-                GameUI.This.DrawRect(ShadowSlice,16,16, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.5f));
+                // GameUI.This.DrawRect(Shadow, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Title.Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.7f));
+                Position = Position + new Vector2(32, 32);
+                SetStencil(GameUI.Theme.FrameSlice, 0);
+                Position = Position + new Vector2(-32, -32);
+                ClearStencil();
+                GameUI.This.DrawRect(ShadowSlice,16,16, RenderPosition + new OpenTK.Mathematics.Vector2(32, 32), Size, new OpenTK.Mathematics.Vector4(0.8f, 0.8f, 0.8f, 0.65f));
             }
+
             RenderChildren();
 
         }

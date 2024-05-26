@@ -33,7 +33,7 @@ namespace StardomEngine.Resonance.Controls
 
         public override void OnMouseDown(int button)
         {
-            Color = new Vector4(1, 1.5f, 1.5f, 1.0f);
+            Color = new Vector4(1.2f, 1.2f, 1.2f, 1.0f);
             //base.OnMouseDown(button);
             OnClick?.Invoke(this,button);
         }
@@ -49,7 +49,7 @@ namespace StardomEngine.Resonance.Controls
         public override void OnEnter()
         {
             //Environment.Exit(1);
-            Color = new Vector4(1.1f, 1.1f, 1.1f, 1.0f);
+            Color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
         }
 
         public override void OnLeave()
@@ -61,7 +61,7 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.ButtonSlice,8,8, RenderPosition, Size,Color);
+            GameUI.This.DrawRect(GameUI.Theme.ButtonSlice,6,6, RenderPosition, Size,Color);
 
             float tx = RenderPosition.X + Size.X / 2;
             float ty = RenderPosition.Y + Size.Y / 2;

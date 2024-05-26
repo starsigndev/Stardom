@@ -217,14 +217,31 @@ namespace EngineTest
             tog1.Text = "Raytracing";
 
             ITreeView tv1 = new ITreeView();
-            tv1.Set(new Vector2(300, 100), new Vector2(200, 450), "");
-            UI.RootControl.AddControl(tv1);
+            tv1.Set(new Vector2(0, 0), new Vector2(200, 450), "");
+          //  UI.RootControl.AddControl(tv1);
             var players = tv1.RootItem.AddItem("Players");
             players.AddItem("Antony");
             players.AddItem("John");
             var test = tv1.RootItem.AddItem("Test Item");
-            test.AddItem("Test 1");
-            test.AddItem("Test 2");
+            for (int i = 0; i < 50; i++)
+            {
+                test.AddItem("Test" + i);
+            //    test.AddItem("Test 2");
+            }
+            var l = test.AddItem("last");
+            l.OnItemSelected = (item) =>
+            {
+                Environment.Exit(1);
+            };
+
+            var wi2 = new IWindow(false).Set(new Vector2(20, 100), new Vector2(250, 450), "Test View") as IWindow;
+            UI.AddWindow(wi2);
+            wi2.Contents.AddControl(tv1);
+
+            var ds = new IDateSelector("DOB").Set(new Vector2(50, 250), Vector2.Zero, "");
+
+            UI.RootControl.AddControl(ds);
+
 
         }
         IButton b1;

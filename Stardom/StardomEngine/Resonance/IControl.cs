@@ -153,6 +153,7 @@ namespace StardomEngine.Resonance
             UpdatedContent();
             UpdateContentSize();
             OnControlAdded?.Invoke(this, control);
+            control.AfterSet();
 
         }
 
@@ -365,6 +366,16 @@ namespace StardomEngine.Resonance
             GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Keep); // Keep stencil values
             GL.StencilMask(0x00); // Disable writing to the stencil buffer
 
+        }
+
+        public void ClearStencil()
+        {
+            GL.Disable(EnableCap.StencilTest);
+
+
+            GL.StencilMask(0xFF); // Allow writing to the entire stencil buffer
+            GL.StencilFunc(StencilFunction.Always, 0, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Keep);
         }
 
         public virtual void PreRender()

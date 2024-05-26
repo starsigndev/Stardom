@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace StardomEngine.Resonance.Controls
 {
+    public delegate void TreeItemSelected(TreeItem item);
+
     public class TreeItem
     {
+
+        public TreeItemSelected OnItemSelected
+        {
+            get;
+            set;
+        }
         public string Text
         {
             get;
@@ -49,6 +57,12 @@ namespace StardomEngine.Resonance.Controls
 
         }
 
+        public Object Data
+        {
+            get;
+            set;
+        }
+
     }
     public class ITreeView : IControl
     {
@@ -65,12 +79,42 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
+        public IVerticalScroller Scroller
+        {
+            get;
+            set;
+        }
+
+        private int ScrollY
+        {
+            get;
+            set;
+        }
+
         public ITreeView()
         {
 
             RootItem = new TreeItem("Root");
             RootItem.Open = true;
+            Scroller = new IVerticalScroller();
+            AddControl(Scroller);
+            Scroller.OnValueChange = (v) =>
+            {
+                ScrollY = (int)((float)Scroller.MaxValue * v);
+            };
 
+        }
+
+
+
+        public override void AfterSet()
+        {
+            //base.AfterSet();
+            if (Root != null)
+            {
+                Size = Root.Size;
+            }
+            Scroller.Set(new Vector2(Size.X-12 , 0), new Vector2(8, Size.Y), "");
         }
 
         public int CheckItem(TreeItem item,int cx,int cy,Vector2 position)
@@ -100,7 +144,8 @@ namespace StardomEngine.Resonance.Controls
         public override void OnMouseMove(Vector2 position, Vector2 delta)
         {
             //base.OnMouseMove(position, delta);
-            CheckItem(RootItem, 5, 5, position);
+            OverItem = null;
+            CheckItem(RootItem, 5, 5-ScrollY, position);
         }
 
         public override void OnMouseDown(int button)
@@ -108,7 +153,14 @@ namespace StardomEngine.Resonance.Controls
             //base.OnMouseDown(button);
             if (OverItem != null)
             {
-                OverItem.Open = OverItem.Open ? false : true;
+                if (OverItem.Items.Count == 0)
+                {
+                    OverItem.OnItemSelected?.Invoke(OverItem);
+                }
+                else
+                {
+                    OverItem.Open = OverItem.Open ? false : true;
+                }
             }
         }
 
@@ -118,21 +170,21 @@ namespace StardomEngine.Resonance.Controls
             if (item == OverItem)
             {
 
-                GameUI.This.DrawRect(GameUI.Theme.ListBoxSlice, 6, 6, RenderPosition + new Vector2(0, dy-3), new Vector2(Size.X, GameUI.This.TextHeight("") + 6), new Vector4(1, 1, 1, 1));
+                GameUI.This.DrawRect(GameUI.Theme.ListBoxSlice, 6, 6, RenderPosition + new Vector2(0, dy-3-ScrollY), new Vector2(Size.X, GameUI.This.TextHeight("") + 6), new Vector4(1, 1, 1, 1));
 
             }
 
             if (item.Items.Count > 0)
             {
-                GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx, dy + 2), new OpenTK.Mathematics.Vector2(10, 10), Color);
-                GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx + 1, dy + 3), new OpenTK.Mathematics.Vector2(8, 8), new OpenTK.Mathematics.Vector4(0.4f, 0.4f, 0.4f, 1.0f));
+                GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx, dy + 2-ScrollY), new OpenTK.Mathematics.Vector2(10, 10), Color);
+                GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx + 1, dy + 3-ScrollY), new OpenTK.Mathematics.Vector2(8, 8), new OpenTK.Mathematics.Vector4(0.4f, 0.4f, 0.4f, 1.0f));
                 if (item.Open)
                 {
-                    GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx + 2, dy + 4), new OpenTK.Mathematics.Vector2(6, 6), Color);
+                    GameUI.This.DrawRect(GameUI.Theme.Button, RenderPosition + new OpenTK.Mathematics.Vector2(dx + 2, dy + 4-ScrollY), new OpenTK.Mathematics.Vector2(6, 6), Color);
                 }
             }
 
-            GameUI.This.DrawText(item.Text, RenderPosition + new OpenTK.Mathematics.Vector2(dx+14, dy+2), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
+            GameUI.This.DrawText(item.Text, RenderPosition + new OpenTK.Mathematics.Vector2(dx+14, dy+2-ScrollY), new OpenTK.Mathematics.Vector4(1, 1, 1, 1));
 
             if (item.Open)
             {
@@ -150,11 +202,26 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
 
+           // SetStencil(GameUI.Theme.White,0);
+
             GameUI.This.DrawRect(GameUI.Theme.White, RenderPosition, Size,new OpenTK.Mathematics.Vector4(0.5f,0.5f,0.5f,1.0f));
 
+            //
+
+            int h = RenderItem(RootItem, 5, 5);
+
+            Scroller.MaxValue = h - (int)Size.Y+(int)GameUI.This.TextHeight("")+8;
+
+            if (Scroller.MaxValue < 10)
+            {
+                Scroller.MaxValue = 10;
+            }
 
 
-            RenderItem(RootItem, 5, 5);
+            //ClearStencil();
+
+
+            RenderChildren();
 
 
         }

@@ -10,10 +10,17 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 namespace StardomEngine.Resonance.Controls
 {
     public delegate void TextChanged(ITextBox control, string text);
+    public delegate void BoxSelected(ITextBox control);
     public class ITextBox : IControl
     {
 
         public TextChanged OnTextChanged
+        {
+            get;
+            set;
+        }
+
+        public BoxSelected OnBoxSelected
         {
             get;
             set;
@@ -78,6 +85,12 @@ namespace StardomEngine.Resonance.Controls
             }
             return (int)GameUI.This.TextWidth(mstr);
 
+        }
+
+        public bool Selector
+        {
+            get;
+            set;
         }
 
         float GetNumber()
@@ -164,9 +177,14 @@ namespace StardomEngine.Resonance.Controls
             //base.TextChanged();
             ClaretX = Text.Length;
         }
-
+        public override void OnMouseDown(int button)
+        {
+            //base.OnMouseDown(button);
+            OnBoxSelected?.Invoke(this);
+        }
         public override void OnKey(Keys key)
         {
+            if (Selector) return;
             //base.OnKey(key);
             Console.WriteLine("Key:" + key.ToString());
             switch (key)
