@@ -231,6 +231,36 @@ namespace StardomEngine.Texture
 
         }
 
+        public Texture2D(Texture2D sub,int x,int y,int w,int h)
+        {
+
+            Handle = GL.CreateTexture(TextureTarget.Texture2d);
+            GL.BindTexture(TextureTarget.Texture2d, Handle);
+            Width = w;
+            Height = h;
+            Channels = sub.Channels;
+            Data = new byte[w * h * Channels];
+
+            for(int ry = 0; ry < h; ry++)
+            {
+                for(int rx = 0; rx < w; rx++)
+                {
+                    int nl = (ry * Width * Channels) + (rx * Channels);
+                    int loc = ((y+ry) * sub.Width * Channels) + ((x+rx) * Channels);
+                    Data[nl++] = sub.Data[loc++];
+                    Data[nl++] = sub.Data[loc++];
+                    Data[nl++] = sub.Data[loc++];
+                    if (Channels == 4)
+                    {
+                        Data[nl++] = sub.Data[loc++];
+                    }
+                }
+            }
+
+            MakeTexture();
+
+        }
+
         public void SetPixelFloat(int x,int y,Vector4 color)
         {
 

@@ -262,6 +262,7 @@ namespace EngineTest
             // return;
           //  RT1.Bind();
             UI.Render();
+
          //   RT1.Release();
          //   Draw.Begin();
          //   Draw.DrawQuad(RT1.BB, new Vector2(0, StarApp.FrameHeight), new Vector2(StarApp.FrameWidth,-StarApp.FrameHeight), new Vector4(1, 1, 1, 1), new Vector4(0, 1, 0, 0));

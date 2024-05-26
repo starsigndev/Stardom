@@ -45,8 +45,8 @@ namespace StardomEngine.Resonance.Controls
         string vPath = "";
         public override void Update()
         {
-            return;
-           
+            //return;
+
             if (Vivid.Video.VideoCPP.visDone(Decoder))
             {
 

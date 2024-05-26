@@ -119,6 +119,43 @@ namespace StardomEngine.Resonance
         {
             Windows.Add(window);
         }
+        public void DrawRect(TextureSlice image, Vector2 position, Vector2 size, Vector4 color, float blur = 0.0f, bool flip = false, Texture2D mask = null, float refract = 0.0f, Texture2D refracter = null)
+        {
+            Vector4 ext = new Vector4(0, 0, 0, 0);
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
+            Draw.Begin();
+
+            int cw = 32;
+            int ch = 32;
+
+            Draw.DrawQuad(image.LeftTopCorner, position, new Vector2(cw,ch), color, ext);
+            Draw.DrawQuad(image.RightTopCorner, new Vector2(position.X + size.X - cw, position.Y), new Vector2(cw, ch), color, ext);
+            Draw.DrawQuad(image.LeftBotCorner, new Vector2(position.X, position.Y + size.Y - ch), new Vector2(cw, ch), color,ext);
+            Draw.DrawQuad(image.RightBotCorner, new Vector2(position.X + size.X - cw, position.Y + size.Y - ch), new Vector2(cw, ch), color, ext);
+            Draw.DrawQuad(image.Botttom, new Vector2(position.X + cw, position.Y + size.Y - ch), new Vector2(size.X - cw * 2, ch), color, ext);
+            Draw.DrawQuad(image.Top, new Vector2(position.X + cw, position.Y), new Vector2(size.X - cw * 2, ch), color, ext);
+            Draw.DrawQuad(image.Left, new Vector2(position.X, position.Y + ch), new Vector2(cw, size.Y - ch * 2), color, ext);
+            Draw.DrawQuad(image.Right, new Vector2(position.X + size.X - cw, position.Y+ch), new Vector2(cw, size.Y - ch * 2), color, ext);
+            Draw.DrawQuad(image.Center, new Vector2(position.X + cw, position.Y + ch), new Vector2(size.X - cw * 2, size.Y - ch * 2), color, ext);
+            Draw.DrawNormal.Bind();
+
+            if (mask != null)
+            {
+                mask.Bind(1);
+                Draw.DrawNormal.SetInt("se_MaskTexture", 1);
+            }
+            if (refracter != null)
+            {
+                refracter.Bind(2);
+                Draw.DrawNormal.SetInt("se_RefractTexture", 2);
+            }
+            Draw.End();
+            Draw.DrawNormal.Release();
+
+        }
 
         public void DrawRect(Texture2D image,Vector2 position,Vector2 size,Vector4 color,float blur=0.0f,bool flip=false,Texture2D mask=null,float refract=0.0f,Texture2D refracter=null)
         {

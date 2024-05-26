@@ -23,11 +23,11 @@ namespace StardomEngine.Resonance.Controls
             var bg = GameUI.This.GrabBG(RenderPosition, Size);
 
             // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z, 1.0f);
-            GameUI.This.DrawRect(bg, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.003f, true, GameUI.Theme.Frame,0, Refracter);
+            GameUI.This.DrawRect(bg, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.003f, true, GameUI.Theme.FrameGuide,0, Refracter);
             // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z,0.2f);
-            GameUI.This.DrawRect(GameUI.Theme.WindowContents, RenderPosition, Size, Color, 0, false);
+            GameUI.This.DrawRect(GameUI.Theme.FrameSlice, RenderPosition, Size, Color, 0, false);
 
-
+          
 
 
             int windowHeight = (int)StarApp.FrameHeight;
@@ -39,7 +39,7 @@ namespace StardomEngine.Resonance.Controls
             // Set the scissor box
             // GL.Scissor((int)RenderPosition.X, bottomLeftY, (int)Size.X, (int)Size.Y);
 
-            SetStencil(GameUI.Theme.WindowContents);
+            SetStencil(GameUI.Theme.FrameSlice);
 
             RenderChildren();
 

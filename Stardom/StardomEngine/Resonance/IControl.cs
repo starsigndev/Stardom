@@ -335,6 +335,38 @@ namespace StardomEngine.Resonance
 
         }
 
+        public void SetStencil(TextureSlice stencil)
+        {
+
+            GL.Enable(EnableCap.StencilTest);
+            GL.Clear(ClearBufferMask.StencilBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.ClearStencil(0); // Reset stencil buffer to 0
+            GL.StencilMask(0xFF);
+
+            GL.StencilFunc(StencilFunction.Always, 1, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace);
+
+
+            //GL.StencilFunc(StencilFunction.Always, 1, 0xFF);
+            //GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace);
+
+            //GL.StencilMask(0xFF);
+
+
+            // GL.ClearStencil(0);
+            GL.ColorMask(false, false, false, false);
+
+            GameUI.This.DrawRect(stencil, RenderPosition + new Vector2(3, 3), Size + new Vector2(-6, -6), Color, 0, false);
+
+            GL.ColorMask(true, true, true, true);
+
+            GL.StencilFunc(StencilFunction.Equal, 1, 0xFF);
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Keep); // Keep stencil values
+            GL.StencilMask(0x00); // Disable writing to the stencil buffer
+
+        }
+
         public virtual void PreRender()
         {
 

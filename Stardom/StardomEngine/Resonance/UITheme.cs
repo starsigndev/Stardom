@@ -23,6 +23,8 @@ namespace StardomEngine.Resonance
             ArrowDown = new Texture2D(path+"\\arrowdown.png");
             WindowContents = new Texture2D(path + "\\windowcontents.png");
             Resizer = new Texture2D(path + "\\resizer.png");
+            FrameGuide = new Texture2D(path + "\\frameguide.png");
+            FrameSlice = new TextureSlice(FrameGuide, 256,256);
         }
 
 
@@ -49,6 +51,18 @@ namespace StardomEngine.Resonance
         }
 
         public Texture2D Resizer
+        {
+            get;
+            set;
+        }
+
+        public Texture2D FrameGuide
+        {
+            get;
+            set;
+        }
+
+        public TextureSlice FrameSlice
         {
             get;
             set;

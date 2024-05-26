@@ -52,8 +52,13 @@ namespace StardomEngine.Resonance.Controls
             int th = (int)GameUI.This.TextHeight(Text, 0.77f) / 2;
 
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
-            GameUI.This.DrawText(Text, RenderPosition+new OpenTK.Mathematics.Vector2(Size.X/2-tw,Size.Y/2-th), new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.82f);
+            //            GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, Color);
+            var bg = GameUI.This.GrabBG(RenderPosition, Size);
+
+            // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z, 1.0f);
+            GameUI.This.DrawRect(bg, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.003f, true, GameUI.Theme.Frame, 0, Refracter);
+            GameUI.This.DrawRect(GameUI.Theme.WindowTitle, RenderPosition, Size, new Vector4(1, 1, 1, 0.85f)); ;
+            GameUI.This.DrawText(Text, RenderPosition+new OpenTK.Mathematics.Vector2(Size.X/2-tw,Size.Y/2-th), new OpenTK.Mathematics.Vector4(0.9f,0.9f,0.9f, 1), 0.86f);
         }
 
     }
