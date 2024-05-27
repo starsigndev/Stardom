@@ -185,6 +185,17 @@ namespace StardomEngine.Resonance.Controls
         public override void OnKey(Keys key)
         {
             if (Selector) return;
+            if(key == Keys.Tab)
+            {
+                if (TabNext != null)
+                {
+                    Active = false;
+                    this.OnDeactivate();
+                    GameUI.This.ActiveControl = TabNext;
+                    GameUI.This.ActiveControl.OnActivate();
+                    GameUI.This.ActiveControl.Active = true;
+                }
+            }
             //base.OnKey(key);
             Console.WriteLine("Key:" + key.ToString());
             switch (key)

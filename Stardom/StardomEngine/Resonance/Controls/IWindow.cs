@@ -66,7 +66,7 @@ namespace StardomEngine.Resonance.Controls
             Resizer = new IButton();
             Resizer.Text = "*";
             RectDesign = true;
-            Contents.Rect = true;
+            Contents.Rect = rect_design;
             CastShadow = true;
             VScroller.OnValueChange = (val) =>
             {

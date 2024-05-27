@@ -41,7 +41,7 @@ namespace StardomEngine.Resonance.Controls
             {
                 GameUI.This.DrawRect(bg, RenderPosition, Size, new OpenTK.Mathematics.Vector4(1, 1, 1, 1), 0.003f, true, GameUI.Theme.FrameGuide, 0, Refracter);
                 // Color = new OpenTK.Mathematics.Vector4(Color.X, Color.Y, Color.Z,0.2f);
-                GameUI.This.DrawRect(GameUI.Theme.FrameSlice, 64, 64, RenderPosition, Size, Color, 0, false);
+                GameUI.This.DrawRect(GameUI.Theme.FrameSlice, 64, 64, RenderPosition, Size,new(0.7f,0.7f,0.7f,0.85f), 0, false);
             }
           
 
@@ -64,7 +64,7 @@ namespace StardomEngine.Resonance.Controls
             {
                 SetStencil(GameUI.Theme.FrameSlice, 0);
             }
-            GameUI.This.DrawRect(GameUI.Theme.UIGradient, RenderPosition, Size, new OpenTK.Mathematics.Vector4(0.6f, 0.6f, 0.6f, 0.6f));
+//            GameUI.This.DrawRect(GameUI.Theme.UIGradient, RenderPosition, Size, new OpenTK.Mathematics.Vector4(0.6f, 0.6f, 0.6f, 0.3f));
 
             GL.Disable(EnableCap.StencilTest);
 
@@ -75,7 +75,7 @@ namespace StardomEngine.Resonance.Controls
 
             if (Rect)
             {
-                SetStencil(GameUI.Theme.WindowContentsSlice, 2);
+                SetStencil(GameUI.Theme.WindowContentsSlice, 0);
             }
             else
             {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using StardomEngine.Texture;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
+using StardomEngine.App;
 
 namespace StardomEngine.Resonance
 {
@@ -64,6 +65,11 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public IControl TabNext
+        {
+            get;
+            set;
+        }
         public Dragged OnDragged
         {
             get;
@@ -138,6 +144,13 @@ namespace StardomEngine.Resonance
             get;
             set;
         }
+
+        public Vector2 Offset
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
             AlignSize = -1;
@@ -149,6 +162,14 @@ namespace StardomEngine.Resonance
 
         }
 
+        public void Center()
+        {
+
+            var position = new Vector2(StarApp.FrameWidth / 2 - Size.X / 2, StarApp.FrameHeight / 2 - Size.Y / 2);
+            Set(position, Size, Text);
+
+
+        }
 
         public void AddControl(IControl control)
         {
@@ -409,7 +430,9 @@ namespace StardomEngine.Resonance
 
             foreach(var control in Controls)
             {
+             //   control.Position = control.Position + Offset;
                 control.Render();
+           //     control.Position = control.Position - Offset;
             }
 
         }

@@ -56,6 +56,19 @@ namespace StardomEngine.App
         private int FPS = 0;
         private int Frame = 0;
 
+        public static Stack<AppState> States = new Stack<AppState>();
+
+        public static void PushState(AppState state)
+        {
+            States.Push(state);
+            state.InitState();
+        }
+
+        public static void PopState()
+        {
+            States.Pop();
+        }
+
         public StarApp(GameWindowSettings settings,NativeWindowSettings native) : base(settings,native)
         {
             // InitApp();
@@ -77,7 +90,7 @@ namespace StardomEngine.App
 
         public virtual void InitApp()
         {
-
+            
         }
 
         public virtual void UpdateApp()
@@ -133,6 +146,8 @@ namespace StardomEngine.App
             }
 
             UpdateApp();
+            var appstate = States.Peek();
+            appstate.UpdateState();
 
         }
 
@@ -157,7 +172,9 @@ namespace StardomEngine.App
             GL.ClearColor(0.1f, 0.1f, 0.1f, 1);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             RenderApp();
-        
+            var appstate = States.Peek();
+            appstate.RenderState();
+
             SwapBuffers();
 
         }

@@ -9,7 +9,7 @@ namespace StardomEngine.Resonance.Controls
     public class ILabel : IControl
     {
 
-        public float Scale = 1.0f;
+        public float Scale = 1.2f;
 
         public ILabel(string text)
         {
@@ -22,7 +22,7 @@ namespace StardomEngine.Resonance.Controls
         {
             //base.Render();
             
-            GameUI.This.DrawText(Text, RenderPosition, Color,Scale);
+            GameUI.This.DrawText(Text, RenderPosition+new OpenTK.Mathematics.Vector2(0,7),Color,Scale);
         }
 
     }

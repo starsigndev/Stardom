@@ -241,7 +241,7 @@ namespace StardomEngine.Resonance.Controls
         public override void Render()
         {
             //base.Render();
-            GameUI.This.DrawRect(GameUI.Theme.ButtonSlice, 8, 8, RenderPosition, Size, Color);
+         //   GameUI.This.DrawRect(GameUI.Theme.ButtonSlice, 8, 8, RenderPosition, Size, Color);
 
             RenderChildren();
         }
