@@ -265,12 +265,31 @@ namespace EngineTest
             };
 
             var v1 = new IVBox();
-            v1.Set(new Vector2(20, 200), new Vector2(350, 300), "");
+            v1.Set(new Vector2(20, 200), new Vector2(440, 480), "");
             UI.RootControl.AddControl(v1);
-            v1.Alignment = FillAlignment.Right;
-            v1.AlignSpace = 30;
+            v1.Alignment = FillAlignment.Top;
+            v1.AlignSpace = 0;
 
-            v1.AlignSize = 150;
+            v1.AlignSize = 45;
+
+            IHBox h1, h2, h3, h4;
+
+            h1 = new IHBox();
+            h2 = new IHBox();
+            h3 = new IHBox();
+            h4 = new IHBox();
+            h1.Alignment = FillAlignment.Right;
+
+            h2.Alignment = FillAlignment.Fill;
+
+            h3.Alignment = FillAlignment.Fill; 
+            h4.Alignment = FillAlignment.Fill;
+            h1.AlignSpace =0;
+            h1.AlignSize = 50;
+
+
+
+            v1.AddControls(h1, h2, h3, h4);
 
             //v1.AlignLength = 90;
             IButton b1, b2, b3, b4;
@@ -278,7 +297,18 @@ namespace EngineTest
             b2 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test Two") as IButton;
             b3 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test Three") as IButton;
             b4 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test 4") as IButton;
-            v1.AddControls(b1, b2, b3,b4);
+            b1.AlignSize = 140;
+            b2.AlignSize = 40;
+            //b4.AlignSize = 99;
+            b3.AlignSize = 80;
+
+
+            //h1.Calculate();
+            h1.AddControls(b1, b2, b3);
+            h1.Calculate();
+
+
+
 
 
         }

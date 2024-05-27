@@ -133,9 +133,14 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public int AlignSize
+        {
+            get;
+            set;
+        }
         public IControl()
         {
-
+            AlignSize = -1;
             Color = new Vector4(1, 1, 1, 1);
             Controls = new List<IControl>();
             Root = null;
