@@ -32,5 +32,16 @@ namespace StardomEngine.Resonance.Controls
 
         }
 
+        public void AddSeperator()
+        {
+            NextX = NextX + 5;
+            var sep = new IImage(GameUI.Theme.White).Set(new OpenTK.Mathematics.Vector2(NextX, 8), new OpenTK.Mathematics.Vector2(2,Size.Y-16), "");
+            sep.Color = new OpenTK.Mathematics.Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+            base.AddControl(sep);
+            NextX = NextX + 12;
+
+
+        }
+
     }
 }

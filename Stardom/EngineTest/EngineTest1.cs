@@ -252,7 +252,10 @@ namespace EngineTest
 
             var ls = new IListSelector();
             ls.Set(new Vector2(0, 0), new Vector2(140, 30));
+            tb.AddSeperator();
+
             tb.AddControl(ls);
+
             ls.List.AddItem("OpenGL");
             ls.List.AddItem("DirectX");
             ls.List.AddItem("Metal");
@@ -260,6 +263,22 @@ namespace EngineTest
             {
                 Console.WriteLine("Item:" + item.Name);
             };
+
+            var v1 = new IVBox();
+            v1.Set(new Vector2(20, 200), new Vector2(350, 300), "");
+            UI.RootControl.AddControl(v1);
+            v1.Alignment = FillAlignment.Right;
+            v1.AlignSpace = 30;
+
+            v1.AlignSize = 150;
+
+            //v1.AlignLength = 90;
+            IButton b1, b2, b3, b4;
+            b1 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test One") as IButton;
+            b2 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test Two") as IButton;
+            b3 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test Three") as IButton;
+            b4 = new IButton().Set(new Vector2(0, 0), new Vector2(40, 0), "Test 4") as IButton;
+            v1.AddControls(b1, b2, b3,b4);
 
 
         }

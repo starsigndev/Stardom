@@ -45,19 +45,23 @@ namespace StardomEngine.Resonance.Controls
             //base.OnMouseDown(button);
             if (Open)
             {
-                RemoveControl(List);
+                //RemoveControl(List);
+                GameUI.This.Overlay.Remove(List);
                 Open = false;
             }
             else
             {
-                AddControl(List);
-                List.Set(new OpenTK.Mathematics.Vector2(0, Size.Y), new OpenTK.Mathematics.Vector2(Size.X, 180), "");
+                GameUI.This.Overlay.Add(List);
+                Open = true;
+                List.Set(new OpenTK.Mathematics.Vector2(RenderPosition.X, RenderPosition.Y+Size.Y), new OpenTK.Mathematics.Vector2(Size.X, 180), "");
                 List.OnItemSelected = (item) =>
                 {
 
-                    RemoveControl(List);
+                    GameUI.This.Overlay.Remove(List);
+                    //RemoveControl(List);
                     Open = false;
                     OnItemSelected?.Invoke(item);
+                    CurrentItem = item;
                 };
                 //AddControl(List);
                 // var item = .AddItem(v);
