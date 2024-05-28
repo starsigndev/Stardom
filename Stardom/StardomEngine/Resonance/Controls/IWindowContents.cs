@@ -19,6 +19,11 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
+        public dynamic Layout
+        {
+            get;
+            set;
+        }
         public IWindowContent()
         {
 

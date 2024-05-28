@@ -151,6 +151,12 @@ namespace StardomEngine.Resonance
             set;
         }
 
+        public bool Built
+        {
+            get;
+            set;
+        }
+
         public IControl()
         {
             AlignSize = -1;
@@ -162,6 +168,10 @@ namespace StardomEngine.Resonance
 
         }
 
+        public virtual void Build()
+        {
+
+        }
         public void Center()
         {
 

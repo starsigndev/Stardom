@@ -115,6 +115,8 @@ namespace StardomEngine.Resonance.Controls
             //base.OnActivate();
             ClaretOn = true;
             NextClaret = Environment.TickCount;
+            ClaretX = Text.Length;
+            if (ClaretX < 0) ClaretX = 0;
         }
 
         public override void OnDeactivate()
@@ -194,6 +196,7 @@ namespace StardomEngine.Resonance.Controls
                     GameUI.This.ActiveControl = TabNext;
                     GameUI.This.ActiveControl.OnActivate();
                     GameUI.This.ActiveControl.Active = true;
+                    return;
                 }
             }
             //base.OnKey(key);

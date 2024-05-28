@@ -11,7 +11,11 @@ namespace StardomEngine.Resonance.Controls
     public class IWindow : IControl
     {
 
-
+        public UIBuilder Builder
+        {
+            get;
+            set;
+        }
         public static TextureSlice ShadowSlice
         {
             get;
@@ -53,6 +57,8 @@ namespace StardomEngine.Resonance.Controls
             get;
             set;
         }
+
+        
 
         public IWindow(bool include_scrollers = false,bool rect_design=true)
         {
@@ -107,6 +113,7 @@ namespace StardomEngine.Resonance.Controls
                 Set(Position,new_size,Text);
             };
             Resizer.Icon = GameUI.Theme.Resizer;
+           
         }
 
         public override void AfterSet()
@@ -116,6 +123,20 @@ namespace StardomEngine.Resonance.Controls
             Contents.Set(new OpenTK.Mathematics.Vector2(0, 20),new OpenTK.Mathematics.Vector2(Size.X, Size.Y-20), "");
             VScroller.Set(new OpenTK.Mathematics.Vector2(Size.X - 15, 22), new OpenTK.Mathematics.Vector2(13, Size.Y-30), "");
             Resizer.Set(new OpenTK.Mathematics.Vector2(Size.X - 16, Size.Y-16), new OpenTK.Mathematics.Vector2(16, 16), "*");
+            
+            if (!Built)
+            {
+                Builder = new UIBuilder(Contents);
+                Build();
+                Built = true;
+            }
+            else
+            {
+                if (Contents.Layout != null)
+                {
+                    Contents.Layout.Set(new Vector2(10,150),Contents.Size,Contents.Text);
+                }
+            }
         }
 
         public override void UpdateContentSize()

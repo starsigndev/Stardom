@@ -38,6 +38,7 @@ namespace StardomEngine.Resonance.Controls
 
         public void Calculate()
         {
+            if (Controls.Count == 0) return;
             switch (Alignment)
             {
 
@@ -63,11 +64,11 @@ namespace StardomEngine.Resonance.Controls
                     {
                         int th = (int)Size.Y;
                         th = AlignSize;
-                        int iy = 0;
+                        int iy = AlignSpace;
 
                         foreach (var cont in Controls)
                         {
-                            cont.Set(new OpenTK.Mathematics.Vector2(0, iy), new OpenTK.Mathematics.Vector2(Size.X, th), cont.Text);
+                            cont.Set(new OpenTK.Mathematics.Vector2(5, iy), new OpenTK.Mathematics.Vector2(Size.X-15, th), cont.Text);
                             iy = iy + th + AlignSpace;
                         }
                         int b = 5;
@@ -198,12 +199,17 @@ namespace StardomEngine.Resonance.Controls
 
         }
 
-        
-
+        public override void AfterSet()
+        {
+            base.AfterSet();
+            Position = new OpenTK.Mathematics.Vector2(0, 0);
+            Size = Root.Size;
+            Calculate();
+        }
         public override void Render()
         {
             //base.Render();
-         //   GameUI.This.DrawRect(GameUI.Theme.ButtonSlice,8,8, RenderPosition, Size, Color);
+           // GameUI.This.DrawRect(GameUI.Theme.ButtonSlice,8,8, RenderPosition, Size, Color);
 
             RenderChildren();
         }

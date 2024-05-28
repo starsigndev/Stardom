@@ -35,10 +35,20 @@ namespace StardomEngine.Resonance.Controls
             set;
         }
 
+        public override void AfterSet()
+        {
+           // base.AfterSet();
+            base.AfterSet();
+           //  Position = new OpenTK.Mathematics.Vector2(0, 0);
+            //Size = Root.Size;
+
+            Calculate();
+        }
+
         public void Calculate()
         {
-           
 
+            if (Controls.Count == 0) return;
 
             switch (Alignment)
             {
@@ -128,7 +138,7 @@ namespace StardomEngine.Resonance.Controls
                             {
                                 al = AlignSize;
                             }
-                            cont.Set(new OpenTK.Mathematics.Vector2(Size.X-ix-al,Size.Y - AlignSize), new OpenTK.Mathematics.Vector2(al,AlignSize), cont.Text);
+                            cont.Set(new OpenTK.Mathematics.Vector2(Size.X-ix-al,10), new OpenTK.Mathematics.Vector2(al,Size.Y), cont.Text);
                             ix = ix + al ;
                           //  ix = ix + al + AlignSpace; ;
 
@@ -212,13 +222,18 @@ namespace StardomEngine.Resonance.Controls
                                 mx = tw;
                             }
 
-                            cont.Set(new OpenTK.Mathematics.Vector2(ix, 0), new OpenTK.Mathematics.Vector2(mx - AlignSpace, Size.Y), cont.Text);
+                            cont.Set(new OpenTK.Mathematics.Vector2(ix, 10), new OpenTK.Mathematics.Vector2(mx - AlignSpace, Size.Y), cont.Text);
                             ix = ix + mx;
                             if (cont.AlignSize != -1)
                             {
+                                if ((Controls.Count - cc) == 0)
+                                {
 
-                                tw = tw - ((cont.AlignSize-tw) / (Controls.Count - (cc)));//
-                              
+                                }
+                                else
+                                {
+                                    tw = tw - ((cont.AlignSize - tw) / (Controls.Count - (cc)));//
+                                }
                             }
 
                         }
