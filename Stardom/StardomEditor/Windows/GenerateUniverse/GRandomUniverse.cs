@@ -1,5 +1,6 @@
 ﻿using StardomEngine.Resonance;
 using StardomEngine.Resonance.Controls;
+using StardomEngine.Universe;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,17 +82,24 @@ namespace StardomEditor.Windows.GenerateUniverse
             Builder.End();
             Builder.BeginHorizontal(FillAlignment.Fill, 10);
             Builder.Label("Galaxies", 120);
-            Builder.TextBox("Min", 120, 50,"1");
-            Builder.TextBox("Max", 120, 50,"100");
+            var i3 = Builder.TextBox("Min", 120, 50,"1");
+            var i4 = Builder.TextBox("Max", 120, 50,"100");
             Builder.End();
             Builder.BeginHorizontal(FillAlignment.Fill,10);
-            Builder.Button("Create");
+            var create = Builder.Button("Create");
             Builder.Button("Cancel");
             Builder.End();
             Builder.End();
             i1.TabNext = i2;
-            i2.TabNext = i1;
-
+            i2.TabNext = i3;
+            i3.TabNext = i4;
+            i4.TabNext = i1;
+            create.OnClick = (b, mb) =>
+            {
+            
+                var uni = UniGen.This.CreateUniverse(int.Parse(i3.Text), int.Parse(i4.Text),int.Parse(i1.Text),int.Parse(i2.Text));
+            
+            };
         }
 
         public override void AfterSet()

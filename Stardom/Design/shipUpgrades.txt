@@ -1,0 +1,79 @@
+Fusion Reactor Upgrade: Increases the ship's power output, allowing for faster recharging of shields and weapons systems, and enabling the installation of more powerful equipment.
+
+Advanced Thrusters: Enhances the ship's maneuverability and agility, improving its responsiveness in combat and allowing for tighter turns and evasive maneuvers.
+
+Shield Capacitor: Boosts the ship's shield strength and resilience, allowing it to withstand more damage before collapsing and providing added protection against energy-based attacks.
+
+Armor Plating: Reinforces the ship's hull with additional armor plating, increasing its durability and resilience against projectile and physical attacks, but may decrease maneuverability slightly.
+
+Weapon Overclocking System: Increases the firing rate and damage output of the ship's weapons systems, allowing for more potent offensive capabilities during combat engagements.
+
+Stealth Cloaking Device: Grants the ship the ability to cloak itself from enemy sensors and visual detection, allowing for covert operations, surprise attacks, and evasion of hostile forces.
+
+Sensor Array Enhancement: Improves the ship's sensor capabilities, increasing its detection range, accuracy, and scanning speed, allowing for better reconnaissance and tracking of enemy targets.
+
+Jump Drive Expansion: Expands the ship's jump drive range, allowing for longer-distance travel between star systems and access to remote regions of the galaxy.
+
+Hyperdrive Stabilizer: Stabilizes the ship's hyperdrive system, reducing the risk of malfunctions and mishaps during faster-than-light travel, and decreasing travel time between destinations.
+
+Targeting Computer Upgrade: Enhances the ship's targeting systems, improving accuracy and precision during combat engagements, and enabling the tracking of fast-moving or evasive targets.
+
+Electronic Countermeasures Suite: Deploys electronic countermeasures to jam enemy sensors and disrupt their targeting systems, reducing their accuracy and effectiveness in combat.
+
+Energy Shield Modulator: Modulates the ship's energy shields to adapt to different types of damage, providing increased resistance against specific energy-based attacks or environmental hazards.
+
+Drone Bay Expansion: Expands the ship's drone bay capacity, allowing for the deployment of additional combat drones, repair drones, or utility drones to assist in various tasks and missions.
+
+Advanced AI Co-Processor: Augments the ship's onboard AI systems with advanced processing capabilities, improving tactical analysis, decision-making, and autonomous operation during combat and exploration.
+
+Biometric Security System: Implements biometric security measures to restrict access to the ship's systems and compartments, preventing unauthorized personnel from commandeering the vessel.
+
+Environmental Control System: Regulates the ship's internal environment, maintaining optimal temperature, humidity, and atmospheric conditions for crew comfort and operational efficiency.
+
+Cargo Expansion Module: Adds additional cargo storage space to the ship, allowing for increased capacity to carry resources, supplies, and valuable loot acquired during missions and exploration.
+
+Emergency Escape Pod: Installs an emergency escape pod system on the ship, providing a last-resort option for the crew to evacuate in case of critical damage or imminent danger.
+
+Medical Bay Upgrade: Upgrades the ship's medical facilities with advanced diagnostic equipment, medical drones, and treatment modules to provide better care for injured or sick crew members.
+
+Luxury Quarters: Enhances the ship's living quarters with luxury amenities, recreational facilities, and entertainment systems, improving crew morale and well-being during long journeys.
+
+Advanced Radar Array: Improves the ship's radar capabilities, allowing for better detection of enemy ships, anomalies, and celestial objects, and providing early warning against potential threats.
+
+Tactical Missile Bay: Adds a dedicated missile bay to the ship, allowing for the storage and deployment of a wider variety of missile types, including long-range, guided, and specialized warheads.
+
+Energy Weapon Capacitor: Increases the energy weapon's firing rate and sustained fire capabilities by enhancing the ship's energy reserves and capacitor systems.
+
+Reactive Armor Plating: Equips the ship with reactive armor panels that automatically adapt to incoming threats, providing increased protection against both energy-based and projectile-based attacks.
+
+Scrambler Field Generator: Deploys a scrambler field around the ship, disrupting enemy targeting systems and causing confusion among hostile forces, reducing their accuracy and effectiveness in combat.
+
+Warp Drive Overdrive: Temporarily boosts the ship's warp drive output, allowing for rapid acceleration and short bursts of increased speed during emergency situations or tactical retreats.
+
+Advanced Shield Harmonizer: Improves the efficiency and effectiveness of the ship's shield harmonization algorithms, maximizing shield strength and regeneration capabilities during combat engagements.
+
+Subspace Transceiver Array: Upgrades the ship's communication systems with a subspace transceiver array, allowing for faster and more reliable long-range communication and data transmission.
+
+Gravity Well Generator: Deploys a gravity well generator that creates localized distortions in spacetime, pulling in nearby objects and disrupting enemy movement and navigation.
+
+Quantum Encryption Module: Enhances the ship's data security and encryption protocols, protecting sensitive information and communications from interception or tampering by enemy forces.
+
+EMP Pulse Cannon: Equips the ship with an EMP pulse cannon that emits electromagnetic pulses, disabling enemy electronics and systems temporarily, rendering them vulnerable to attack.
+
+Nanofiber Hull Reinforcement: Reinforces the ship's hull with nanofiber materials that absorb and dissipate kinetic energy, reducing damage from physical impacts and collisions.
+
+Advanced Navigation Computer: Upgrades the ship's navigation computer with advanced algorithms and predictive modeling, improving route planning, course optimization, and navigation accuracy.
+
+Evasive Maneuvering System: Installs an evasive maneuvering system that enhances the ship's ability to dodge incoming projectiles and evade enemy fire during combat engagements.
+
+Emergency Shield Reserves: Reserves a portion of the ship's power output for emergency shield reinforcement, providing an additional layer of defense during critical moments in combat.
+
+Neutrino Scanner Array: Equips the ship with a neutrino scanner array that penetrates solid objects and shields, allowing for detailed scans of enemy ships' internal systems and components.
+
+Temporal Shielding Matrix: Activates a temporal shielding matrix that creates temporal distortions around the ship, slowing down incoming projectiles and reducing their kinetic energy.
+
+Interstellar Beacon: Deploys an interstellar beacon that broadcasts the ship's location and distress signal across vast distances, increasing the chances of rescue or assistance from nearby allies.
+
+Energy Weapon Harmonizer: Synchronizes the ship's energy weapons' firing frequencies, maximizing their damage output and penetration capabilities against shielded targets.
+
+Aegis Defense System: Integrates an Aegis defense system that automatically intercepts and neutralizes incoming projectiles, providing an additional layer of defense against enemy attacks.

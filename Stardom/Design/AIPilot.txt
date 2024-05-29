@@ -1,0 +1,1 @@
+AI pilot with several options, include combat auto-pilot so you can focus on weapons/tactics.

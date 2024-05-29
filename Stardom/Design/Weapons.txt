@@ -5,3 +5,84 @@
 - Homing Rockets.
 
 - Auto Machine Gun.(Smart Bullets)
+----
+
+Plasma Blaster: A rapid-fire energy weapon that shoots concentrated bursts of plasma, effective against shielded targets and for close-range combat.
+
+Ion Cannon: Fires ionized particles that disrupt electronic systems and shields, disabling enemy ships' systems and rendering them vulnerable to follow-up attacks.
+
+Railgun: A high-velocity projectile weapon that fires solid metal slugs at extreme speeds, capable of penetrating armor and causing massive damage to enemy ships.
+
+Laser Beam: Emits a focused beam of coherent light energy, ideal for precision targeting and long-range engagements, but less effective against heavily armored opponents.
+
+Missile Launcher: Launches guided missiles or torpedoes equipped with various warheads, including explosive, EMP, and homing types, suitable for both anti-ship and anti-fighter roles.
+
+Gauss Cannon: Utilizes electromagnetic acceleration to propel ferrous projectiles at high velocities, offering high damage output and armor penetration capabilities.
+
+Photon Torpedo: Releases bursts of high-energy photons that can bypass shields and cause devastating damage upon impact, making them effective against shielded targets and capital ships.
+
+Plasma Cannon: Fires streams of superheated plasma at targets, creating fiery explosions upon impact and causing area-of-effect damage to surrounding enemies.
+
+Disruptor Array: Emits a disruptive energy field that interferes with enemy systems and shields, causing malfunctions and reducing their effectiveness in combat.
+
+Neutron Blaster: Fires streams of neutrons that destabilize atomic structures, causing radiation damage and disrupting enemy systems, particularly effective against biological targets.
+
+Graviton Pulser: Generates gravitational waves that distort spacetime, pulling or pushing enemy ships and projectiles, disrupting their trajectories and maneuverability.
+
+Antimatter Cannon: Fires bolts of antimatter particles that annihilate upon contact with matter, producing powerful explosions and devastating damage to enemy ships.
+
+Tachyon Beam: Emits beams of tachyons, particles that travel faster than light, allowing them to bypass shields and cause instantaneous damage to enemy ships' hulls.
+
+Fusion Mortar: Launches explosive shells containing compressed plasma or nuclear fusion materials, causing massive area-of-effect damage upon detonation.
+
+Particle Beam Cannon: Fires beams of charged particles with high kinetic energy, capable of penetrating shields and armor with sustained fire, but requiring precision targeting.
+
+Gravitic Disruptor: Manipulates gravitational fields to disrupt enemy ships' stability and navigation systems, causing them to drift off course or lose control temporarily.
+
+Nanite Swarm Launcher: Deploys clouds of nanobots that swarm enemy ships, dismantling their systems and armor over time, ideal for attrition-based warfare.
+
+Plasma Pulse Rifle: A handheld weapon that fires bursts of plasma energy, suitable for use by infantry or in ship-to-ship combat, offering versatility and rapid-fire capabilities.
+
+Singularity Cannon: Creates miniature black holes that suck in nearby objects, causing massive damage and disrupting enemy formations, but requiring careful targeting to avoid collateral damage.
+
+Temporal Disruptor: Emits pulses of temporal energy that distort time and space, slowing down enemy ships' movements and reactions, giving allies a tactical advantage in combat.
+
+Nanite Disintegrator: Releases swarms of nanites programmed to disassemble enemy ships on a molecular level, causing widespread damage and disabling systems over time.
+
+Plasma Wave Emitter: Emits waves of plasma energy that propagate in a wide arc, ideal for crowd control and engaging multiple targets simultaneously.
+
+Tesla Coil Cannon: Projects arcs of electricity that chain between nearby enemy ships, inflicting damage to multiple targets within its range and disrupting their systems.
+
+Sonic Resonator: Emits powerful sonic vibrations that shatter enemy shields and hulls, causing structural damage and disorienting crew members.
+
+Phase Disruptor: Fires bursts of phased energy that bypass conventional defenses by shifting in and out of phase with normal matter, making it effective against heavily armored targets.
+
+Cryo Launcher: Launches cryogenic projectiles that freeze enemy ships and systems, immobilizing them temporarily and making them vulnerable to follow-up attacks.
+
+Arcane Staff: Channels mystical energies to unleash devastating magical attacks, such as bolts of arcane energy, elemental blasts, or summoning ethereal entities to aid in combat.
+
+Quantum Destabilizer: Releases bursts of quantum energy that destabilize the molecular structure of enemy ships, causing them to warp and distort unpredictably.
+
+Vortex Cannon: Generates swirling vortexes of energy that pull in nearby objects and projectiles, redirecting them back at enemy ships or creating gravitational traps.
+
+Photon Disruptor: Fires concentrated beams of photons that disrupt enemy sensors and targeting systems, blinding them temporarily and reducing their accuracy.
+
+Nanotech Swarm Launcher: Deploys swarms of advanced nanobots programmed to infiltrate enemy systems and sabotage critical components, causing cascading failures and malfunctions.
+
+Hypernova Bomb: Detonates a miniature hypernova explosion that engulfs enemy ships in a massive shockwave of energy, obliterating everything in its vicinity.
+
+Quantum Singularity Projector: Projects a stable quantum singularity that pulls in nearby objects and ships, crushing them under its immense gravitational force.
+
+Plasma Saber: A melee weapon that emits a blade of superheated plasma, capable of cutting through enemy hulls and deflecting incoming projectiles with precision.
+
+Neural Disruptor: Emits pulses of energy that scramble the neural networks of enemy crew members, causing confusion, disorientation, and temporary loss of motor control.
+
+Gravitic Impulser: Fires bursts of gravitic energy that propel enemy ships off course and disrupt their trajectories, making them vulnerable to follow-up attacks.
+
+Quantum Annihilator: Fires streams of quantum energy that destabilize the bonds between subatomic particles, causing matter to disintegrate upon contact.
+
+Spectral Beam Emitter: Emits beams of phased energy that pass through solid objects and shields, allowing for precise targeting of enemy weak points and critical systems.
+
+Magnetic Pulse Cannon: Fires electromagnetic pulses that disrupt enemy electronics and propulsion systems, rendering them temporarily inoperable and vulnerable to attack.
+
+Void Rift Generator: Creates rifts in the fabric of space-time that unleash extradimensional entities into the battlefield, wreaking havoc on enemy ships and disrupting their formations.

@@ -11,7 +11,7 @@ namespace StardomEngine.Resonance.Controls
     public class IWindow : IControl
     {
 
-        public UIBuilder Builder
+        public UILayoutBuilder Builder
         {
             get;
             set;
@@ -126,7 +126,7 @@ namespace StardomEngine.Resonance.Controls
             
             if (!Built)
             {
-                Builder = new UIBuilder(Contents);
+                Builder = new UILayoutBuilder(Contents);
                 Build();
                 Built = true;
             }

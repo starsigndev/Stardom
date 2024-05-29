@@ -273,6 +273,17 @@ namespace StardomEngine.Resonance
 
         }
 
+        public virtual UILayoutBuilder GetLayoutBuilder()
+        {
+            UILayoutBuilder builder = new UILayoutBuilder(this);
+            return builder;
+        }
+
+        public virtual UIBuilder GetBuilder()
+        {
+            return new UIBuilder(this);
+        }
+
         public bool InBounds(Vector2 position)
         {
 

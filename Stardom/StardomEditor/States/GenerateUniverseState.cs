@@ -1,5 +1,6 @@
 ﻿using StardomEditor.Windows.GenerateUniverse;
 using StardomEngine.App;
+using StardomEngine.Resonance;
 using StardomEngine.Resonance.Controls;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,10 @@ namespace StardomEditor.States
         {
             base.InitState();
 
+
+           
+
+
             var uni = UI.MainMenu.AddItem("Universe");
             var ex = uni.AddItem("Exit");
 
@@ -24,17 +29,24 @@ namespace StardomEditor.States
                 StarApp.PopState();
             };
 
-            var main = new IWindow(false, true).Set(new(0, 0), new(StarApp.FrameWidth, StarApp.FrameHeight - 30), "Generate Universe");
+            var main = new IWindow(false, true).Set(new(0, 0), new(StarApp.FrameWidth, StarApp.FrameHeight - 30), "Generate Universe") as IWindow;
 
             UI.RootControl.AddControl(main);
 
-            var uni_pan = new IPanel().Set(new(50, 50), new(300, 250), "");
+            var build = main.Contents.GetBuilder();// new UIBuilder(main.Contents);
 
-            UI.RootControl.AddControl(uni_pan);
+            var panel = build.Panel(new(50, 50), new(300, 250));
 
-            var gen_random = new IButton().Set(new(10, 10), new(180, 30), "Generate Random") as IButton;
 
-            uni_pan.AddControl(gen_random);
+            var pan_b = panel.GetBuilder();
+
+
+            //var uni_pan = new IPanel().Set(new(50, 50), new(300, 250), "");
+
+            //UI.RootControl.AddControl(uni_pan);
+
+            var gen_random = pan_b.Button(new(10, 10), new(180, 30), "Generate Random");
+                      
 
             gen_random.OnClick += (s, e) =>
             {
